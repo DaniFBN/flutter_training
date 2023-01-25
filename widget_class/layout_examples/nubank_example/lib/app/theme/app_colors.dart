@@ -8,4 +8,5 @@ class AppColors {
   static const white = Color(0xFFFFFFFF);
   static const cardColor = Color(0xFFF0F1F5);
   static const dividerColor = Color(0xFFF0F1F5);
+  static const greyText = Color(0xFF848389);
 }

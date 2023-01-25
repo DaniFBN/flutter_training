@@ -8,10 +8,20 @@ class AppMock {
   static const userImage =
       'https://avatars.githubusercontent.com/u/54218517?v=4';
   static const accountValue = 'R\$ 1,356,98';
+  static const invoiceValue = 'R\$ 250,00';
+  static const creditLimit = 'R\$ 3.455,55';
+  static const loanLimitFormatted = 'R\$ 25.000';
+  static const loanLimit = 'R\$ 25.000,00';
+  static const newsImage =
+      'https://blog.twitch.tv/assets/uploads/03-glitch.jpg';
   static const profileButtons = [
     ProfileButton(title: 'Área Pix', icon: Icons.pix),
     ProfileButton(title: 'Pagar', icon: Icons.qr_code),
-    ProfileButton(title: 'Pegar emprestado', icon: Icons.handshake_rounded),
+    ProfileButton(
+      title: 'Pegar emprestado',
+      icon: Icons.handshake_rounded,
+      specialText: loanLimitFormatted,
+    ),
     ProfileButton(title: 'Transferir', icon: Icons.handshake_rounded),
     ProfileButton(
       title: 'Recarga de celular',
@@ -51,15 +61,36 @@ class AppMock {
       ],
     ),
   ];
+
+  static const news = [
+    NewsCard(
+      image: AppMock.newsImage,
+      title: 'Parcele compras no app',
+      content: 'Descontos em compras à vista no crédito, controle total sobre '
+          'suas finanças',
+    ),
+    NewsCard(
+      image: AppMock.newsImage,
+      title: 'Nubank Celular Seguro',
+      content: '100% cobertura, 0% estresse. Simule agora mesmo',
+    ),
+    NewsCard(
+      image: AppMock.newsImage,
+      title: 'Seguro de vida',
+      content: 'Cuide de quem você ama de um jeito simples e que cabe no bolso',
+    ),
+  ];
 }
 
 class ProfileButton {
   final IconData icon;
   final String title;
+  final String? specialText;
 
   const ProfileButton({
     required this.icon,
     required this.title,
+    this.specialText,
   });
 }
 
@@ -76,5 +107,17 @@ class TipText {
   const TipText({
     required this.text,
     this.isSpecial = false,
+  });
+}
+
+class NewsCard {
+  final String image;
+  final String title;
+  final String content;
+
+  const NewsCard({
+    required this.image,
+    required this.title,
+    required this.content,
   });
 }

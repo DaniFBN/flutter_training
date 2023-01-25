@@ -5,12 +5,14 @@ class HomeHeaderWidget extends StatelessWidget {
   final String userName;
   final VoidCallback toggleShowInformation;
   final String? userImage;
+  final bool showInformation;
 
   const HomeHeaderWidget({
     Key? key,
     required this.userName,
     required this.toggleShowInformation,
     this.userImage,
+    this.showInformation = true,
   }) : super(key: key);
 
   @override
@@ -49,7 +51,9 @@ class HomeHeaderWidget extends StatelessWidget {
               const Spacer(),
               _IconButton(
                 onPressed: toggleShowInformation,
-                icon: Icons.visibility_outlined,
+                icon: showInformation
+                    ? Icons.visibility_outlined
+                    : Icons.visibility_off_outlined,
               ),
               _IconButton(
                 onPressed: () {},

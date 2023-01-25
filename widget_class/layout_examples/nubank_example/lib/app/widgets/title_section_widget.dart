@@ -10,7 +10,7 @@ class TitleSectionWidget extends StatelessWidget {
     Key? key,
     required this.title,
     required this.onTap,
-    required this.showArrow,
+    this.showArrow = true,
   }) : super(key: key);
 
   @override
