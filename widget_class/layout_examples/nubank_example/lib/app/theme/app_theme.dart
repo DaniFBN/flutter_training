@@ -11,6 +11,7 @@ class AppTheme {
     primaryColorLight: AppColors.purpleLight,
     cardColor: AppColors.cardColor,
     dividerColor: AppColors.dividerColor,
+    hintColor: AppColors.greyText,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         elevation: 0,
@@ -26,6 +27,19 @@ class AppTheme {
     textTheme: const TextTheme(
       titleMedium: AppTextStyles.titleMedium,
       labelMedium: AppTextStyles.labelMedium,
+      bodyMedium: AppTextStyles.bodyMedium,
+      bodySmall: AppTextStyles.bodySmall,
+    ),
+    primaryTextTheme: TextTheme(
+      titleMedium: AppTextStyles.titleMedium.copyWith(
+        color: AppColors.white,
+      ),
+      labelMedium: AppTextStyles.labelMedium.copyWith(
+        color: AppColors.white,
+      ),
+      bodySmall: AppTextStyles.bodySmall.copyWith(
+        color: AppColors.white,
+      ),
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.purplePrimary,

@@ -16,6 +16,19 @@ class AppTextStyles {
     fontFamily: AppConstants.poppinsFontFamily,
     fontWeight: FontWeight.w500,
   );
+  
+  static const bodyMedium = TextStyle(
+    fontSize: 12,
+    fontFamily: AppConstants.poppinsFontFamily,
+    fontWeight: FontWeight.w500,
+    color: AppColors.greyText,
+  );
+  static const bodySmall = TextStyle(
+    fontSize: 10,
+    fontFamily: AppConstants.poppinsFontFamily,
+    fontWeight: FontWeight.w500,
+    color: AppColors.greyText,
+  );
   static final appBarTitle = AppTextStyles.titleMedium.copyWith(
     color: AppColors.white,
     fontWeight: FontWeight.w600,
