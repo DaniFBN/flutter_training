@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 class AppMock {
   const AppMock._();
 
-  static const userName = 'Daniel';
-  static const userImage =
-      'https://avatars.githubusercontent.com/u/54218517?v=4';
-  static const accountValue = 'R\$ 1,356,98';
+  static const userName = 'João Kennedy';
+  static const userImage = null;
+  static const accountValue = 'R\$ 3.356,98';
   static const invoiceValue = 'R\$ 250,00';
-  static const creditLimit = 'R\$ 3.455,55';
-  static const loanLimitFormatted = 'R\$ 25.000';
-  static const loanLimit = 'R\$ 25.000,00';
+  static const creditLimit = 'R\$ 50.455,55';
+  static const loanLimitFormatted = 'R\$ 120.000';
+  static const loanLimit = 'R\$ 120.000,00';
   static const newsImage =
       'https://blog.twitch.tv/assets/uploads/03-glitch.jpg';
   static const profileButtons = [

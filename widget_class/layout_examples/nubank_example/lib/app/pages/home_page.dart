@@ -52,10 +52,14 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    showInformation ? AppMock.accountValue : '●●●●',
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      showInformation ? AppMock.accountValue : '●●●●',
+                      maxLines: 1,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
