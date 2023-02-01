@@ -63,4 +63,55 @@ void main() {
       expect(accountValueObscuredFinder, findsNothing);
     },
   );
+
+  testWidgets(
+    'home page .asas..',
+    (tester) async {
+      await mockNetworkImagesFor(() async {
+        return await tester.pumpWidget(
+          MaterialApp(theme: AppTheme.theme, home: const HomePage()),
+        );
+      });
+
+      final visibilityButtonFinder = find.widgetWithIcon(
+        IconButton,
+        Icons.visibility_outlined,
+      );
+      expect(visibilityButtonFinder, findsOneWidget);
+
+      final accountValueFinder = find.text(AppMock.accountValue);
+      expect(accountValueFinder, findsOneWidget);
+
+      await tester.tap(visibilityButtonFinder);
+      await tester.pump();
+
+      expect(accountValueFinder, findsNothing);
+
+      final accountValueObscuredFinder = find.byWidgetPredicate((widget) {
+        final fittedBox = widget;
+        if (fittedBox is FittedBox &&
+            fittedBox.key == const Key('fitted-account-value')) {
+          final text = fittedBox.child;
+
+          if (text is Text) {
+            return text.data == '●●●●';
+          }
+        }
+
+        return false;
+      });
+      expect(accountValueObscuredFinder, findsOneWidget);
+
+
+      final visibilityOffButtonFinder = find.widgetWithIcon(
+        IconButton,
+        Icons.visibility_off_outlined,
+      );
+      await tester.tap(visibilityOffButtonFinder);
+      await tester.pump();
+
+      expect(accountValueFinder, findsOneWidget);
+      expect(accountValueObscuredFinder, findsNothing);
+    },
+  );
 }
