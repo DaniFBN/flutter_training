@@ -1,11 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class AppMock {
   const AppMock._();
 
   static const userName = 'João Kennedy';
-  static const userImage = null;
+  // static const userImage = null;
+  static const userImage = 'https://avatars.githubusercontent.com/u/54218517?v=4';
   static const accountValue = 'R\$ 3.356,98';
   static const invoiceValue = 'R\$ 250,00';
   static const creditLimit = 'R\$ 50.455,55';

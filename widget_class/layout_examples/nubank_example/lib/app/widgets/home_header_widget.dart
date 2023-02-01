@@ -44,7 +44,7 @@ class HomeHeaderWidget extends StatelessWidget {
                 child: userImage != null
                     ? Image.network(userImage!)
                     : Icon(
-                        Icons.person_add_alt,
+                        Icons.add_a_photo_outlined,
                         color: theme.appBarTheme.iconTheme?.color,
                       ),
               ),

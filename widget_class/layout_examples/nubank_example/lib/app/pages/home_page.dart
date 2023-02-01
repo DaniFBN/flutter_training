@@ -54,13 +54,23 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 8),
                   FittedBox(
                     fit: BoxFit.scaleDown,
-                    child: Text(
-                      showInformation ? AppMock.accountValue : '●●●●',
-                      maxLines: 1,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: showInformation
+                        ? Text(
+                            AppMock.accountValue,
+                            key: const Key('account-value'),
+                            maxLines: 1,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        : Text(
+                            '●●●●',
+                            key: const Key('account-obscured-value'),
+                            maxLines: 1,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                   ),
                 ],
               ),

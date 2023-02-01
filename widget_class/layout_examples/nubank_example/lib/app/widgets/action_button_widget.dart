@@ -47,16 +47,18 @@ class ActionButtonWidget extends StatelessWidget {
                           color: theme.primaryColor,
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        child: Text(
-                          showInformation ? specialText! : '●●●●',
-                          style: theme.primaryTextTheme.labelMedium,
+                        child: FittedBox(
+                          child: Text(
+                            showInformation ? specialText! : '●●●●',
+                            style: theme.primaryTextTheme.labelMedium,
+                          ),
                         ),
                       ),
                     )
                 ],
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 4),
             Text(
               title,
               textAlign: TextAlign.center,
