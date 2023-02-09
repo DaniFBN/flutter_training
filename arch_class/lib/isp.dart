@@ -14,7 +14,7 @@ abstract class RhClt {
   void baterPonto();
 }
 
-class CoopertecCLT implements CLT {
+class WhateverCLT implements CLT {
   @override
   void darFerias() {}
 
@@ -50,7 +50,7 @@ abstract class MeEmpresa implements Empresa {
   Contador get contador;
 }
 
-class Coopertec implements MeEmpresa {
+class Whatever implements MeEmpresa {
   @override
   Contador get contador => throw UnimplementedError();
 }
@@ -62,7 +62,7 @@ abstract class Contador {
 abstract class MeiEmpresa implements Empresa {}
 
 void main() {
-  Coopertec().contador.pagarTributos();
+  Whatever().contador.pagarTributos();
 }
 
 class AccountBank {
