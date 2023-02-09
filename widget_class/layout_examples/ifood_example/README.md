@@ -1,4 +1,4 @@
-# linter_class
+# ifood_example
 
 A new Flutter project.
 
@@ -14,23 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-
-https://dart-lang.github.io/linter/lints/index.html
-https://dart.dev/tools/linter-rules
-
-
-Bloc
-ValueNotifier
-
-Bloc/ValueNotifier - Store
-Controller - Facade
-Modular
-Clean Code
-Clean Arch
-
-ValueObject
-
-Teste
-
-Clean Arch com requisição
