@@ -3,6 +3,9 @@ import 'package:arch_class/domain/helpers/params.dart';
 import 'package:arch_class/domain/repositories/i_create_user_repository.dart';
 import 'package:arch_class/infra/datasources/i_create_user_datasource.dart';
 import 'package:arch_class/infra/mappers/user_mapper.dart';
+import 'package:fpdart/fpdart.dart';
+
+import '../../app_exception.dart';
 
 class CreateUserRepositoryImpl implements ICreateUserRepository {
   final ICreateUserDatasource _datasource;
@@ -10,12 +13,18 @@ class CreateUserRepositoryImpl implements ICreateUserRepository {
   const CreateUserRepositoryImpl(this._datasource);
 
   @override
-  Future<UserEntity> createUser(CreateUserParam param) async {
-    final map = UserMapper.createUserToMap(param);
-    final userMap = await _datasource.createUser(map);
+  Future<Either<AppException, UserEntity>> createUser(
+    CreateUserParam param,
+  ) async {
+    try {
+      final map = UserMapper.createUserToMap(param);
+      final userMap = await _datasource.createUser(map);
 
-    final entity = UserMapper.fromMap(userMap);
-    return entity;
+      final entity = UserMapper.fromMap(userMap);
+      return Right(entity);
+    } on AppException catch (e) {
+      return Left(e);
+    }
   }
 }
 

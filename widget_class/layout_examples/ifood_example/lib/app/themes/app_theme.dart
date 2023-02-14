@@ -1,25 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:ifood_example/app/themes/light/app_colors.dart';
+
+import '../utils/app_constants.dart';
+import 'light/app_text_styles.dart';
 
 class AppTheme {
   static final theme = ThemeData(
-    primaryColor: Colors.red,
-    scaffoldBackgroundColor: Colors.white,
+    fontFamily: AppConstants.poppinsFontFamily,
+    primaryColor: AppColors.primaryRed,
+    scaffoldBackgroundColor: AppColors.white,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.red,
-      onPrimary: Colors.white,
+      seedColor: AppColors.primaryRed,
+      primary: AppColors.primaryRed,
+      onPrimary: AppColors.white,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      backgroundColor: Colors.white,
-      titleTextStyle: TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.w500,
+      centerTitle: true,
+      backgroundColor: AppColors.white,
+      titleTextStyle: AppTextStyles.titleAppBar,
+      toolbarTextStyle: AppTextStyles.toolbarAppBar,
+      iconTheme: IconThemeData(
+        color: AppColors.primaryRed,
+        size: 20,
       ),
-      toolbarTextStyle: TextStyle(color: Colors.white, fontSize: 10),
-      actionsIconTheme: IconThemeData(
-        color: Colors.red,
+    ),
+    tabBarTheme: const TabBarTheme(
+      labelColor: AppColors.primaryRed,
+      labelStyle: AppTextStyles.labelTabBar,
+      unselectedLabelColor: AppColors.grey,
+      unselectedLabelStyle: AppTextStyles.labelTabBar,
+      indicatorSize: TabBarIndicatorSize.label,
+      indicator: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(width: 1, color: AppColors.primaryRed),
+        ),
       ),
-      // iconTheme: IconThemeData(color: Colors.red),
+    ),
+    cardTheme: CardTheme(
+      color: AppColors.backgroundCard,
+      elevation: 0,
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    ),
+    textTheme: const TextTheme(
+      titleSmall: AppTextStyles.areaCard,
     ),
   );
 }

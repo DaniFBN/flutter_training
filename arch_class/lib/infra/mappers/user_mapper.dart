@@ -4,6 +4,7 @@ import 'package:arch_class/domain/entities/user_entity.dart';
 import 'package:arch_class/domain/helpers/params.dart';
 import 'package:arch_class/infra/mappers/address_mapper.dart';
 
+import '../../domain/helpers/exceptions.dart';
 import '../../domain/value_objects/name_type.dart';
 
 class UserMapper {
@@ -51,8 +52,10 @@ class UserMapper {
         address: AddressMapper.fromMap(map['address']),
         monthlyIncome: monthlyIncome,
       );
-    } catch (e) {
-      throw 'Erro na API';
+    } on MapperException {
+      rethrow;
+    } catch (e, stackTrace) {
+      throw MapperException('UserMapper - $e', stackTrace: stackTrace);
     }
   }
 }

@@ -28,11 +28,9 @@
   - Reatividade*
 
 
-Presenter
-Tratamento de erro
-Uso de Either/Result
-Service como alternativa de Repository/Datasource
 Service como Wrapper de package
+Service como alternativa de Repository/Datasource
+Controller/Facade
 
 <!-- UI -> Adapter -> Domain <- Adapter <- API
 

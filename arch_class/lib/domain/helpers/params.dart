@@ -1,4 +1,3 @@
-import 'package:arch_class/domain/usecases/create_user_usecase.dart';
 import 'package:arch_class/domain/value_objects/name_type.dart';
 
 class CreateUserParam {

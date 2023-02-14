@@ -27,16 +27,17 @@ class NotificationIconWidget extends StatelessWidget {
               const Center(
                 child: Icon(
                   Icons.notifications_none_rounded,
+                  size: 24,
                 ),
               ),
               Positioned(
-                top: 10,
+                top: 8,
                 right: 2,
                 child: Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: theme2.appBarTheme.actionsIconTheme?.color,
+                    color: theme2.colorScheme.primary,
                   ),
                   child: Center(
                     child: Text(

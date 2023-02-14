@@ -1,6 +1,8 @@
 import 'package:arch_class/domain/entities/address_entity.dart';
 import 'package:arch_class/domain/helpers/params.dart';
 
+import '../../domain/helpers/exceptions.dart';
+
 class AddressMapper {
   const AddressMapper._();
 
@@ -30,16 +32,20 @@ class AddressMapper {
   }
 
   static AddressEntity fromMap(Map<String, dynamic> map) {
-    return AddressEntity(
-      id: map['id'] as String,
-      street: map['street'] as String,
-      neighborhood: map['neighborhood'] as String,
-      city: map['city'] as String,
-      state: map['state'] as String,
-      zipCode: map['zipCode'] as String,
-      number: map['number'] as String,
-      complement:
-          map['complement'] != null ? map['complement'] as String : null,
-    );
+    try {
+      return AddressEntity(
+        id: map['id'] as String,
+        street: map['street'] as String,
+        neighborhood: map['neighborhood'] as String,
+        city: map['city'] as String,
+        state: map['state'] as String,
+        zipCode: map['zipCode'] as String,
+        number: map['number'] as String,
+        complement:
+            map['complement'] != null ? map['complement'] as String : null,
+      );
+    } catch (e, stackTrace) {
+      throw MapperException('AddressMapper - $e', stackTrace: stackTrace);
+    }
   }
 }
