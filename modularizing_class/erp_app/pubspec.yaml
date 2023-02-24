@@ -49,7 +49,7 @@ dependencies:
   firebase_core:
     git: 
       url: https://github.com/firebase/flutterfire
-      path: packages/firebase_core/firebase_core/
+      path: packages/firebase_core/firebase_core
       tag: firebase_crashlytics_platform_interface-v3.3.11
 
 dev_dependencies:

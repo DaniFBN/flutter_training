@@ -1,5 +1,4 @@
 # Modularizing Class
-
 ## Monolítico, MonoRepo e MultiRepo
  - [Monolithic - MicroServices](https://microservices.io/patterns/monolithic.html)
  - [Monolithic - Wikipedia](https://en.wikipedia.org/wiki/Monolithic_application)

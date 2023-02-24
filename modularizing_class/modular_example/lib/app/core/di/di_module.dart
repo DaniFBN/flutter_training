@@ -20,7 +20,7 @@ class DiModule extends Module {
 //   LazySingleton = Quando for chamado
 //   Factory = Quando for chamado
 
-// Lógica do Modular.get
+// Lógica do Modular.get/Recuperação
 //   Instance = Sempre a mesma instancia
 //   Singleton = Sempre a mesma instancia
 //   LazySingleton = Sempre a mesma instancia

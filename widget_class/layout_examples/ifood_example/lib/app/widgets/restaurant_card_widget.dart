@@ -1,78 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:ifood_example/app/mock/app_mock.dart';
 
+import '../pages/restaurant_page.dart';
+
 class RestaurantCardWidget extends StatelessWidget {
   const RestaurantCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const CircleAvatar(
-            radius: 32,
-            foregroundImage: NetworkImage(AppMock.areaImageUrl),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const RestaurantPage(),
           ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Whatever asdgsdg sfgdfh fgdf asasa asas asg',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CircleAvatar(
+              radius: 32,
+              foregroundImage: NetworkImage(AppMock.areaImageUrl),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Whatever asdgsdg sfgdfh fgdf asasa asas asg',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.star_rate_rounded,
-                      color: Colors.amber.shade700,
-                      size: 16,
-                    ),
-                    Text(
-                      '4,9',
-                      style: TextStyle(
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star_rate_rounded,
                         color: Colors.amber.shade700,
+                        size: 16,
                       ),
-                    ),
-                    const CircleDividerWidget(),
-                    const Text('Mercado'),
-                    const CircleDividerWidget(),
-                    const Text('5,5 km'),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: const [
-                    Text('71-81 min'),
-                    CircleDividerWidget(),
-                    Text(r'R$ 11,99'),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                const CouponWidget(),
-              ],
+                      Text(
+                        '4,9',
+                        style: TextStyle(
+                          color: Colors.amber.shade700,
+                        ),
+                      ),
+                      const CircleDividerWidget(),
+                      const Text('Mercado'),
+                      const CircleDividerWidget(),
+                      const Text('5,5 km'),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: const [
+                      Text('71-81 min'),
+                      CircleDividerWidget(),
+                      Text(r'R$ 11,99'),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  const CouponWidget(),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(width: 8),
-          const Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: Icon(
-              Icons.favorite_border_rounded,
-              color: Colors.grey,
+            const SizedBox(width: 8),
+            const Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Icon(
+                Icons.favorite_border_rounded,
+                color: Colors.grey,
+              ),
             ),
-          ),
-          const SizedBox(width: 8),
-        ],
+            const SizedBox(width: 8),
+          ],
+        ),
       ),
     );
   }

@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "DAN",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=env=dev", "--dart-define=client=daniel", "--flavor", "daniel"]
+    },
+    {
+      "name": "FTeam",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=env=stg", "--dart-define=client=fteam", "--flavor", "fteam"]
+    },
+    {
+      "name": "PRD",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=env=prd"]
+    }
+  ]
+}

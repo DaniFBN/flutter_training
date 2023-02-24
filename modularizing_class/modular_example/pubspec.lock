@@ -88,13 +88,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_triple:
-    dependency: "direct main"
-    description:
-      name: flutter_triple
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.7+4"
   lints:
     dependency: transitive
     description:
@@ -144,13 +137,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
-  rx_notifier:
-    dependency: transitive
-    description:
-      name: rx_notifier
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -198,13 +184,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.12"
-  triple:
-    dependency: transitive
-    description:
-      name: triple
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0+1"
   vector_math:
     dependency: transitive
     description:

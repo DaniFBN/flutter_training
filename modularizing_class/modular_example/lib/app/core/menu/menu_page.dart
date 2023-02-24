@@ -1,9 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:modular_example/app/core/color/color_store.dart';
 import 'package:modular_example/app/core/menu/observe_di.dart';
+
+import '../shared/services/navigation_service.dart';
 
 class MenuPage extends StatefulWidget {
   final ColorStore colorStore;
@@ -60,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ),
                 onPressed: () {
-                  Modular.to.pushNamed('/whatever');
+                  NavigationService.instance.pushNamed('/whatever');
                 },
               )
             ],
@@ -84,7 +85,7 @@ class _MenuPageState extends State<MenuPage> {
                   color: page.color.withOpacity(0.5),
                   child: ListTile(
                     onTap: () {
-                      Modular.to.pushNamed(page.route, arguments: page.color);
+                      NavigationService.instance.pushNamed(page.route, arguments: page.color);
                     },
                     leading: CircleAvatar(backgroundColor: page.color),
                     title: Text(page.title),

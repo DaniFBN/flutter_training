@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:ifood_example/app/pages/restaurant_page.dart';
 
-import 'pages/home_page.dart';
 import 'themes/app_theme.dart';
 
 class AppWidget extends StatelessWidget {
@@ -17,7 +16,7 @@ class AppWidget extends StatelessWidget {
           theme: AppTheme.theme,
           darkTheme: ThemeData.dark(),
           themeMode: state.isLightTheme ? ThemeMode.light : ThemeMode.dark,
-          home: const HomePage(),
+          home: const RestaurantPage(),
         );
       },
     );

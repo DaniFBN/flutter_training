@@ -4,7 +4,6 @@ import 'package:modular_example/app/modules/blue/blue_module.dart';
 import 'package:modular_example/app/modules/not_found_page.dart';
 import 'package:modular_example/app/modules/random/random_module.dart';
 
-import 'core/di/helpers.dart';
 import 'core/menu/menu_module.dart';
 import 'modules/green/green_module.dart';
 import 'modules/red/red_module.dart';

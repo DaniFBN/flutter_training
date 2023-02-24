@@ -1,7 +1,4 @@
 library financeiro;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/whatever.dart' show Whatever;
+export 'src/whatever2.dart';

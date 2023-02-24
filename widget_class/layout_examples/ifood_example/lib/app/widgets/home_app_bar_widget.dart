@@ -19,22 +19,24 @@ class HomeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SliverAppBar(
+      floating: true,
+      centerTitle: true,
       bottom: tabBar,
-      title: Center(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(address),
-            const Icon(Icons.keyboard_arrow_down_rounded, size: 20)
-          ],
-        ),
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(address),
+          const Icon(Icons.keyboard_arrow_down_rounded, size: 20)
+        ],
       ),
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: NotificationIconWidget(notificationLength: notificationLength),
+          child: NotificationIconWidget(
+            notificationLength: notificationLength,
+          ),
         ),
       ],
     );
