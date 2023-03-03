@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:modular_example/app/core/color/color_store.dart';
 import 'package:modular_example/app/core/menu/observe_di.dart';
+import 'package:modular_example/app/core/shared/app_routes.dart';
 
 import '../shared/services/navigation_service.dart';
 
@@ -20,13 +21,25 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   final pages = {
-    _MenuItem(color: Colors.blue, title: 'Blue'),
-    _MenuItem(color: Colors.redAccent, title: 'Red'),
-    _MenuItem(color: Colors.green, title: 'Green'),
+    _MenuItem(
+      color: Colors.blue,
+      title: 'Blue',
+      route: AppRoutes.bluePageFullPath,
+    ),
+    _MenuItem(
+      color: Colors.redAccent,
+      title: 'Red',
+      route: AppRoutes.redPageFullPath,
+    ),
+    _MenuItem(
+      color: Colors.green,
+      title: 'Green',
+      route: AppRoutes.greenPageFullPath,
+    ),
     _MenuItem(
       color: Colors.indigo.shade400,
       title: 'SpecialBlue',
-      route: 'blue/special',
+      route: AppRoutes.specialBluePageFullPath,
     ),
   };
 
@@ -38,7 +51,11 @@ class _MenuPageState extends State<MenuPage> {
 
     final color = Color.fromRGBO(r, g, b, 1);
 
-    return _MenuItem(color: color, title: 'Random');
+    return _MenuItem(
+      color: color,
+      title: 'Random',
+      route: AppRoutes.randomPageFullPath,
+    );
   }
 
   @override
@@ -85,7 +102,8 @@ class _MenuPageState extends State<MenuPage> {
                   color: page.color.withOpacity(0.5),
                   child: ListTile(
                     onTap: () {
-                      NavigationService.instance.pushNamed(page.route, arguments: page.color);
+                      NavigationService.instance
+                          .pushNamed(page.route, arguments: page.color);
                     },
                     leading: CircleAvatar(backgroundColor: page.color),
                     title: Text(page.title),
@@ -108,6 +126,6 @@ class _MenuItem {
   _MenuItem({
     required this.color,
     required this.title,
-    String? route,
-  }) : route = route ?? '/${title.toLowerCase()}/';
+    required this.route,
+  });
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/melos_app.iml" filepath="$PROJECT_DIR$/app/melos_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_dependencies/melos_app_dependencies.iml" filepath="$PROJECT_DIR$/app_dependencies/melos_app_dependencies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/auth_module/melos_auth_module.iml" filepath="$PROJECT_DIR$/auth_module/melos_auth_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core_module/melos_core_module.iml" filepath="$PROJECT_DIR$/core_module/melos_core_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/design_system/melos_design_system.iml" filepath="$PROJECT_DIR$/design_system/melos_design_system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/home_module/melos_home_module.iml" filepath="$PROJECT_DIR$/home_module/melos_home_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_microfrontendexample.iml" filepath="$PROJECT_DIR$/melos_microfrontendexample.iml" />
+    </modules>
+  </component>
+</project>

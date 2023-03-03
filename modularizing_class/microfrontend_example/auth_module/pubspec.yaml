@@ -1,0 +1,28 @@
+name: auth_module
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+publish_to: none
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+  flutter: 3.3.10
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  app_dependencies:
+    path: ../app_dependencies
+  design_system:
+    path: ../design_system
+  core_module:
+    path: ../core_module
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:

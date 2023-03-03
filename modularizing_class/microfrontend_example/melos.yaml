@@ -1,0 +1,9 @@
+name: MicroFrontendExample
+
+packages:
+  - app/*
+  - app_dependencies/*
+  - design_system/*
+  - auth_module/*
+  - core_module/*
+  - home_module/*

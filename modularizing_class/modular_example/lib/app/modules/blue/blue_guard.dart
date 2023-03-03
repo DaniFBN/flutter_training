@@ -13,7 +13,8 @@ class SpecialBlueGuard extends RouteGuard {
   FutureOr<bool> canActivate(String path, ParallelRoute route) {
     final colorStore = Modular.get<ColorStore>();
 
-    final condition = colorStore.color == Colors.blue;
+    final condition = colorStore.color == Colors.blue ||
+        colorStore.color == Colors.indigo.shade400;
     var message = 'Bloqueado pelo SpecialBlueGuard';
     if (condition) {
       message = 'Autorizado pelo SpecialBlueGuard';

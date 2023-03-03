@@ -1,4 +1,4 @@
-import 'auth_repository.dart';
+import 'repositories/auth_repository.dart';
 
 class Login {
   final IAuthRepository authRepository;

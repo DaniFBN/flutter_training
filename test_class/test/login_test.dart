@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:test_class/auth_repository.dart';
-import 'package:test_class/exceptions.dart';
+import 'package:test_class/repositories/auth_repository.dart';
+import 'package:test_class/utils/exceptions.dart';
 import 'package:test_class/login.dart';
 
 class RepositoryMock extends Mock implements IAuthRepository {}

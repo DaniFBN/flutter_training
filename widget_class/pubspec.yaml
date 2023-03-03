@@ -89,3 +89,15 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  InheritedWidget
+  CupertinoDesign
+    Theme
+    MediaQuery
+
+  
+  Nubank
+  Ifood
+  Mercado Livre
+
+
