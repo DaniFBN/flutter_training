@@ -1,3 +1,4 @@
+import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
 
 import 'explicit_animations/animated_align_page.dart';
@@ -11,50 +12,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Animation Class')),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const _NavigationButton(
-              page: AnimatedContainerPage(),
-              title: 'AnimatedContainer',
-            ),
-            const _NavigationButton(
-              page: AnimatedAlignPage(),
-              title: 'AnimatedAlign',
-            ),
-            const _NavigationButton(
-              page: AnimatedOpacityPage(),
-              title: 'AnimatedOpacity',
-            ),
-            const _NavigationButton(
-              page: AnimatedPositionedPage(),
-              title: 'AnimatedStack',
-            ),
-            GestureDetector(
-              onTap: () {
-                print('tapped');
-              },
-              child: Container(
-                height: 100,
-                width: 210,
-                color: Colors.transparent,
-                child: Row(
-                  children: const [
-                    Text('BUG CONTAINER TRANSPARENT'),
-                  ],
-                ),
-              ),
-            ),
-            const _NavigationButton(
-              page: AnimatedAlignExplicitPage(),
-              title: 'AnimatedExplicitAlign',
-            ),
-          ],
+    return const DefaultScaffold(
+      title: 'Animation Class',
+      body: DefaultMenu(options: [
+        DefaultNavigationButton(
+          page: AnimatedContainerPage(),
+          title: 'AnimatedContainer',
         ),
-      ),
+        DefaultNavigationButton(
+          page: AnimatedAlignPage(),
+          title: 'AnimatedAlign',
+        ),
+        DefaultNavigationButton(
+          page: AnimatedOpacityPage(),
+          title: 'AnimatedOpacity',
+        ),
+        DefaultNavigationButton(
+          page: AnimatedPositionedPage(),
+          title: 'AnimatedStack',
+        ),
+        DefaultNavigationButton(
+          page: AnimatedAlignExplicitPage(),
+          title: 'AnimatedExplicitAlign',
+        ),
+      ]),
     );
   }
 }

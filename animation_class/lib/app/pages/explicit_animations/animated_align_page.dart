@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedAlignExplicitPage extends StatefulWidget {
@@ -39,7 +40,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
 
     opacityAnimation = Tween<double>(begin: 1, end: 0.3).animate(controller);
     containerRadiusAnimation = Tween<double>(
-      begin: 0,
+      begin: 10,
       end: 100,
     ).animate(controller);
     alignmentAnimation = AlignmentTween(
@@ -56,21 +57,25 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
       begin: 0,
       end: pi * 2,
     ).animate(rotateController);
-    rotateController.addStatusListener(infinityRotation);
-    rotateController.forward();
+    rotateController.repeat();
+
+    controller.addStatusListener(infinityRotation);
+    controller.forward();
   }
 
   void infinityRotation(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
-      rotateController.repeat();
+      controller.reverse();
+    } else if (status == AnimationStatus.dismissed) {
+      controller.forward();
     }
   }
 
   @override
   void dispose() {
+    controller.removeStatusListener(infinityRotation);
     controller.dispose();
 
-    rotateController.removeStatusListener(infinityRotation);
     rotateController.dispose();
 
     super.dispose();
@@ -78,10 +83,10 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('AnimatedAlign')),
+    return DefaultScaffold(
+      title: 'AnimatedAlign',
       body: AnimatedBuilder(
-        animation: controller,
+        animation: Listenable.merge([controller, rotateController]),
         builder: (context, child) {
           return GestureDetector(
             onTap: animationTap,
@@ -98,14 +103,9 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
                       containerRadiusAnimation.value,
                     ),
                   ),
-                  child: AnimatedBuilder(
-                    animation: rotateController,
-                    builder: (_, __) {
-                      return Transform.rotate(
-                        angle: rotateAnimation.value,
-                        child: const Icon(Icons.refresh),
-                      );
-                    },
+                  child: Transform.rotate(
+                    angle: rotateAnimation.value,
+                    child: const Icon(Icons.refresh),
                   ),
                 ),
               ),

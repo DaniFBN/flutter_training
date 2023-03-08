@@ -1,7 +1,27 @@
 {
-  "className": "Internationalization Class",
   "helloWorld": "Hello World!",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
+  },
+  "className": "Internationalization Class",
+  "pageTitle": "{pageName} Page",
+  "@pageTitle": {
+    "description": "A title for our page",
+    "placeholders": {
+      "pageName": {
+        "type": "String",
+        "example": "Home"
+      }
+    }
+  },
+  "buttonIsTapped": "{count, plural, =0{Was not pressed} =1{Was pressed 1 time} other{Was pressed {count} times}}",
+  "@buttonIsTapped": {
+    "description": "A title for our page",
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
   }
 }

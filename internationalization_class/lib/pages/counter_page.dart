@@ -1,5 +1,8 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../intl_store.dart';
 
 class CounterPage extends StatefulWidget {
   const CounterPage({super.key});
@@ -20,19 +23,14 @@ class _CounterPageState extends State<CounterPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultScaffold(
-      title: widget.runtimeType.toString(),
+      title: AppLocalizations.of(context).pageTitle('"Counter Page"'),
+      action: IconButton(
+        icon: const Icon(Icons.translate_rounded),
+        onPressed: IntlStore.instance.next,
+      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        child: Text(
+          AppLocalizations.of(context).buttonIsTapped(_counter),
         ),
       ),
       fab: FloatingActionButton(

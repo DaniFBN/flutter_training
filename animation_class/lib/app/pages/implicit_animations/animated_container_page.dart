@@ -1,3 +1,4 @@
+import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedContainerPage extends StatefulWidget {
@@ -13,8 +14,8 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('AnimatedContainer')),
+    return DefaultScaffold(
+      title: 'AnimatedContainer',
       body: GestureDetector(
         onTap: () {
           setState(() {
@@ -26,9 +27,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
           duration: const Duration(seconds: 2),
           height: greater ? 100 : 50,
           width: greater ? 100 : 50,
-          decoration: BoxDecoration(
-            color: useFirstColor ? Colors.red.shade300 : Colors.amber.shade300,
-          ),
+          color: useFirstColor ? Colors.red.shade300 : Colors.amber.shade300,
         ),
       ),
     );

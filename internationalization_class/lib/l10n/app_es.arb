@@ -1,4 +1,6 @@
 {
+  "helloWorld": "¡Hola Mundo!",
   "className": "Clase de Internacionalización",
-  "helloWorld": "¡Hola Mundo!"
+  "pageTitle": "{pageName} Página",
+  "buttonIsTapped": "{count, plural, =0{No fue presionado} =1{Fue presionado 1 vez} other{Fue presionado {count} veces}}"
 }

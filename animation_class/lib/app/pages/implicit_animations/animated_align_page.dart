@@ -23,13 +23,13 @@ class _AnimatedAlignPageState extends State<AnimatedAlignPage> {
           });
         },
         child: AnimatedOpacity(
-          duration: const Duration(seconds: 1),
-          opacity: isOpacity ? 0.0 : 1.0,
+          duration: const Duration(seconds: 4),
+          opacity: isOpacity ? 0 : 1.0,
           child: AnimatedAlign(
-            duration: const Duration(seconds: 2),
-            alignment: useFirstAlignment
-                ? Alignment.topCenter
-                : Alignment.bottomCenter,
+            duration: const Duration(seconds: 3),
+            curve: Curves.elasticIn,
+            alignment:
+                useFirstAlignment ? Alignment.topLeft : Alignment.bottomRight,
             child: Container(
               height: 100,
               width: 100,

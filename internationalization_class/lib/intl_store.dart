@@ -7,15 +7,16 @@ class IntlStore extends ValueNotifier<Locale> {
   static final IntlStore instance = IntlStore._();
 
   void next() {
-    final currentIndex = AppLocalizations.supportedLocales.indexOf(value);
+    const supportedLocales = AppLocalizations.supportedLocales;
+    final currentIndex = supportedLocales.indexOf(value);
 
     int nextIndex = currentIndex + 1;
 
-    if ((currentIndex + 1) == AppLocalizations.supportedLocales.length) {
+    if ((currentIndex + 1) == supportedLocales.length) {
       nextIndex = 0;
     }
 
-    final nextLocale = AppLocalizations.supportedLocales.elementAt(nextIndex);
+    final nextLocale = supportedLocales.elementAt(nextIndex);
     value = nextLocale;
   }
 }
