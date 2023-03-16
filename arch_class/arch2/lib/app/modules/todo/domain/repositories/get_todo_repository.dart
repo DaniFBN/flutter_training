@@ -1,3 +1,9 @@
+import 'package:arch2/app/modules/todo/domain/entities/entities.dart';
+import 'package:arch2/app/modules/todo/domain/failures/failures.dart';
+import 'package:fpdart/fpdart.dart';
+
+import '../params/params.dart';
+
 abstract class GetTodoRepository {
   /// Pegar todos os ToDos de todos os usuários
   void getAll();
@@ -6,5 +12,7 @@ abstract class GetTodoRepository {
   void getByID();
 
   /// Pegar todos os ToDos pelo ID do usuário
-  void getAllByUserID();
+  Future<Either<TodoFailure, Set<TodoEntity>>> getAllByUserID(
+    GetAllByUserIDParam param,
+  );
 }

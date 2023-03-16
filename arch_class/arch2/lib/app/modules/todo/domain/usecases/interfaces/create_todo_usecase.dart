@@ -4,7 +4,6 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../params/params.dart';
 
-// Command Pattern
 abstract class CreateTodoUsecase {
   Future<Either<TodoFailure, TodoEntity>> call(CreateTodoParam param);
 }
