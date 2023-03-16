@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'app/pages/home_page.dart';
+import 'app/pages/home_page/home_page.dart';
+import 'app/stores/platform_store.dart';
 import 'app/theme/app_theme.dart';
 
 void main() {
@@ -13,12 +15,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'WhatsApp Example',
-      scrollBehavior: MyCustomScrollBehavior(),
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      home: const HomePage(),
+    return ValueListenableBuilder(
+      valueListenable: platformStore,
+      builder: (context, platform, child) {
+        if (platformStore.isIos) {
+          return CupertinoApp(
+            scrollBehavior: MyCustomScrollBehavior(),
+            debugShowCheckedModeBanner: false,
+            theme: const CupertinoThemeData(
+              brightness: Brightness.dark,
+            ),
+            home: const HomePage(),
+          );
+        }
+
+        return MaterialApp(
+          title: 'WhatsApp Example',
+          scrollBehavior: MyCustomScrollBehavior(),
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light,
+          home: const HomePage(),
+        );
+      },
     );
   }
 }

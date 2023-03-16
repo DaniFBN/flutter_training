@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_example/app/pages/call_page.dart';
-import 'package:whatsapp_example/app/pages/chat_page.dart';
+import 'package:whatsapp_example/app/pages/chat_page/chat_page.dart';
 import 'package:whatsapp_example/app/pages/community_page.dart';
 import 'package:whatsapp_example/app/pages/status_page.dart';
 import 'package:whatsapp_example/app/widgets/home_app_bar_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeAndroidPage extends StatefulWidget {
+  const HomeAndroidPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeAndroidPage> createState() => _HomeAndroidPageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomeAndroidPageState extends State<HomeAndroidPage>
+    with TickerProviderStateMixin {
   late final TabController tabController;
 
   @override
   void initState() {
     super.initState();
 
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 4, vsync: this, initialIndex: 1);
   }
 
   @override

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_example/app/widgets/badge_widget.dart';
 
+import '../theme/custom_extension.dart';
+
 class TabBarItemWidget extends StatelessWidget {
   const TabBarItemWidget({
     Key? key,
@@ -15,6 +17,8 @@ class TabBarItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customExtension = Theme.of(context).extension<CustomExtension>()!;
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       width: width,
@@ -26,7 +30,12 @@ class TabBarItemWidget extends StatelessWidget {
           // Spread
           if (badgeLabel != null) ...{
             const SizedBox(width: 4),
-            BadgeWidget.secondary(label: badgeLabel!, radius: 10),
+            BadgeWidget(
+              label: badgeLabel!,
+              radius: 10,
+              backgroundColor: customExtension.badgeSecondaryColor,
+              textColor: customExtension.badgeSecondaryTextStyle.color!,
+            ),
           },
         ],
       ),

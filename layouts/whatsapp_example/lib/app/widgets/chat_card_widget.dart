@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:whatsapp_example/app/widgets/badge_widget.dart';
 
@@ -107,7 +106,9 @@ class ChatCardWidget extends StatelessWidget {
                 if (hasNotification) ...{
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: BadgeWidget.primary(
+                    child: BadgeWidget(
+                      backgroundColor: customExtension.badgePrimaryColor,
+                      textColor: customExtension.badgePrimaryTextStyle.color!,
                       label: notificationLength.toString(),
                       radius: 10,
                     ),

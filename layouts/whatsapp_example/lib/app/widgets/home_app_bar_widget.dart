@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_example/app/stores/platform_store.dart';
 import 'package:whatsapp_example/app/widgets/tab_bar_widget.dart';
 
 class HomeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -17,6 +18,10 @@ class HomeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: const Text('WhatsApp'),
       actions: [
+        IconButton(
+          onPressed: platformStore.toggle,
+          icon: const Icon(Icons.android_rounded),
+        ),
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.camera_alt_outlined),

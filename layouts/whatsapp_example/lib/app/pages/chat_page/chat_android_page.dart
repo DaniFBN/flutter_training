@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/chat_card_widget.dart';
+import '../../widgets/chat_card_widget.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+class ChatAndroidPage extends StatelessWidget {
+  const ChatAndroidPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: ListView.separated(
