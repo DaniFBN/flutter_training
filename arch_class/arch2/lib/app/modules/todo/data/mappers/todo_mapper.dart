@@ -8,9 +8,10 @@ class TodoMapper {
     return {
       'id': todo.id,
       'name': todo.name,
+      'user_id': todo.userID,
       'description': todo.description,
-      'created_at': todo.createdAt,
-      'executed_at': todo.executedAt,
+      'created_at': todo.createdAt.millisecondsSinceEpoch,
+      'executed_at': todo.executedAt?.millisecondsSinceEpoch,
     };
   }
 
@@ -20,8 +21,10 @@ class TodoMapper {
       userID: data['user_id'],
       name: data['name'],
       description: data['description'],
-      createdAt: data['created_at'],
-      executedAt: data['executed_at'],
+      createdAt: DateTime.fromMillisecondsSinceEpoch(data['created_at']),
+      executedAt: data['executed_at'] == null
+          ? null
+          : DateTime.fromMillisecondsSinceEpoch(data['executed_at']),
     );
   }
 
@@ -33,6 +36,8 @@ class TodoMapper {
     return {
       'name': param.name,
       'description': param.description,
+      'user_id': param.userID,
+      'created_at': DateTime.now().millisecondsSinceEpoch,
     };
   }
 }

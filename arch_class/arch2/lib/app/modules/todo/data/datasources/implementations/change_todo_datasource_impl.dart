@@ -16,7 +16,7 @@ class ChangeTodoDatasourceImpl implements ChangeTodoDatasource {
 
   @override
   Future<TodoEntity> createTodo(CreateTodoParam param) async {
-    final Map<String, dynamic> data = TodoModel.createParamToMap(param);
+    final Map<String, dynamic> data = TodoMapper.createParamToMap(param);
 
     final paramStorage = CreateLocalStorageParam(
       table: _table,
@@ -24,7 +24,7 @@ class ChangeTodoDatasourceImpl implements ChangeTodoDatasource {
     );
     final response = await _localStorageService.create(paramStorage);
 
-    final todo = TodoModel.fromMap(response.data);
+    final todo = TodoMapper.fromMap(response.data);
     return todo;
   }
 
