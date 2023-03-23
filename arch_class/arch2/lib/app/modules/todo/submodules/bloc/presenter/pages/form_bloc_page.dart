@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_triple/flutter_triple.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../controllers/form_triple_controller.dart';
+import '../blocs/states/form_bloc_state.dart';
+import '../controllers/form_bloc_controller.dart';
 
-class FormTriplePage extends StatefulWidget {
-  const FormTriplePage({
+class FormBlocPage extends StatefulWidget {
+  const FormBlocPage({
     Key? key,
     required this.formController,
   }) : super(key: key);
 
-  final FormTripleController formController;
+  final FormBlocController formController;
 
   @override
-  State<FormTriplePage> createState() => _FormTriplePageState();
+  State<FormBlocPage> createState() => _FormBlocPageState();
 }
 
-class _FormTriplePageState extends State<FormTriplePage> {
+class _FormBlocPageState extends State<FormBlocPage> {
   @override
   void dispose() {
     widget.formController.dispose();
@@ -50,15 +51,16 @@ class _FormTriplePageState extends State<FormTriplePage> {
           ),
         ),
       ),
-      floatingActionButton: ScopedBuilder(
-        store: widget.formController.formTriple,
-        onLoading: (_) {
-          return const FloatingActionButton(
-            onPressed: null,
-            child: CircularProgressIndicator(),
-          );
-        },
-        onState: (_, __) {
+      floatingActionButton: BlocBuilder(
+        bloc: widget.formController.formBloc,
+        builder: (_, state) {
+          if (state is LoadingFormBlocState) {
+            return const FloatingActionButton(
+              onPressed: null,
+              child: CircularProgressIndicator(),
+            );
+          }
+
           return FloatingActionButton(
             onPressed: widget.formController.addTodo,
             child: const Icon(Icons.add),

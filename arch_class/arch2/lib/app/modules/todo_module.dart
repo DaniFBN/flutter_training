@@ -1,14 +1,12 @@
-import 'package:arch2/app/modules/todo/submodules/notifier/presenter/controllers/form_notifier_controller.dart';
-import 'package:arch2/app/modules/todo/presentation/reactivities/triples/todo_triple.dart';
-import 'package:arch2/app/modules/todo/presentation/reactivities/value_notifiers/todo_notifier.dart';
 import 'package:arch2/app/modules/todo/submodules/triple/triple_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'todo/data/datasources/datasources.dart';
 import 'todo/data/repositories/repositories.dart';
 import 'todo/domain/usecases/usecases.dart';
-import 'todo/presentation/reactivities/value_notifiers/form_notifier.dart';
 import 'todo/presentation/views/home_page.dart';
+import 'todo/submodules/bloc/bloc_module.dart';
+import 'todo/submodules/notifier/notifier_module.dart';
 
 class TodoModule extends Module {
   @override
@@ -24,16 +22,6 @@ class TodoModule extends Module {
     // Usecases
     Bind.factory((i) => GetAllByUserIDUsecaseImpl(i())),
     Bind.factory((i) => CreateTodoUsecaseImpl(i())),
-
-    // Notifier
-    Bind.lazySingleton((i) => TodoNotifier(i())),
-    Bind.factory((i) => FormNotifier(i())),
-
-    // Triple
-    Bind.lazySingleton((i) => TodoTriple(i())),
-
-    // Controllers
-    Bind.factory((i) => FormController(i(), i())),
   ];
 
   @override
@@ -43,11 +31,7 @@ class TodoModule extends Module {
       child: (_, __) => const HomePage(),
     ),
     ModuleRoute('/triple', module: TripleModule()),
-    // ChildRoute(
-    //   '/form',
-    //   child: (_, __) => FormPage(
-    //     formController: Modular.get<FormController>(),
-    //   ),
-    // ),
+    ModuleRoute('/notifier', module: NotifierModule()),
+    ModuleRoute('/bloc', module: BlocModule()),
   ];
 }

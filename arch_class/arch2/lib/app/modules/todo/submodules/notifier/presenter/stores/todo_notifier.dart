@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/params/params.dart';
-import '../../../domain/usecases/usecases.dart';
+import '../../../../domain/params/params.dart';
+import '../../../../domain/usecases/usecases.dart';
 import 'states/todo_notifier_state.dart';
 
 class TodoNotifier extends ValueNotifier<TodoNotifierState> {

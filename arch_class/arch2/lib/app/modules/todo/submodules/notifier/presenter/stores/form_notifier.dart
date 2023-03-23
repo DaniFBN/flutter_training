@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/params/params.dart';
-import '../../../domain/usecases/usecases.dart';
+import '../../../../domain/params/params.dart';
+import '../../../../domain/usecases/usecases.dart';
 import 'states/form_notifier_state.dart';
 
 class FormNotifier extends ValueNotifier<FormNotifierState> {
@@ -11,6 +11,7 @@ class FormNotifier extends ValueNotifier<FormNotifierState> {
       : super(const InitialFormNotifierState());
 
   bool get isSuccess => value is SuccessFormNotifierState;
+  bool get hasError => value is ErrorFormNotifierState;
 
   Future<void> create(CreateTodoParam param) async {
     value = const LoadingFormNotifierState();

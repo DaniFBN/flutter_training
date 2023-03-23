@@ -1,9 +1,9 @@
 import 'package:arch2/app/core/shared/services/navigation_service.dart';
-import 'package:arch2/app/modules/todo/presentation/reactivities/triples/todo_triple.dart';
+import 'package:arch2/app/modules/todo/submodules/triple/presenter/stores/todo_triple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
-import '../../../../presentation/reactivities/triples/states/todo_triple_state.dart';
+import '../stores/states/todo_triple_state.dart';
 
 class HomeTriplePage extends StatefulWidget {
   const HomeTriplePage({
@@ -28,6 +28,7 @@ class _HomeTriplePageState extends State<HomeTriplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text(widget.runtimeType.toString())),
       body: ScopedBuilder(
         store: widget.todoTriple,
         onError: (_, error) => Center(child: Text('$error')),
@@ -54,9 +55,10 @@ class _HomeTriplePageState extends State<HomeTriplePage> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          NavigationService.instance.push('/todo/form');
+          NavigationService.instance.push('form');
         },
       ),
     );
   }
 }
+

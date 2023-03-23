@@ -1,24 +1,27 @@
 import 'package:arch2/app/core/shared/services/navigation_service.dart';
 import 'package:arch2/app/core/shared/services/snackbar/snackbar_service.dart';
+import 'package:arch2/app/modules/todo/domain/failures/failures.dart';
 import 'package:arch2/app/modules/todo/domain/params/create_todo_param.dart';
-import 'package:arch2/app/modules/todo/submodules/notifier/presenter/stores/form_notifier.dart';
-import 'package:arch2/app/modules/todo/submodules/notifier/presenter/stores/states/form_notifier_state.dart';
-import 'package:arch2/app/modules/todo/submodules/notifier/presenter/stores/todo_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_triple/flutter_triple.dart';
 
-class FormNotifierController {
+import '../stores/form_triple.dart';
+import '../stores/todo_triple.dart';
+
+class FormTripleController {
   late final GlobalKey<FormState> formKey;
   late final TextEditingController titleController;
   late final TextEditingController userIDController;
   late final TextEditingController descriptionController;
+  late final Disposer _disposer;
 
-  final TodoNotifier todoNotifier;
-  final FormNotifier formNotifier;
+  final TodoTriple todoTriple;
+  final FormTriple formTriple;
   final SnackBarService _snackBarService;
 
-  FormNotifierController(
-    this.todoNotifier,
-    this.formNotifier,
+  FormTripleController(
+    this.todoTriple,
+    this.formTriple,
     this._snackBarService,
   ) {
     formKey = GlobalKey<FormState>();
@@ -26,14 +29,13 @@ class FormNotifierController {
     userIDController = TextEditingController();
     descriptionController = TextEditingController();
 
-    formNotifier.addListener(_formListener);
+    _disposer = formTriple.observer(
+      onError: _showSnackBar,
+    );
   }
 
-  void _formListener() {
-    if (formNotifier.hasError) {
-      final state = formNotifier.value as ErrorFormNotifierState;
-      _snackBarService.showSnackBar(state.failure.message);
-    }
+  void _showSnackBar(TodoFailure failure) {
+    _snackBarService.showSnackBar(failure.message);
   }
 
   Future<void> addTodo() async {
@@ -45,15 +47,15 @@ class FormNotifierController {
       name: titleController.text,
       description: descriptionController.text,
     );
-    await formNotifier.create(param);
+    await formTriple.create(param);
 
-    if (formNotifier.isSuccess) {
-      await todoNotifier.getTodos(userIDController.text);
+    if (formTriple.isSuccess) {
+      await todoTriple.getTodos(userIDController.text);
       NavigationService.instance.pop();
     }
   }
 
   void dispose() {
-    formNotifier.removeListener(_formListener);
+    _disposer();
   }
 }

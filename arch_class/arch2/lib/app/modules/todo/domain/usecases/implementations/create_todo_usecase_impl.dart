@@ -16,6 +16,11 @@ class CreateTodoUsecaseImpl implements CreateTodoUsecase {
     if (param.name.isEmpty) {
       return Left(ValidationTodoFailure('O nome é obrigatório'));
     }
+    if (param.name.length <= 3) {
+      return Left(
+        ValidationTodoFailure('O título deve ter mais que 3 caracteres'),
+      );
+    }
     if (param.description.isEmpty) {
       return Left(ValidationTodoFailure('A descrição é obrigatório'));
     }

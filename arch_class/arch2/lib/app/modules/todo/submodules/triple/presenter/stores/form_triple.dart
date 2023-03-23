@@ -1,8 +1,8 @@
 import 'package:flutter_triple/flutter_triple.dart';
 
-import '../../../domain/failures/failures.dart';
-import '../../../domain/params/params.dart';
-import '../../../domain/usecases/usecases.dart';
+import '../../../../domain/failures/failures.dart';
+import '../../../../domain/params/params.dart';
+import '../../../../domain/usecases/usecases.dart';
 
 class FormTriple extends NotifierStore<TodoFailure, bool> {
   final CreateTodoUsecase _createTodoUsecase;

@@ -1,16 +1,20 @@
-import 'package:arch2/app/modules/todo/presentation/reactivities/triples/todo_triple.dart';
+import 'package:arch2/app/modules/todo/submodules/triple/presenter/stores/todo_triple.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'presenter/controllers/form_triple_controller.dart';
+import 'presenter/pages/form_triple_page.dart';
 import 'presenter/pages/home_triple_page.dart';
+import 'presenter/stores/form_triple.dart';
 
 class TripleModule extends Module {
   @override
   final List<Bind<Object>> binds = [
     // Triple
     Bind.lazySingleton((i) => TodoTriple(i())),
+    Bind.lazySingleton((i) => FormTriple(i())),
 
     // Controllers
-    // Bind.factory((i) => FormController(i(), i())),
+    Bind.factory((i) => FormTripleController(i(), i(), i())),
   ];
 
   @override
@@ -21,11 +25,11 @@ class TripleModule extends Module {
         todoTriple: Modular.get<TodoTriple>(),
       ),
     ),
-    // ChildRoute(
-    //   '/form',
-    //   child: (_, __) => FormPage(
-    //     formController: Modular.get<FormController>(),
-    //   ),
-    // ),
+    ChildRoute(
+      '/form',
+      child: (_, __) => FormTriplePage(
+        formController: Modular.get<FormTripleController>(),
+      ),
+    ),
   ];
 }

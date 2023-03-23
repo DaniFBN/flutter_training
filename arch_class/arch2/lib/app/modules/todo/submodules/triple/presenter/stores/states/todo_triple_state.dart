@@ -1,4 +1,4 @@
-import '../../../../domain/entities/entities.dart';
+import '../../../../../domain/entities/entities.dart';
 
 class TodoTripleState {
   final Set<TodoEntity> todos;

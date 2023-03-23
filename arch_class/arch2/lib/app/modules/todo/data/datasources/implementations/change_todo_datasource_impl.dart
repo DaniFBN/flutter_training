@@ -1,6 +1,5 @@
 import 'package:arch2/app/core/shared/services/local_storage/helpers/params.dart';
 import 'package:arch2/app/modules/todo/data/datasources/interfaces/change_todo_datasource.dart';
-import 'package:arch2/app/modules/todo/data/models/todo_model.dart';
 import 'package:arch2/app/modules/todo/domain/entities/todo_entity.dart';
 import 'package:arch2/app/modules/todo/domain/params/create_todo_param.dart';
 

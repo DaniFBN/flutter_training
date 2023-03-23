@@ -1,44 +1,46 @@
 import 'package:arch2/app/core/shared/services/navigation_service.dart';
+import 'package:arch2/app/modules/todo/submodules/bloc/presenter/blocs/events/todo_bloc_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../stores/states/todo_notifier_state.dart';
-import '../stores/todo_notifier.dart';
+import '../blocs/states/todo_bloc_state.dart';
+import '../blocs/todo_bloc.dart';
 
-class HomeNotifierPage extends StatefulWidget {
-  const HomeNotifierPage({
+class HomeBlocPage extends StatefulWidget {
+  const HomeBlocPage({
     Key? key,
-    required this.todoNotifier,
+    required this.todoBloc,
   }) : super(key: key);
 
-  final TodoNotifier todoNotifier;
+  final TodoBloc todoBloc;
 
   @override
-  State<HomeNotifierPage> createState() => _HomeNotifierPageState();
+  State<HomeBlocPage> createState() => _HomeBlocPageState();
 }
 
-class _HomeNotifierPageState extends State<HomeNotifierPage> {
+class _HomeBlocPageState extends State<HomeBlocPage> {
   @override
   void initState() {
     super.initState();
 
-    widget.todoNotifier.getTodos('abc');
+    widget.todoBloc.add(const GetAllTodoBlocEvent('abc'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.runtimeType.toString())),
-      body: ValueListenableBuilder(
-        valueListenable: widget.todoNotifier,
-        builder: (_, state, __) {
-          if (state is LoadingTodoNotifierState) {
+      body: BlocBuilder(
+        bloc: widget.todoBloc,
+        builder: (_, state) {
+          if (state is LoadingTodoBlocState) {
             return const Center(child: CircularProgressIndicator());
           }
-          if (state is ErrorTodoNotifierState) {
+          if (state is ErrorTodoBlocState) {
             return Center(child: Text(state.failure.message));
           }
 
-          final todos = (state as DataTodoNotifierState).todos;
+          final todos = (state as DataTodoBlocState).todos;
           if (todos.isEmpty) {
             return const Center(child: Text('Insira sua tarefa'));
           }

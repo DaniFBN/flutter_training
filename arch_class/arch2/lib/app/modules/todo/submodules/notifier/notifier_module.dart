@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../presentation/reactivities/value_notifiers/form_notifier.dart';
-import '../../presentation/reactivities/value_notifiers/todo_notifier.dart';
 import 'presenter/controllers/form_notifier_controller.dart';
 import 'presenter/pages/form_page.dart';
 import 'presenter/pages/home_notifier_page.dart';
+import 'presenter/stores/form_notifier.dart';
+import 'presenter/stores/todo_notifier.dart';
 
 class NotifierModule extends Module {
   @override
@@ -14,7 +14,7 @@ class NotifierModule extends Module {
     Bind.factory((i) => FormNotifier(i())),
 
     // Controllers
-    Bind.factory((i) => FormNotifierController(i(), i())),
+    Bind.factory((i) => FormNotifierController(i(), i(), i())),
   ];
 
   @override
