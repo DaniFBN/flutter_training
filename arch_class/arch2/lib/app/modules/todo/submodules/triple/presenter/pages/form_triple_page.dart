@@ -1,7 +1,7 @@
 import 'package:arch2/app/modules/todo/presentation/reactivities/value_notifiers/states/form_notifier_state.dart';
 import 'package:flutter/material.dart';
 
-import '../controllers/form_controller.dart';
+import '../../../notifier/presenter/controllers/form_notifier_controller.dart';
 
 class FormPage extends StatelessWidget {
   const FormPage({

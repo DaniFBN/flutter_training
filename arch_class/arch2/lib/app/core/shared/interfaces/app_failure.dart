@@ -4,4 +4,9 @@ class AppFailure implements Exception {
 
   AppFailure(this.message, {StackTrace? stackTrace})
       : stackTrace = stackTrace ?? StackTrace.current;
+
+  @override
+  String toString() {
+    return message;
+  }
 }
