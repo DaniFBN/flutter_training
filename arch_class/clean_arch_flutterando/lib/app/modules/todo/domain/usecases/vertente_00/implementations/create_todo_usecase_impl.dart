@@ -1,0 +1,43 @@
+import 'package:fpdart/fpdart.dart';
+
+import '../../../entities/entities.dart';
+import '../../../failures/failures.dart';
+import '../../../params/params.dart';
+import '../../../repositories/repositories.dart';
+import '../../usecases.dart';
+
+class CreateTodoUsecaseImpl implements CreateTodoUsecase {
+  const CreateTodoUsecaseImpl(this._repository);
+  final ChangeTodoRepository _repository;
+
+  @override
+  Future<Either<TodoFailure, TodoEntity>> call(CreateTodoParam param) async {
+    if (param.name.isEmpty) {
+      return Left(ValidationTodoFailure('O nome é obrigatório'));
+    }
+    if (param.name.length <= 3) {
+      return Left(
+        ValidationTodoFailure('O título deve ter mais que 3 caracteres'),
+      );
+    }
+    if (param.description.isEmpty) {
+      return Left(ValidationTodoFailure('A descrição é obrigatório'));
+    }
+
+    // final response = await _repository.create2(param);
+
+    // final result = response.fold(id, id);
+    // // response.fold((l) => l, (r) => r);
+    // if (result is TodoFailure) return Left(result);
+
+    // final todo = TodoEntity(
+    //   id: result as String,
+    //   name: param.name,
+    //   description: param.description,
+    //   createdAt: DateTime.now(),
+    // );
+    // return Right(todo);
+
+    return _repository.create(param);
+  }
+}

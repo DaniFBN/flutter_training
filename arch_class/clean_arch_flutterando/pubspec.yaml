@@ -1,0 +1,31 @@
+name: clean_arch_flutterando
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.5 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  fpdart: ^0.5.0
+  shared_preferences: ^2.0.18
+  flutter_modular: ^5.0.3
+  flutter_triple: 1.2.7+4
+  flutter_bloc: 8.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linter
+  flutterando_analysis: ^0.0.1+2
+  dart_code_metrics: ^4.19.2
+
+flutter:
+  uses-material-design: true

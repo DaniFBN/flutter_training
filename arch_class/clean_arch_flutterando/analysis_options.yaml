@@ -1,0 +1,36 @@
+include: package:flutterando_analysis/flutter.yaml
+
+analyzer:
+  plugins:
+    - dart_code_metrics
+
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics-exclude:
+    - test/**
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 3
+    maximum-nesting-level: 5
+    lines-of-code: 30
+  rules:
+    - no-boolean-literal-compare
+    - no-empty-block
+    - no-equal-then-else
+    - always-remove-listener
+    - avoid-returning-widgets
+    - avoid-dynamic
+    - prefer-async-await
+    - prefer-commenting-analyzer-ignores
+
+linter:
+  rules:
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+    use_super_parameters: true
+    only_throw_errors: true
+    directives_ordering: true
+    prefer_relative_imports: true
+    flutter_style_todos: false
