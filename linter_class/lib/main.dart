@@ -61,6 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const TestAction()));
   }
 
   @override
@@ -407,6 +410,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class TestAction extends StatefulWidget {
+  const TestAction({super.key});
+
+  @override
+  State<TestAction> createState() => _TestActionState();
+}
+
+class _TestActionState extends State<TestAction> {
+  Future<void> whatever() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    print('WHATEVER');
+    Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Test'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: whatever,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

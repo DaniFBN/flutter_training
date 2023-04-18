@@ -1,4 +1,4 @@
-include: package:flutter_lints/flutter.yaml
+include: package:flutterando_analysis/flutter.yaml
 
 analyzer:
   plugins:
@@ -8,32 +8,53 @@ dart_code_metrics:
   anti-patterns:
     - long-method
     - long-parameter-list
-  metrics:
-    cyclomatic-complexity: 20
-    maximum-nesting-level: 5
-    number-of-parameters: 3
-    source-lines-of-code: 30
   metrics-exclude:
     - test/**
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 3
+    maximum-nesting-level: 5
+    lines-of-code: 30
   rules:
-    - newline-before-return # Opcional
     - no-boolean-literal-compare
     - no-empty-block
-    - prefer-trailing-comma # Opcional, mais pra não
     - no-equal-then-else
+    - no-object-declaration
     - always-remove-listener
     - avoid-returning-widgets
+    - avoid-expanded-as-spacer
+    - avoid-wrapping-in-padding
+    - prefer-correct-edge-insets-constructor
+    - prefer-single-widget-per-file
+    - prefer-extracting-callbacks
     - avoid-dynamic
     - prefer-async-await
     - prefer-commenting-analyzer-ignores
+    - avoid-nested-conditional-expressions
+    - avoid-unnecessary-conditionals
+    - prefer-enums-by-name
+    - prefer-moving-to-variable
+    - prefer-static-class
+    - member-ordering:
+        order:
+          - constructors
+          - public-fields
+          - private-fields
+          - close-method
+          - dispose-method
+        widgets-order:
+          - constructor
+          - init-state-method
+          - did-change-dependencies-method
+          - did-update-widget-method
+          - dispose-method
+          - build-method
 
 linter:
   rules:
-    - require_trailing_commas
-
-
-
-
-
-
-
+    - sort_constructors_first
+    - sort_unnamed_constructors_first
+    - use_super_parameters
+    - only_throw_errors
+    - directives_ordering
+    - prefer_relative_imports
