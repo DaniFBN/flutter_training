@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'home_page.dart';
 import 'intl_store.dart';
+import '../l10n/gen/app_localizations.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -31,7 +31,7 @@ class AppWidget extends StatelessWidget {
           // ],
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          locale: locale,
+          // locale: locale,
           home: const HomePage(),
         );
       },

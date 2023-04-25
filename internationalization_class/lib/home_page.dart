@@ -1,6 +1,6 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:internationalization_class/l10n/l10n.dart';
 import 'package:internationalization_class/pages/calendar_picker_page.dart';
 import 'package:internationalization_class/pages/counter_page.dart';
 import 'package:internationalization_class/pages/hello_world_page.dart';
@@ -13,7 +13,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultScaffold(
-      title: AppLocalizations.of(context).className,
+      title: context.l10n.className,
+      // title: AppLocalizations.of(context).className,
       action: IconButton(
         icon: const Icon(Icons.translate_rounded),
         onPressed: IntlStore.instance.next,

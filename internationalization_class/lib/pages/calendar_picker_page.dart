@@ -1,6 +1,6 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:internationalization_class/l10n/l10n.dart';
 
 import '../intl_store.dart';
 
@@ -10,7 +10,7 @@ class CalendarPickerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultScaffold(
-      title: AppLocalizations.of(context).pageTitle('"Calendar Picker"'),
+      title: context.l10n.pageTitle('"Calendar Picker"'),
       action: IconButton(
         icon: const Icon(Icons.translate_rounded),
         onPressed: IntlStore.instance.next,
@@ -21,7 +21,7 @@ class CalendarPickerPage extends StatelessWidget {
           children: <Widget>[
             Localizations.override(
               context: context,
-              locale: const Locale('es'),
+              locale: const Locale('fr'),
               child: CalendarDatePicker(
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1900),

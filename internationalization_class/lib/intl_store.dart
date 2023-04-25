@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../l10n/gen/app_localizations.dart';
 
 class IntlStore extends ValueNotifier<Locale> {
   IntlStore._() : super(AppLocalizations.supportedLocales.first);
@@ -12,7 +13,7 @@ class IntlStore extends ValueNotifier<Locale> {
 
     int nextIndex = currentIndex + 1;
 
-    if ((currentIndex + 1) == supportedLocales.length) {
+    if (nextIndex == supportedLocales.length) {
       nextIndex = 0;
     }
 

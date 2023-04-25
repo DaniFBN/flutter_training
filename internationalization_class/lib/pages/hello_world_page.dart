@@ -1,8 +1,8 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../intl_store.dart';
+import '../l10n/gen/app_localizations.dart';
 
 class HelloWorldPage extends StatelessWidget {
   const HelloWorldPage({super.key});
