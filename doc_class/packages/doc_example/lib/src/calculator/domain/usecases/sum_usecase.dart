@@ -1,6 +1,6 @@
 /// An Usecase the sum the values of an List
 abstract class ISumUsecase {
-  /// A called method to sum values of an List
+  /// A called method to sum values of an [List]
   double call(List<double> numbers);
 }
 
