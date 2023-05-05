@@ -23,19 +23,17 @@ class _AnimatedAlignPageState extends State<AnimatedAlignPage> {
           });
         },
         child: AnimatedOpacity(
-          duration: const Duration(seconds: 4),
+          duration: const Duration(seconds: 10),
           opacity: isOpacity ? 0 : 1.0,
           child: AnimatedAlign(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 5),
             curve: Curves.elasticIn,
             alignment:
                 useFirstAlignment ? Alignment.topLeft : Alignment.bottomRight,
             child: Container(
               height: 100,
               width: 100,
-              decoration: BoxDecoration(
-                color: Colors.red.shade300,
-              ),
+              color: Colors.red.shade300,
             ),
           ),
         ),

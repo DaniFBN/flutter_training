@@ -32,7 +32,7 @@ class SharedPreferencesLocalStorageService implements LocalStorageService {
   ) async {
     final currentData = _preferences.getString(key);
 
-    final data = decode(currentData!);
+    final data = decode(currentData ?? '{}');
     return data;
   }
 

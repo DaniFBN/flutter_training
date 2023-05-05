@@ -26,7 +26,10 @@ class ThemeLocalDatasourceImpl implements ThemeLocalDatasource {
     final response = await _localStorageService.get(_themeTable);
     final value = response['value'];
 
-    final theme = AppTheme.values.firstWhere((e) => e.name == value);
+    final theme = AppTheme.values.firstWhere(
+      (e) => e.name == value,
+      orElse: () => AppTheme.dark,
+    );
 
     return theme;
   }

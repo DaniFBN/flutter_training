@@ -7,6 +7,7 @@ import '../../infra/mappers/todo_mapper.dart';
 
 class ChangeTodoDatasourceImpl implements ChangeTodoDatasource {
   const ChangeTodoDatasourceImpl(this._localStorageService);
+
   final LocalStorageService _localStorageService;
 
   static const _table = 'todos';

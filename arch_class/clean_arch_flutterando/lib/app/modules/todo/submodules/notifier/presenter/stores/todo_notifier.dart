@@ -5,8 +5,7 @@ import '../../../../domain/usecases/usecases.dart';
 import 'states/todo_notifier_state.dart';
 
 class TodoNotifier extends ValueNotifier<TodoNotifierState> {
-  TodoNotifier(this._getAllByUserIDUsecase)
-      : super(const DataTodoNotifierState({}));
+  TodoNotifier(this._getAllByUserIDUsecase) : super(const DataTodoNotifierState({}));
   final GetAllByUserIDUsecase _getAllByUserIDUsecase;
 
   Future<void> getTodos(String userID) async {

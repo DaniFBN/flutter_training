@@ -6,7 +6,7 @@ import '../../domain/enums/theme_enum.dart';
 import '../../domain/usecases/change_theme_usecase.dart';
 import '../../domain/usecases/get_theme_usecase.dart';
 
-class ThemeStore extends NotifierStore<AppFailure, AppTheme> {
+class ThemeStore extends Store<AppTheme> {
   final ChangeThemeUsecase _changeThemeUsecase;
   final GetThemeUsecase _getThemeUsecase;
 

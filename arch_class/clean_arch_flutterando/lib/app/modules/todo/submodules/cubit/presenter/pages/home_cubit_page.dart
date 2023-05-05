@@ -28,12 +28,25 @@ class _HomeCubitPageState extends State<HomeCubitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.runtimeType.toString())),
+      appBar: AppBar(
+        title: const Text(
+          'HomeCubitPage',
+          semanticsLabel: 'Acessibilidade',
+        ),
+      ),
       body: BlocBuilder(
         bloc: widget.todoCubit,
         builder: (_, TodoCubitState state) {
           if (state is LoadingTodoCubitState) {
-            return const Center(child: CircularProgressIndicator());
+            return Column(
+              children: const [
+                Text(
+                  'HomeCubitPage',
+                  semanticsLabel: 'Acessibilidade 1',
+                ),
+                Center(child: CircularProgressIndicator()),
+              ],
+            );
           }
           if (state is ErrorTodoCubitState) {
             return Center(child: Text(state.failure.message));
@@ -50,7 +63,7 @@ class _HomeCubitPageState extends State<HomeCubitPage> {
               final todo = todos.elementAt(index);
 
               return ListTile(
-                title: Text(todo.name),
+                title: Text(todo.name, semanticsLabel: todo.name),
                 subtitle: Text(todo.description),
               );
             },

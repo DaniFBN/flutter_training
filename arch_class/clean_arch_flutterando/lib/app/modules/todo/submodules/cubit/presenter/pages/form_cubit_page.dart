@@ -61,7 +61,7 @@ class _FormCubitPageState extends State<FormCubitPage> {
               child: CircularProgressIndicator(),
             );
           }
-
+    
           return FloatingActionButton(
             onPressed: widget.formController.addTodo,
             child: const Icon(Icons.add),

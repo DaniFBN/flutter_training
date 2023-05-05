@@ -12,6 +12,12 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   bool useFirstColor = true;
   bool greater = true;
 
+  double get containerSize => greater ? 300 : 50;
+  Color get containerColor {
+    if (useFirstColor) return Colors.red.shade300;
+    return Colors.green.shade300;
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultScaffold(
@@ -24,10 +30,10 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
           });
         },
         child: AnimatedContainer(
-          duration: const Duration(seconds: 2),
-          height: greater ? 100 : 50,
-          width: greater ? 100 : 50,
-          color: useFirstColor ? Colors.red.shade300 : Colors.amber.shade300,
+          duration: const Duration(seconds: 5),
+          height: containerSize,
+          width: containerSize,
+          color: containerColor,
         ),
       ),
     );

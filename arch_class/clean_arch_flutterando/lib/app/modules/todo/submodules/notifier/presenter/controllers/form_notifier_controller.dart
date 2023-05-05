@@ -20,6 +20,7 @@ class FormNotifierController {
 
     formNotifier.addListener(_formListener);
   }
+
   late final GlobalKey<FormState> formKey;
   late final TextEditingController titleController;
   late final TextEditingController userIDController;
