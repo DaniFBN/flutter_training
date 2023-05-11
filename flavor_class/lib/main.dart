@@ -5,7 +5,7 @@ import 'flavor/app_flavor.dart';
 
 void main() {
   const env = String.fromEnvironment('env', defaultValue: 'dev');
-  const client = String.fromEnvironment('client', defaultValue: 'daniel');
+  const client = String.fromEnvironment('client', defaultValue: 'default');
 
   AppFlavor.changeFlavor(env: env, client: client);
 

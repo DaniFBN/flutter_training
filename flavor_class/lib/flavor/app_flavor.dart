@@ -1,5 +1,6 @@
 import 'package:flavor_class/flavor/clients/daniel_flavor.dart';
 
+import 'clients/default_flavor.dart';
 import 'clients/fteam_flavor.dart';
 import 'i_flavor_client.dart';
 
@@ -14,8 +15,11 @@ class AppFlavor {
   static bool get isPrd => _client.environment == Environment.prd;
 
   static void changeFlavor({required String env, required String client}) {
-    final environment = Environment.values.firstWhere((e) => e.name == env);
+    final environment = Environment.values.byName(env);
 
+    if (client == 'default') {
+      _client = DefaultFlavor(environment: environment);
+    }
     if (client == 'daniel') {
       _client = DanielFlavor(environment: environment);
     }
