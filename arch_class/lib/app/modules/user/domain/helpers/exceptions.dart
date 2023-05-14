@@ -1,10 +1,15 @@
 
 import '../../../../core/shared/exceptions/app_exception.dart';
 
-class ValidateException extends AppException {
+
+class UserException extends AppException {
+  const UserException(super.message, {required super.stackTrace});
+}
+
+class ValidateException extends UserException {
   const ValidateException(super.message, {required super.stackTrace});
 }
 
-class MapperException extends AppException {
+class MapperException extends UserException {
   const MapperException(super.message, {required super.stackTrace});
 }

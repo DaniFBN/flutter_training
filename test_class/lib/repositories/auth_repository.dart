@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 abstract class IAuthRepository {
   Future<String?> login({required String email, required String password});
   Future<String?> loginParam(LoginParam param);
+  Future<String?> loginParamNamed({required LoginParam param});
 }
 
 class LoginParam {
@@ -39,6 +41,11 @@ class AuthRepository implements IAuthRepository{
   
   @override
   Future<String?> loginParam(LoginParam param) {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<String?> loginParamNamed({required LoginParam param}) {
     throw UnimplementedError();
   }
 }

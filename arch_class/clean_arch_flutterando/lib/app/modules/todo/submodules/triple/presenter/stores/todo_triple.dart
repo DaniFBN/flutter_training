@@ -1,11 +1,10 @@
 import 'package:flutter_triple/flutter_triple.dart';
 
-import '../../../../domain/failures/failures.dart';
 import '../../../../domain/params/params.dart';
 import '../../../../domain/usecases/usecases.dart';
 import 'states/todo_triple_state.dart';
 
-class TodoTriple extends NotifierStore<TodoFailure, TodoTripleState> {
+class TodoTriple extends Store<TodoTripleState> {
   TodoTriple(this._getAllByUserIDUsecase) : super(TodoTripleState.initState());
   final GetAllByUserIDUsecase _getAllByUserIDUsecase;
 

@@ -19,6 +19,10 @@ class UserStore extends ValueNotifier<UserState> {
   void updateUser(UserModel model) {
     value = UserState(model);
   }
+
+  void logout() {
+    value = UserState.initState();
+  }
 }
 
 final userStore = UserStore();

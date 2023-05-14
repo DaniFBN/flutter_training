@@ -9,6 +9,8 @@ abstract class LogClass {
   String toString() {
     return '$runtimeType: $hashCode';
   }
+
+  void dispose() {}
 }
 
 class FactoryDI extends LogClass {}

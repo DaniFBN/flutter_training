@@ -72,6 +72,17 @@ class _MenuPageState extends State<MenuPage> {
             actions: [
               TextButton(
                 child: const Text(
+                  'Redirect',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  NavigationService.instance.pushNamed('/redirect');
+                },
+              ),
+              TextButton(
+                child: const Text(
                   'Not found',
                   style: TextStyle(
                     color: Colors.white,

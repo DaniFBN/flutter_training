@@ -32,4 +32,16 @@ class Login {
 
     return result;
   }
+
+  Future<String?> loginParamNamed({
+    required String email,
+    required String password,
+  }) async {
+    final param = LoginParam(email, password);
+    print('IMPL ${param.hashCode}');
+
+    final result = await authRepository.loginParamNamed(param: param);
+
+    return result;
+  }
 }

@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          userStore.updateUser(const UserModel('Emison'));
+          userStore.updateUser(const UserModel('Daniel'));
 
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (_) => HomePage(userStoreScope: userStore)),

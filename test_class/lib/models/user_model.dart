@@ -7,6 +7,6 @@ class UserModel {
     required List<UserModel> users,
     required String name,
   }) {
-    return users.where((user) => user.name == name).toList();
+    return users.where((user) => user.name.toLowerCase() == name.toLowerCase()).toList();
   }
 }

@@ -39,9 +39,10 @@ class AppModule extends Module {
     ModuleRoute(
       AppRoutes.randomModulePath,
       module: RandomModule(),
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 1),
       transition: TransitionType.fadeIn,
     ),
+    RedirectRoute('/redirect', to: '/red/'),
     WildcardRoute(child: (_, __) => const NotFoundPage()),
   ];
 }

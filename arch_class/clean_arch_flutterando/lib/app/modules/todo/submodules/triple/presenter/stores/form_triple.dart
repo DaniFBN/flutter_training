@@ -4,7 +4,7 @@ import '../../../../domain/failures/failures.dart';
 import '../../../../domain/params/params.dart';
 import '../../../../domain/usecases/usecases.dart';
 
-class FormTriple extends NotifierStore<TodoFailure, bool> {
+class FormTriple extends Store<bool> {
   FormTriple(this._createTodoUsecase) : super(false);
   final CreateTodoUsecase _createTodoUsecase;
 

@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:test_class/login.dart';
 import 'package:test_class/repositories/auth_repository.dart';
 import 'package:test_class/utils/exceptions.dart';
-import 'package:test_class/login.dart';
 
 class RepositoryMock extends Mock implements IAuthRepository {}
 
@@ -12,27 +12,27 @@ void main() {
   late Login login;
   late IAuthRepository repository;
 
+  // final IAuthRepository repository = RepositoryMock();
+  // final Login login = Login(repository);
+
   setUpAll(() {
-    print('Inicio da main');
-    print('setUpAll');
+    print('Inicio da main - setUpAll');
     registerFallbackValue(ParamFake());
   });
 
   setUp(() {
     repository = RepositoryMock();
     login = Login(repository);
-    print('Inicio de cada função teste');
-    print('setUp');
+    print('\nInicio de cada função teste - setUp');
   });
 
   tearDown(() {
-    print('Final de cada função teste');
-    print('tearDown');
+    // reset(repository);
+    print('Final de cada função teste - tearDown');
   });
 
   tearDownAll(() {
-    print('Após rodar todos os testes');
-    print('tearDownAll');
+    print('\nApós rodar todos os testes - tearDownAll');
   });
 
   group('Login =>', () {
@@ -95,7 +95,6 @@ void main() {
         'Deve lançar um AppException quando o repositório lançar uma AppException',
         () async {
           print('TESTE');
-
           // Arrange
           const email = 'whatever@test.com';
           const password = '123456789';
@@ -106,7 +105,15 @@ void main() {
           final result = login.login(email: email, password: password);
 
           // Assert
-          expect(() async => await result, throwsA(isA<AppException>()));
+          await expectLater(
+            () async => await result,
+            throwsA(isA<AppException>()),
+          );
+
+          expect(
+            () async => await login.login(email: email, password: password),
+            throwsA(isA<AppException>()),
+          );
         },
       );
     });
@@ -172,10 +179,36 @@ void main() {
           expect(result, equals(null));
 
           verify(() => repository.loginParam(any())).called(1);
+        },
+      );
+
+      test(
+        'Deve retornar nulo quando tudo tiver certo nas validações e o repositório retornar nulo asasas',
+        () async {
+          print('TESTE');
+          // Arrange
+          const email = 'whatever@test.com';
+          const password = '123456789';
+
+          when(() => repository.loginParamNamed(param: any(named: 'param')))
+              .thenAnswer((_) async => null);
+
+          // Act
+          final result = await login.loginParamNamed(
+            email: email,
+            password: password,
+          );
+
+          // Assert
+          expect(result, equals(null));
+
+          verify(() => repository.loginParamNamed(param: any(named: 'param')))
+              .called(1);
           // verifyNever(() => repository.loginParam(param));
         },
       );
     });
   });
 }
+
 
