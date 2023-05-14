@@ -32,6 +32,7 @@ class HomePage extends StatelessWidget {
               'ServerUrl: ${AppUrl.serverUrl}',
               style: const TextStyle(fontSize: 20),
             ),
+            const SizedBox(height: 20),
             ValueListenableBuilder<AppVersion>(
               valueListenable: AppVersionService().version,
               builder: (_, appVersion, __) {
@@ -40,9 +41,17 @@ class HomePage extends StatelessWidget {
                 final packageName = appVersion.packageName;
                 final appName = appVersion.appName;
 
-                return Text(
-                  '$appName - v$version+$buildNumber - $packageName',
-                  style: const TextStyle(fontSize: 16),
+                return Column(
+                  children: [
+                    Text(
+                      '$appName - v$version+$buildNumber',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      packageName,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ],
                 );
               },
             ),
