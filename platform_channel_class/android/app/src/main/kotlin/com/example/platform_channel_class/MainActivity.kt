@@ -43,7 +43,7 @@ class MainActivity: FlutterActivity() {
           val map = mapOf<String, Int>("1" to 1, "2" to 2, "3" to 3)
           result.success(map)
         } else if(call.method == "getJson"){
-          val json: String = "[{\"name\": \"Vitor Sversut\"}, {\"name\": \"Emison Dias\"}]"
+          val json: String = "[{\"name\": \"Daniel Fernandes\"}, {\"name\": \"FTeam\"}]"
           result.success(json)
         }
     }
