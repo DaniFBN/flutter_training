@@ -64,11 +64,20 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
   }
 
   void infinityRotation(AnimationStatus status) {
+    // AnimationStatus.completed = Animação parou no final
     if (status == AnimationStatus.completed) {
-      controller.reverse();
+      controller.reverse(); // Volta pro começo
+      // AnimationStatus.dismissed = Animação parou no começo
     } else if (status == AnimationStatus.dismissed) {
-      controller.forward();
+      controller.forward(); // Vai pro final
     }
+    // animationValue = 0;
+    // controller.forward() > animationValue = 0 > 1
+    // animationStatus = completed
+
+    // animationValue = 1
+    // controller.reverse() = 1 > 0
+    // animationStatus = dismissed
   }
 
   @override
@@ -88,6 +97,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
       body: AnimatedBuilder(
         animation: Listenable.merge([controller, rotateController]),
         builder: (context, child) {
+          // print('REBUILD ANIMATION');
           return GestureDetector(
             onTap: animationTap,
             child: Opacity(
@@ -116,3 +126,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
     );
   }
 }
+
+// Cada propriedade que deve mudar = Tween/Animation
+// Cada gatilho/lógica/lifecycle = AnimationController
+// Widget normais, envoltos em um AnimatedBuilder
