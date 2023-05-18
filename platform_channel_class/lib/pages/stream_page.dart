@@ -17,8 +17,11 @@ class _StreamPageState extends State<StreamPage> {
     super.initState();
 
     randomNumberStream = platformHandler.getRandomNumbers();
-  }
 
+    platformHandler.getRandomNumbers().listen((event) {
+      print(event);
+    });
+  }
 
   @override
   void dispose() {

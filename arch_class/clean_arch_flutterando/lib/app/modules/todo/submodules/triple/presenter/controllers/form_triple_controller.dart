@@ -34,8 +34,8 @@ class FormTripleController {
   final FormTriple formTriple;
   final SnackBarService _snackBarService;
 
-  void _showSnackBar(TodoFailure failure) {
-    _snackBarService.showSnackBar(failure.message);
+  void _showSnackBar(failure) {
+    _snackBarService.showSnackBar((failure as TodoFailure).message);
   }
 
   Future<void> addTodo() async {

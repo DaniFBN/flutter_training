@@ -16,7 +16,7 @@ dependencies:
   fpdart: ^0.5.0
   shared_preferences: ^2.0.18
   flutter_modular: ^5.0.3
-  flutter_triple: 1.2.7+4
+  flutter_triple: 2.0.1
   flutter_bloc: 8.1.2
 
 dev_dependencies:
@@ -26,6 +26,8 @@ dev_dependencies:
   # Linter
   flutterando_analysis: ^0.0.1+2
   dart_code_metrics: ^4.19.2
+  mocktail:
+  bloc_test:
 
 flutter:
   uses-material-design: true
