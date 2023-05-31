@@ -19,30 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: AppFlavor.client.name,
-      theme: AppFlavor.client.theme.copyWith(
-        extensions: [
-          AppTheme(appBarTitleStyle: TextStyle()),
-        ]
-      ),
+      theme: AppFlavor.client.theme,
       home: const HomePage(),
     );
-  }
-}
-
-class AppTheme extends ThemeExtension<AppTheme> {
-  final TextStyle appBarTitleStyle;
-
-  AppTheme({
-    required this.appBarTitleStyle,
-  });
-
-  @override
-  ThemeExtension<AppTheme> copyWith() {
-    throw UnimplementedError();
-  }
-
-  @override
-  ThemeExtension<AppTheme> lerp(ThemeExtension<AppTheme>? other, double t) {
-    throw UnimplementedError();
   }
 }
