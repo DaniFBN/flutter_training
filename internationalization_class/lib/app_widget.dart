@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:internationalization_class/l10n/gen/app_localizations.dart';
 
 import 'home_page.dart';
 import 'intl_store.dart';
-import '../l10n/gen/app_localizations.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -29,12 +30,39 @@ class AppWidget extends StatelessWidget {
           //   Locale('es'), // Spanish
           //   Locale('pt'), // Portuguese
           // ],
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          // locale: locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en'),
+            Locale('es'),
+            Locale('pt', 'BR'),
+          ],
+          locale: locale,
           home: const HomePage(),
         );
       },
     );
+  }
+}
+
+final en = {'hello': 'Hello World!'};
+final es = {'hello': '¡Hola Mundo!'};
+final ptBr = {'hello': 'Olá Mundo'};
+
+class Localization {
+  String intl(String key, BuildContext context) {
+    final locale = Localizations.localeOf(context).toString();
+
+    if (locale == 'pt_BR') {
+      return ptBr[key]!;
+    }
+    if (locale == 'es') {
+      return es[key]!;
+    }
+    return en[key]!;
   }
 }
