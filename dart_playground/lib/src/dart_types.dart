@@ -45,7 +45,7 @@ void dartTypes() {
   final age2 = userData.$2;
 }
 
-(String, int) recordFunction(){
+(String, int) recordFunction() {
   return ('Daniel', 23);
 }
 
@@ -68,4 +68,3 @@ enum OrderStatus {
   void whatever() {}
   static void whateverStatic() {}
 }
-

@@ -4,7 +4,7 @@ void dartInterpolation() {
   final name = 'Daniel';
   final age = 23.7;
 
-  // print(name + age); Só é possível somar/juntar Strings
+  // print(name + age); // Só é possível somar/juntar Strings
   print(name + age.toString());
 
   print('$name tem $age anos');

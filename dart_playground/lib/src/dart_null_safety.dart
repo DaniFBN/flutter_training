@@ -10,18 +10,21 @@ void dartNullSafety() {
   // print(nullSafety3); Erro
 
   final user1 = UserModel(name: 'Daniel');
-  final age = user1.age ?? 0;
-  print(age + 30);
-  print(user1.age?.isEven);
+  final age = user1.age ?? 0; // > 0
+  print(age + 30); // > 30
+  print(user1.age?.isEven); // null
 
   final user2 = UserModel(name: 'Daniel', age: 23, city: 'SP');
-  print(user2.age! + 30); // Null check operator
+  print(user2.age! + 30); 
   print(user2.age?.isEven);
   print(user2.whatever());
 
+  final user3 = UserModel(name: 'Daniel', city: 'SP');
+  print(user3.age! + 30); // Null check operator
+
   //   UserModel user3; // NOT_NULL
-  UserModel? user3; // NULL=TRUE
-  print(user3?.whatever());
+  UserModel? user4; // NULL=TRUE
+  print(user4?.whatever());
 }
 
 class UserModel {

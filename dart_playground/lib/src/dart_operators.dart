@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_null_in_if_null_operators
 
+import 'dart_null_safety.dart';
+
 void dartOperators() {
   print(1 + 1);
   print(1 - 1);
@@ -11,7 +13,7 @@ void dartOperators() {
 
   print(1 != 1);
   print(1 > 1);
-  print(1 >= 1); 
+  print(1 >= 1);
   print(1 < 1);
   print(1 <= 1);
 
@@ -37,11 +39,15 @@ void dartOperators() {
   (asVar as int).isOdd;
 
   print(null ?? 23);
+  final user = UserModel(name: 'Daniel');
+  print(user.age);
+  print(user.age ?? 72);
+
   value ??= 23;
 
   final ternarioVar = (asVar == 3 ? 47 : 52);
 
-  // Cascade Operator - Bastante usado em ClipPath
+  // Cascade Operator (..) - Bastante usado em ClipPath
   var cascadeOperator = Cascade()
     ..method1()
     ..method2()
@@ -69,10 +75,10 @@ void dartOperators() {
   // var cascadeOperator = Cascade();
   // cascadeOperator.method1();
 
-  // Spread Operator
+  // Spread Operator (...)
   final spreadOperator = [
     ...[1, 2],
-    ...[3, 4],
+    ...{3, 4},
   ];
 
   spreadOperator.addAll([1, 2]);

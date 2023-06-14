@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 void dartClass() {
   final class1Var = Class1();
 
@@ -6,6 +7,8 @@ void dartClass() {
   final userModelPos2 = UserModel.posicional('Daniel', 23, null);
 
   final userModelPosOpt1 = UserModel.posicionalComOpcional('Daniel', 23);
+  final userModelPosNom1 =
+      UserModel.posicionalComNomeado('Daniel', 23, city: 'SP');
 
   final userModelOpt1 = UserModel.opcional('Daniel', 23, 'SP');
   final userModelOpt2 = UserModel.opcional('Daniel', 23);
@@ -15,9 +18,9 @@ void dartClass() {
   final userModelNom2 = UserModel.nomeado(name: 'Daniel', age: 23);
 
   final userModelFromMap1 = UserModel.fromMap({'name': 'Daniel', 'age': 23});
-  // final userModels = UserModel.fromListMap({'name': 'Daniel', 'age': 23});
+  final userModels = UserModel.fromListMap({'name': 'Daniel', 'age': 23});
 
-  final getterSetter = GetterSetter('Daniel', 23);
+  final getterSetter = GetterSetter(name: 'Daniel', age: 23);
   print(getterSetter.name);
   // A privação ocorre por arquivo, não classe
   print(getterSetter._name);
@@ -43,6 +46,7 @@ abstract interface class Class3 {}
 abstract interface class Class4 {}
 
 mixin Mixin1 {}
+
 base mixin Mixin2 on Class2 {}
 
 abstract class AbstractClass {}
@@ -53,30 +57,48 @@ class UserModel {
   final String name;
   late final int yearBirth;
   final int age;
+  final DateTime? date;
   final String? city;
 
   // Construtor com parâmetro posicional
-  UserModel.posicional(this.name, this.age, this.city) : yearBirth = 2023 - age;
+  UserModel.posicional(this.name, this.age, this.city)
+      : yearBirth = 2023 - age,
+        date = null;
 
   // É possível juntar os tipos de parâmetro
   UserModel.posicionalComOpcional(this.name, this.age, [this.city])
-      : yearBirth = 2023 - age;
+      : yearBirth = 2023 - age,
+        date = null;
+  UserModel.posicionalComNomeado(this.name, this.age, {this.city})
+      : yearBirth = 2023 - age,
+        date = null;
 
   // Construtor com parâmetro opcional - Uso de '[]'
-  UserModel.opcional([this.name = '', this.age = 0, this.city]) {
+  UserModel.opcional([this.name = '', this.age = 0, this.city]) : date = null {
+    // Ja foi construído
     yearBirth = 2023 - age;
   }
 
   // Construtor com parâmetro nomeado - Uso de '{}'
-  UserModel.nomeado({required this.name, required this.age, this.city})
-      : yearBirth = 99;
+  UserModel.nomeado({
+    required this.name,
+    required this.age,
+    this.city,
+    this.date,
+  }) : yearBirth = 99;
 
   // Factory
   factory UserModel.fromMap(Map<String, dynamic> map) {
+    DateTime? date;
+    if (map['date'] != null) {
+      date = DateTime.fromMillisecondsSinceEpoch(map['date']);
+    }
+
     return UserModel.nomeado(
       age: map['age'],
       name: map['name'],
       city: map['city'],
+      date: date,
     );
   }
 
@@ -88,15 +110,15 @@ class UserModel {
     };
   }
 
-  // static List<UserModel> fromListMap(Map<String, dynamic> map) {
-  //   return [
-  //     UserModel.nomeado(
-  //       age: map['age'],
-  //       name: map['name'],
-  //       city: map['city'],
-  //     ),
-  //   ];
-  // }
+  static List<UserModel> fromListMap(Map<String, dynamic> map) {
+    return [
+      UserModel.nomeado(
+        age: map['age'],
+        name: map['name'],
+        city: map['city'],
+      ),
+    ];
+  }
 
   void get({String unidadeDeMedida = 'kg'}) {}
 
@@ -123,10 +145,15 @@ class GetterSetter {
   String _name;
   int age;
 
-  GetterSetter(this._name, this.age);
+  GetterSetter({required String name, required this.age}) : _name = name;
 
   String get name => _name;
   set name(String value) {
+    if (value.isEmpty) return;
+    _name = value;
+  }
+
+  void setName(String value) {
     if (value.isEmpty) return;
     _name = value;
   }
@@ -148,7 +175,15 @@ class SuperClass extends SuperClassExtends {
   });
 
   void test() {
+    super.whateverSuper(); // > Pai
+    whateverSuper(); // > Pai e Sobrescrito
+  }
+
+  @override
+  void whateverSuper() {
     super.whateverSuper();
+
+    print('sobrescrito');
   }
 }
 
@@ -163,7 +198,9 @@ class SuperClassExtends extends SuperClassExtendsExtends {
   } // Close Parametro nomeado
       );
 
-  void whateverSuper() {}
+  void whateverSuper() {
+    print('pai');
+  }
 }
 
 class SuperClassExtendsExtends {
