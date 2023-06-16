@@ -25,6 +25,22 @@ void dartRepeating() {
     print('ForEach - $e');
   });
 
+  // data.first;
+  // data.last;
+  // data.contains(element);
+
+  // Person
+  //   LegalPerson
+  //   NaturalPerson
+  //   ForeignPerson
+  // data.whereType(NaturalPerson);
+  // data.where((e) => e is NaturalPerson);
+
+  // data.where((element) => false);
+  // data.map((element) => false);
+  // data.firstWhere((element) => false);
+  // data.reduce((e1, e2) => e1 + e2);
+
   final map = {'name': 'Daniel', 'age': 23};
   for (final key in map.keys) {
     final data = map[key];
