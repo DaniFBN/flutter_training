@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 void dartErrorHandling() {
   try {
-    throw true;
+    throw 43;
     // throw Exception('Whatever');
 
     // Else
@@ -35,12 +35,13 @@ void dartErrorHandling() {
 class AppException implements Exception {
   final String message;
   final StackTrace stackTrace;
-  AppException({
+
+  const AppException({
     required this.message,
     required this.stackTrace,
   });
 }
 
 class DomainException extends AppException {
-  DomainException({required super.message, required super.stackTrace});
+  const DomainException({required super.message, required super.stackTrace});
 }

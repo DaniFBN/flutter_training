@@ -1,5 +1,5 @@
 void dartGenerics() {
-  final class1 = GenericClass<int>(9);
+  final class1 = GenericClass(9);
   final class2 = GenericClass<String>('');
 
   final class3 = GenericNumClass<int, String>(2, '');
@@ -17,6 +17,18 @@ class GenericNumClass<T extends num, R> {
   final R value2;
 
   const GenericNumClass(this.value, this.value2);
+}
+
+// ------------------
+
+class TableModel<T extends DefaultFormModel> {
+  final List<T> value;
+
+  const TableModel(this.value);
+}
+
+class TableUserModel extends TableModel<UserFormModel> {
+  TableUserModel(super.value);
 }
 
 abstract class DefaultFormModel {

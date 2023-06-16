@@ -3,6 +3,7 @@
 import 'dart:html';
 
 typedef JumentoMap = Map<String, Jumento>;
+typedef AsyncVoidCallback = Future<void> Function();
 typedef AsyncJumentoMap = Future<Map<String, Jumento>>;
 
 class Jumento {}
