@@ -69,7 +69,7 @@ void main() {
 
       await expectLater(
         tester,
-        doesNotMeetGuideline(labeledTapTargetGuideline),
+        meetsGuideline(labeledTapTargetGuideline),
       );
       handle.dispose();
     },

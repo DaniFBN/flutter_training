@@ -28,7 +28,9 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
   @override
   Widget build(BuildContext context) {
     final features = dispatcher.accessibilityFeatures;
+
     final screenReaderIsOn = features.accessibleNavigation;
+    // final screenReaderIsOn2 = MediaQuery.of(context).accessibleNavigation;
     final boldTextIsOn = features.boldText;
     final disableAnimations = features.disableAnimations;
     final highContrastIsOn = features.highContrast;
@@ -36,7 +38,7 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
     final showLabelsInSwitch = features.onOffSwitchLabels;
     final reduceMotionIsOn = features.reduceMotion;
 
-    final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    final textScaleFactor = MediaQuery.textScaleFactorOf(context);
 
     return DefaultScaffold(
       title: widget.runtimeType.toString(),
@@ -45,7 +47,7 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
           _Item(
             value: true,
             on: Text('TextScaleFactor $textScaleFactor'),
-            off: const Text('TalkBack is off'),
+            off: const Text('TextScale is off'),
           ),
           _Item(
             value: screenReaderIsOn,
@@ -55,7 +57,7 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
           _Item(
             value: boldTextIsOn,
             on: const Text('BoldText is on'),
-            off: const Text('BoldText is off'),
+            off: const Text('BoldText is off'), 
           ),
           _Item(
             value: disableAnimations,

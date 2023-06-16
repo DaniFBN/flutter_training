@@ -13,7 +13,6 @@ void main() {
         ),
       );
 
-
       await expectLater(
         tester,
         meetsGuideline(androidTapTargetGuideline),

@@ -24,10 +24,10 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
       // assertiveness: Assertiveness.assertive
     );
 
-    await SemanticsService.announce(
-      'Você chegou na Merge Semantics Page',
-      TextDirection.ltr,
-    );
+    // await SemanticsService.announce(
+    //   'Você chegou na Merge Semantics Page',
+    //   TextDirection.ltr,
+    // );
   }
 
   @override

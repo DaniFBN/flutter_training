@@ -1,5 +1,6 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class InvalidButtonAndroidPage extends StatelessWidget {
   const InvalidButtonAndroidPage({
@@ -49,20 +50,40 @@ class InvalidButtonAndroidPage extends StatelessWidget {
         children: [
           if (showGesture)
             SizedBox(
-              height: 50,
-              width: 50,
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.error),
-              ),
-            ),
-          if (showInkWell)
-            SizedBox(
               height: _size,
               width: _size,
-              child: InkWell(
+              child: GestureDetector(
                 onTap: () {},
-                child: const Icon(Icons.error),
+                onLongPress: () {},
+                child: const Icon(Icons.error, semanticLabel: 'Ícone de erro'),
+              ),
+            ),
+          const TextField(
+            autofillHints: [
+              AutofillHints.email,
+            ],
+          ),
+          if (showInkWell)
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: Semantics(
+                textDirection: TextDirection.ltr,
+                container: true,
+                button: true,
+                attributedValue: AttributedString(AutofillHints.email),
+                attributedHint: AttributedString(AutofillHints.addressCity),
+                onLongPressHint: 'Teste',
+                onLongPress: () => SemanticsService.announce(
+                  'InkWell clicado',
+                  TextDirection.ltr,
+                ),
+                child: InkWell(
+                  // onTap: () {},
+                  onLongPress: () {},
+                  child:
+                      const Icon(Icons.error, semanticLabel: 'Ícone de erro'),
+                ),
               ),
             ),
           if (showIconButton)
@@ -72,7 +93,10 @@ class InvalidButtonAndroidPage extends StatelessWidget {
               child: IconButton(
                 onPressed: () {},
                 iconSize: 10,
-                icon: const Icon(Icons.error),
+                icon: const Icon(
+                  Icons.error,
+                  semanticLabel: 'Icone',
+                ),
                 style: IconButton.styleFrom(
                   fixedSize: Size(_size, _size),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
