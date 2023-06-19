@@ -63,7 +63,6 @@ class EqualityWithoutConst {
 class UserEntity extends Entity {
   const UserEntity({required super.id});
 }
-
 class ProductEntity extends Entity {
   const ProductEntity({required super.id});
 }

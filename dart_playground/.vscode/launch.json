@@ -7,7 +7,8 @@
     {
       "name": "dart_playground",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "dart.cliConsole": "terminal",
     }
   ]
 }
