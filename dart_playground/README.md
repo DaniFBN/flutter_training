@@ -27,6 +27,7 @@ Crie uma aplicação simples de banco.
       * O usuário deve enviar quantos meses ele deseja consultar, não podendo exceder 24 meses.
     * Se a conta for corrente, deve ser possível fazer uma transferência.
       * O usuário deve inserir um nome(Fictício, como se fosse um pix por Nome).
+      * O usuário deve inserir o valor a ser transferido.
   * Ao digitar 0, o aplicativo é fechado, deve ser confirmado antes de fechar.
 * Antes de concluir cada operação, a senha deve ser confirmada.
 
