@@ -17,6 +17,7 @@ class AppWidget extends StatelessWidget {
           return CupertinoApp(
             scrollBehavior: MyCustomScrollBehavior(),
             debugShowCheckedModeBanner: false,
+            // showSemanticsDebugger: true,
             theme: const CupertinoThemeData(
               brightness: Brightness.light,
             ),
@@ -27,6 +28,7 @@ class AppWidget extends StatelessWidget {
         return MaterialApp(
           scrollBehavior: MyCustomScrollBehavior(),
           debugShowCheckedModeBanner: false,
+          showSemanticsDebugger: true,
           home: GestureDetector(
             onTap: platformStore.toggle,
             child: const Text('Home'),

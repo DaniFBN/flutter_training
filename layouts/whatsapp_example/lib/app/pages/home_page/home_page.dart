@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:whatsapp_example/app/pages/home_page/home_android_page.dart';
 import 'package:whatsapp_example/app/pages/home_page/home_ios_page.dart';

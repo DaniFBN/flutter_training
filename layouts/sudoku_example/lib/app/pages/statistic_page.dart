@@ -24,10 +24,10 @@ class StatisticPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                StatisticItemWidget(
+                const StatisticItemWidget(
                   title: 'Jogos',
                   body: Column(
-                    children: const [
+                    children: [
                       GameCardWidget(
                         icon: CupertinoIcons.table,
                         title: 'Jogos iniciados',
@@ -52,10 +52,10 @@ class StatisticPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                StatisticItemWidget(
+                const StatisticItemWidget(
                   title: 'Tempo',
                   body: Column(
-                    children: const [
+                    children: [
                       SizedBox(
                         width: double.infinity,
                         child: TimeCardWidget(
@@ -98,10 +98,10 @@ class StatisticPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                StatisticItemWidget(
+                const StatisticItemWidget(
                   title: 'Pontuação',
                   body: Column(
-                    children: const [
+                    children: [
                       GameCardWidget(
                         icon: CupertinoIcons.star,
                         title: 'Maior pontuação',
@@ -116,10 +116,10 @@ class StatisticPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                StatisticItemWidget(
+                const StatisticItemWidget(
                   title: 'Sequências',
                   body: Column(
-                    children: const [
+                    children: [
                       GameCardWidget(
                         icon: CupertinoIcons.arrow_right,
                         title: 'Sequência atual de vitórias',

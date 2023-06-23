@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (context, platform, child) {
         if (platformStore.isIos) {
           return CupertinoApp(
+            showSemanticsDebugger: true,
             scrollBehavior: MyCustomScrollBehavior(),
             debugShowCheckedModeBanner: false,
             theme: const CupertinoThemeData(
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp(
           title: 'WhatsApp Example',
+          // showSemanticsDebugger: true,
           scrollBehavior: MyCustomScrollBehavior(),
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light,
