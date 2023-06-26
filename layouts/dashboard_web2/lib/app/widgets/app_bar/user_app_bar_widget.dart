@@ -14,6 +14,7 @@ class UserAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appBarTheme = Theme.of(context).appBarTheme;
     return Row(
       children: [
         ClipRRect(
@@ -28,15 +29,24 @@ class UserAppBarWidget extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: Text(
-            userName,
+            userName.toUpperCase(),
             maxLines: 3,
+            style: appBarTheme.titleTextStyle,
           ),
         ),
         const SizedBox(width: 28),
         TextButton.icon(
           onPressed: onLogoutTap,
-          icon: const Icon(Icons.logout),
-          label: const Text('Sair'),
+          icon: Icon(
+            Icons.logout,
+            color: appBarTheme.iconTheme!.color,
+          ),
+          label: Text(
+            'Sair',
+            style: appBarTheme.titleTextStyle!.copyWith(
+              fontWeight: FontWeight.w400,
+            ),
+          ),
         ),
       ],
     );

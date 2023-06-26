@@ -1,3 +1,4 @@
+import 'package:dashboard_web2/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
@@ -7,9 +8,10 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
