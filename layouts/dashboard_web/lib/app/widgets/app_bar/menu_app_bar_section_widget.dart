@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../whatever.dart';
+import 'app_bar_item_widget.dart';
 
 class MenuAppBarSectionWidget extends StatelessWidget {
   const MenuAppBarSectionWidget({super.key});
@@ -15,21 +15,21 @@ class MenuAppBarSectionWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Whatever(
+          AppBarItemWidget(
             icon: Icons.home,
             label: Text(
               'Home'.toUpperCase(),
               style: theme.textTheme.titleSmall,
             ),
           ),
-          Whatever(
+          AppBarItemWidget(
             icon: Icons.article_outlined,
             label: Text(
               'Relatórios'.toUpperCase(),
               style: theme.textTheme.titleSmall,
             ),
           ),
-          Whatever(
+          AppBarItemWidget(
             icon: Icons.flutter_dash,
             label: Text(
               'Portal Dashboard'.toUpperCase(),

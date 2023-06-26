@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Whatever extends StatelessWidget {
-  const Whatever({
+class AppBarItemWidget extends StatelessWidget {
+  const AppBarItemWidget({
     Key? key,
     required this.icon,
     required this.label,
