@@ -25,22 +25,6 @@ void main() {
   testWidgets(
     'home cubit page ...',
     (tester) async {
-      // final dataState = DataTodoBlocState({
-      //   TodoEntity(
-      //     createdAt: DateTime.now(),
-      //     description: '',
-      //     id: '',
-      //     name: 'Task 1',
-      //     userID: '',
-      //   ),
-      //   TodoEntity(
-      //     createdAt: DateTime.now(),
-      //     description: '',
-      //     id: '',
-      //     name: 'Task 2',
-      //     userID: '',
-      //   ),
-      // });
       whenListen(
         cubitMock,
         Stream.fromIterable([const LoadingTodoCubitState()]),
@@ -73,7 +57,7 @@ void main() {
     (tester) async {
       whenListen(
         cubitMock,
-        Stream.fromIterable([const LoadingTodoCubitState()]),
+        Stream.value(const LoadingTodoCubitState()),
         initialState: const LoadingTodoCubitState(),
       );
       when(() => cubitMock.getTodos('abc')).thenAnswer((_) async => {});
@@ -93,7 +77,7 @@ void main() {
     (tester) async {
       whenListen(
         cubitMock,
-        Stream.fromIterable([ErrorTodoCubitState(TodoFailureMock())]),
+        Stream.value(ErrorTodoCubitState(TodoFailureMock())),
         initialState: const LoadingTodoCubitState(),
       );
       when(() => cubitMock.getTodos('abc')).thenAnswer((_) async => {});
@@ -103,7 +87,7 @@ void main() {
         MaterialApp(home: HomeCubitPage(todoCubit: cubitMock)),
       );
 
-      await tester.pumpAndSettle();
+      await tester.pump();
 
       final errorTextFinder = find.byWidgetPredicate((widget) {
         return widget is Text && widget.data == 'MOCK';

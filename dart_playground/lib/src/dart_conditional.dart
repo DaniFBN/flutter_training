@@ -26,8 +26,8 @@ void dartConditional() {
     case SwitchCase.option2:
       print('option2');
       break;
-    default:
-      print('option3');
+    case SwitchCase.option3:
+      print('option2');
       break;
   }
 
@@ -54,6 +54,13 @@ void dartConditional() {
     _ => 'Error',
   };
   print(media);
+
+  // final exception = switch (firebaseException.code) {
+  //   'invalid-email' => AuthFailure('Email inválido'),
+  //   'wrong-password' => AuthFailure('Senha inválida'),
+  //   _ => AuthFailure('Error na autenticação'),
+  // };
+  // throw exception;
 }
 
 enum SwitchCase {

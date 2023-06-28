@@ -17,6 +17,13 @@ void dartModifiers() {
   lateVar3 = null;
 }
 
+int sum(int value1, int value2) {
+  const result2 = 20 + 20; // 20 e 20 são constantes
+  final result = value1 + value2; // Value1 e value2 são definidos em tempo de execução
+
+  return result;
+}
+
 class UserModel {
   // Late
   late final String name;

@@ -40,6 +40,8 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
 
     final textScaleFactor = MediaQuery.textScaleFactorOf(context);
 
+    
+
     return DefaultScaffold(
       title: widget.runtimeType.toString(),
       body: Column(
@@ -57,7 +59,7 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
           _Item(
             value: boldTextIsOn,
             on: const Text('BoldText is on'),
-            off: const Text('BoldText is off'), 
+            off: const Text('BoldText is off'),
           ),
           _Item(
             value: disableAnimations,

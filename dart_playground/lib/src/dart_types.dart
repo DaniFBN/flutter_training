@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_function_declarations_over_variables
-
 import 'dart:collection';
 
 void dartTypes() {
@@ -21,12 +20,14 @@ void dartTypes() {
   List<int> listVar1 = [1, 2, 3, 4];
   Set<int> setVar = {1, 2, 3, 4};
 
-  Map<String, dynamic> mapVar = {'name': 'Daniel Fernandes'};
+  Map<String, dynamic> mapVar = const {'name': 'Daniel Fernandes', 'age': 23};
 
   dynamic dynamicVar;
   dynamicVar = 32;
   dynamicVar = true;
   dynamicVar = '';
+
+  // DateTime;
 
   UnmodifiableListView ummodifiableListVar = UnmodifiableListView(listVar);
 
@@ -45,13 +46,16 @@ void dartTypes() {
   final age2 = userData.$2;
 }
 
-(String, int) recordFunction() {
+// Record - Tupla
+(String name, int age) recordFunction() {
   return ('Daniel', 23);
 }
 
 int function(String whatever) {
   return 0;
 }
+
+enum Whatever { whatever1, whatever2 }
 
 enum OrderStatus {
   delivered(7),
@@ -60,6 +64,15 @@ enum OrderStatus {
   const OrderStatus(this.code);
 
   final int code;
+
+  String get title {
+    switch (this) {
+      case delivered:
+        return 'Entregue';
+      case cancelled:
+        return 'Cancelado';
+    }
+  }
 
   static OrderStatus fromCode(int code) {
     return values.firstWhere((e) => e.code == code);

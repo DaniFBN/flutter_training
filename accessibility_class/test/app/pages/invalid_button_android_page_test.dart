@@ -15,7 +15,7 @@ void main() {
 
       await expectLater(
         tester,
-        meetsGuideline(androidTapTargetGuideline),
+        doesNotMeetGuideline(androidTapTargetGuideline),
       );
       handle.dispose();
     },

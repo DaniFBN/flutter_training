@@ -15,9 +15,12 @@ void dartNullSafety() {
   print(user1.age?.isEven); // null
 
   final user2 = UserModel(name: 'Daniel', age: 23, city: 'SP');
-  print(user2.age! + 30); 
+  print(user2.age! + 30);
   print(user2.age?.isEven);
   print(user2.whatever());
+
+  String? data;
+  final String handledData = guard<String>(data, '');
 
   final user3 = UserModel(name: 'Daniel', city: 'SP');
   print(user3.age! + 30); // Null check operator
@@ -25,6 +28,11 @@ void dartNullSafety() {
   //   UserModel user3; // NOT_NULL
   UserModel? user4; // NULL=TRUE
   print(user4?.whatever());
+}
+
+MyType guard<MyType>(MyType? value, MyType defaultValue) {
+  if (value == null) return defaultValue;
+  return value;
 }
 
 class UserModel {

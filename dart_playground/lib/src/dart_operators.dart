@@ -8,6 +8,7 @@ void dartOperators() {
   print(1 * 1);
   print(1 % 1);
   print(1 / 1);
+  print(1 ~/ 1);
 
   print(1 == 1);
 
@@ -37,6 +38,9 @@ void dartOperators() {
 
   final dynamic asVar = 3;
   (asVar as int).isOdd;
+  if (asVar is int) {
+    asVar.isOdd;
+  }
 
   print(null ?? 23);
   final user = UserModel(name: 'Daniel');
@@ -59,9 +63,11 @@ void dartOperators() {
   cascadeRepository.getProducts();
   cascadeRepository.getUsers();
 
-  // final cascadeRepository = Repository()
-  //   ..getProducts()
-  //   ..getUsers();
+  final cascadeRepository2 = Repository()
+    ..getProducts()
+    ..getUsers();
+
+  final result = 32..isEven;
 
   print(cascadeRepository.users);
   print(cascadeRepository.products);
@@ -82,7 +88,7 @@ void dartOperators() {
   ];
 
   spreadOperator.addAll([1, 2]);
-  spreadOperator.addAll([3, 4]);
+  spreadOperator.addAll({3, 4});
 
   final spreadOperator2 = {'name': 'Daniel', 'age': 23};
   final spreadOperator3 = {...spreadOperator2, 'id': 1};

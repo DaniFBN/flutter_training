@@ -21,13 +21,13 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
     await SemanticsService.announce(
       'Devo ser interrompido Devo ser interrompido Devo ser interrompido Devo ser interrompido ',
       TextDirection.ltr,
-      // assertiveness: Assertiveness.assertive
+      // assertiveness: Assertiveness.assertive,
     );
 
-    // await SemanticsService.announce(
-    //   'Você chegou na Merge Semantics Page',
-    //   TextDirection.ltr,
-    // );
+    await SemanticsService.announce(
+      'Você chegou na Merge Semantics Page',
+      TextDirection.ltr,
+    );
   }
 
   @override
@@ -38,7 +38,10 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
         children: [
           const Column(
             children: [
-              Text('Teste 1'),
+              Visibility(
+                visible: false,
+                child: Text('Teste 1'),
+              ),
               Divider(),
               Text('Teste 2'),
             ],
@@ -56,6 +59,9 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
           Card(
             semanticContainer: true,
             child: Semantics(
+              button: true,
+              onTap: () {},
+              onLongPress: () {},
               label: 'Teste de Semantics',
               child: const Column(
                 children: [

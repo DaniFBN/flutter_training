@@ -8,7 +8,7 @@ void dartClass() {
 
   final userModelPosOpt1 = UserModel.posicionalComOpcional('Daniel', 23);
   final userModelPosNom1 =
-      UserModel.posicionalComNomeado('Daniel', 23, city: 'SP');
+      UserModel.posicionalComNomeado(city: 'SP', 'Daniel', 23);
 
   final userModelOpt1 = UserModel.opcional('Daniel', 23, 'SP');
   final userModelOpt2 = UserModel.opcional('Daniel', 23);
@@ -26,16 +26,47 @@ void dartClass() {
   print(getterSetter._name);
   print(getterSetter.age);
 
+  getterSetter.setName('Daniel Fernandes');
   getterSetter.name = 'Daniel Fernandes';
   getterSetter.age = 24;
 
   print(getterSetter.name);
   print(getterSetter.age);
+
+  final Animal animal = Cachorro();
+
+  switch (animal) {
+    case Cachorro():
+      print('dog');
+    case Gato():
+      print('cat');
+    case Cavalo():
+      print('horse');
+  }
 }
+
+sealed class Animal {}
+
+class Cachorro extends Animal {}
+
+class Gato extends Animal {}
+
+class Cavalo extends Animal {}
 
 final class Class1 extends Class2
     with Mixin1, Mixin2
-    implements Class3, Class4 {}
+    implements Class3, Class4 {
+  @override
+  void whatever() {
+    super.whatever();
+
+    print('override');
+  }
+
+  void whatever2() {
+    whatever();
+  }
+}
 
 class Class21 with Mixin1 {}
 
@@ -45,7 +76,9 @@ abstract interface class Class3 {}
 
 abstract interface class Class4 {}
 
-mixin Mixin1 {}
+mixin Mixin1 {
+  void whatever() {}
+}
 
 base mixin Mixin2 on Class2 {}
 
@@ -59,6 +92,8 @@ class UserModel {
   final int age;
   final DateTime? date;
   final String? city;
+
+  UserModel(this.name, this.yearBirth, this.age, this.date, this.city);
 
   // Construtor com parâmetro posicional
   UserModel.posicional(this.name, this.age, this.city)
@@ -74,7 +109,11 @@ class UserModel {
         date = null;
 
   // Construtor com parâmetro opcional - Uso de '[]'
-  UserModel.opcional([this.name = '', this.age = 0, this.city]) : date = null {
+  UserModel.opcional([
+    this.name = '',
+    this.age = 0,
+    this.city,
+  ]) : date = null {
     // Ja foi construído
     yearBirth = 2023 - age;
   }
@@ -217,24 +256,24 @@ class SuperClassExtendsExtends {
 // class Class2 extends Class2 with Mixin2 implements Class3, Class4 {} Erro
 // mixin Mixin2 on Class3 {}
 
-// class MyWidget extends StatefulWidget {
-//   final MyWidget({super.key});
-
 // -----------------------------------------------------------------------------
 // Exemplo de Mixin no Flutter
 // -----------------------------------------------------------------------------
 
+// class MyWidget extends StatefulWidget {
+//   final MyWidget({super.key});
+
 //   @override
 //   State<MyWidget> createState() => _MyWidgetState();
 // }
-//
+
 // class _MyWidgetState extends State<MyWidget> with LifeCycle<MyWidget>{
 //   @override
 //   Widget build(BuildContext context) {
 //     return final Placeholder();
 //   }
 // }
-//
+
 // mixin LifeCycle<T extends StatefulWidget> on State<T> {
 //   @override
 //   void initState() {

@@ -1,6 +1,6 @@
 # Exercícios
 
-## Média
+## Média Ponderada
 Faça um programa que calcule a média do aluno
 
 * O usuário deve inserir 2 notas, de 0 a 10.

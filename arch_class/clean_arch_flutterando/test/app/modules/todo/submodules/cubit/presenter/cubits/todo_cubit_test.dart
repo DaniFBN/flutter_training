@@ -31,11 +31,12 @@ void main() {
   test(
     'Should Emits in order (Loading > Error) when usecase returns Left',
     () {
+      // Arrange
       const userID = '1';
       when(() => usecase(any()))
           .thenAnswer((_) async => Left(TodoFailureMock()));
 
-      
+      // Assert
       expect(
         sut.stream,
         emitsInOrder([
@@ -43,7 +44,8 @@ void main() {
           isA<ErrorTodoCubitState>(),
         ]),
       );
-      
+
+      // Act
       sut.getTodos(userID);
     },
   );

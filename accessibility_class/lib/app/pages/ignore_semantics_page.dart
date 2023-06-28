@@ -1,6 +1,5 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class IgnoreSemanticsPage extends StatelessWidget {
   const IgnoreSemanticsPage({super.key});
@@ -9,10 +8,15 @@ class IgnoreSemanticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultScaffold(
       title: runtimeType.toString(),
-      body: const Row(
+      body: Row(
         children: [
-          Text('Teste Funcional', semanticsLabel: 'Whatever'),
-          Column(
+          const Text('Teste Funcional', semanticsLabel: 'Whatever'),
+          Image.network(
+            'https://avatars.githubusercontent.com/u/54218517?v=4',
+            width: 20,
+            height: 20,
+          ),
+          const Column(
             children: [
               Text('Teste Funcional', semanticsLabel: 'Whatever'),
               ExcludeSemantics(
@@ -32,9 +36,11 @@ class IgnoreSemanticsPage extends StatelessWidget {
                   ],
                 ),
               ),
-              MergeSemantics(
+              Card(
+                semanticContainer: true,
                 child: Column(
                   children: [
+                    Text('Exclude false 1'),
                     BlockSemantics(
                       child: Column(
                         children: [

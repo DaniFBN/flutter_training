@@ -38,8 +38,8 @@ class _HomeCubitPageState extends State<HomeCubitPage> {
         bloc: widget.todoCubit,
         builder: (_, TodoCubitState state) {
           if (state is LoadingTodoCubitState) {
-            return Column(
-              children: const [
+            return const Column(
+              children: [
                 Text(
                   'HomeCubitPage',
                   semanticsLabel: 'Acessibilidade 1',
