@@ -6,6 +6,7 @@ class PrincipleCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final size = MediaQuery.sizeOf(context);
 
     return Card(
       shape: const RoundedRectangleBorder(
@@ -18,6 +19,32 @@ class PrincipleCardWidget extends StatelessWidget {
           children: [
             const Text('Olá Daniel!'),
             const Text('Bem vindo!'),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Colors.purple.shade900,
+                    Colors.purple,
+                  ],
+                ),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text.rich(
+                  TextSpan(children: [
+                    TextSpan(text: 'Assine o nível 6 a partir de '),
+                    TextSpan(
+                      text: r'R$ 17,99',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
+                  ]),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
             Expanded(
               child: GridView.builder(
                 itemCount: 13,

@@ -33,9 +33,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           Padding(
             padding: EdgeInsets.only(top: 8, bottom: 8, left: 12, right: 20),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MenuAppBarSectionWidget(),
-                Spacer(),
                 UserAppBarSectionWidget(
                   userImage:
                       'https://avatars.githubusercontent.com/u/63812934?s=200&v=4',

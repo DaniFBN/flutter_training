@@ -1,16 +1,81 @@
-# dashboard_web2
+# Anotações
 
-A new Flutter project.
+- Wrap -> Coloca no eixo que voce quiser, quando não couber, ele "quebra linha"
+- Row -> Lado a lado eternamente
+- Column -> Em cima eternamente
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+- SizedBox - width/height
+- Padding - padding
+- Container - width/height/padding/margin
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Widget com children
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Column
+- Row
+- Wrap
+- ListView
+- Stack
+
+---
+
+### Page
+
+- Row
+  - Drawer
+  - Column
+    - AppBar
+    - Body
+
+---
+
+### AppBar
+
+- Stack
+  - AppBar
+    - Row
+      - MenuSection
+        - Row
+          - Text - Home
+          - Divider
+          - Text - Relatórios
+          - Divider
+          - Text - Portal
+      - Spacer - flex 3
+      - IconButton - notificação
+      - Spacer - flex 1
+      - UserSection
+        - Row
+          - Image
+          - Text - userName
+          - IconButton - Sair
+  - ExpandedButton
+
+---
+
+### Drawer
+
+- Column
+  - Image
+  - Divider
+  - ListView
+    - Row
+      - Icon
+      - Text
+
+---
+
+### Body
+
+- Row
+  - Container
+    - Column
+      - Text - Olá Daniel
+      - Text - Bem vindo
+      - Grid
+  - Column
+    - Container
+    - Container

@@ -33,6 +33,7 @@ class _DateFieldState extends State<DateField> {
   Widget build(BuildContext context) {
     return CustomField(
       label: 'Data',
+      isRequired: true,
       field: CustomTextField(
         focusNode: FocusNode(),
         hintText: 'Selecione a data',

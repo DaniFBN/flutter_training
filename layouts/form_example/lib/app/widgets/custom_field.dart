@@ -5,9 +5,11 @@ class CustomField extends StatelessWidget {
     Key? key,
     required this.label,
     required this.field,
+    this.isRequired = false,
   }) : super(key: key);
 
   final String label;
+  final bool isRequired;
   final Widget field;
 
   @override
@@ -15,7 +17,11 @@ class CustomField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label),
+        if (isRequired) ...{
+          Text('$label *'),
+        } else ...{
+          Text(label),
+        },
         const SizedBox(height: 8),
         field,
       ],

@@ -1,16 +1,131 @@
-# dashboard_web
 
-A new Flutter project.
+## Page
+- Column
+  - AppBar
+  - Row
+    - Drawer
+    - Body
+---
+## AppBar
+- Card
+  - Column
+    - EnterpriseBanner
+      - Row
+        - Image
+        - Text
+    - Row
+      - MenuSection
+        - AppBarItem
+          - Icon
+          - Text
+        - AppBarItem
+          - Icon
+          - Text
+        - AppBarItem
+          - Icon
+          - Text
+      - Spacer
+      - UserSection
+        - Image
+        - Column
+          - Text
+          - Text
+        - Icon
+---
 
-## Getting Started
+## Drawer
+- Card
+  - Listview.separated
+    - Icon
+---
+## Body
+- Column
+  - Card
+    - Text
+  - TableAction
+    - Row - mainAxisAlignment: MainAxisAlignment.spaceBetween
+      - Menu1 
+        - Dropdown
+        - Button
+        - Button
+        - Button
+        - Button
+      - Menu2
+        - Button
+        - Button
+        - Dropdown
+    - Row - com Spacer
+      - Dropdown
+      - Button
+      - Button
+      - Button
+      - Button
+      - Spacer
+      - Button
+      - Button
+      - Dropdown
+  - Table
+    - Row - Header - Cabeçalho
+      - Text
+    - ListView.builder
+      - Row
+    - Row - Footer - Rodape
 
-This project is a starting point for a Flutter application.
+--- 
 
-A few resources to get you started if this is your first Flutter project:
+- Default
+  - Scaffold
+  - AppBar
+  - FloatingActionButton
+  - BottomNavigationBar
+  - TabBar
+  - Drawer
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Form
+  - Form
+  - TextField
+  - Dropdown
+  - Checkbox
+  - Radio
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+- Estrutura
+  - Column
+  - Row
+  - Stack
+  - Wrap
+
+- Scroll
+  - SingleChildScrollView
+  - ListView
+  - ListView.builder
+  - ListView.separated
+  - GridView
+  - GridView.builder
+
+- Design
+  - Card
+  - Text
+  - Icon
+  - Image.network
+  - Image.asset
+
+- Ação/Gatilho
+  - GestureDetector
+  - InkWell
+  - TextButton
+  - IconButton
+  - ElevatedButton
+  - ElevatedButton.icon
+
+- Espaçamento & Tamanho
+  - SizedBox
+  - Padding
+  - Container
+  - Center
+  - LayoutBuilder
+
+- FlexBox
+  - Spacer
+  - Expanded
+

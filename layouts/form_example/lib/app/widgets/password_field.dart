@@ -36,7 +36,7 @@ class _PasswordFieldState extends State<PasswordField> {
         controller: controller,
         focusNode: widget.focusNode,
         obscureText: obscureText,
-        autofill: const [AutofillHints.email],
+        autofill: const [AutofillHints.password],
         hintText: 'Digite sua senha',
         required: false,
         suffix: IconButton(

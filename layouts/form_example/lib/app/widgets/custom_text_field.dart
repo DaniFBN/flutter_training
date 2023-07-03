@@ -57,6 +57,7 @@ class CustomTextField extends StatelessWidget {
         return null;
       },
       // enabled: false,
+
       // buildCounter: (
       //   BuildContext _, {
       //   required int currentLength,
@@ -68,11 +69,15 @@ class CustomTextField extends StatelessWidget {
       // obscuringCharacter: '*',
       // keyboardType: TextInputType.datetime,
       decoration: InputDecoration(
+        // fillColor: Colors.red,
+        // counterText: '',
+
         suffixIcon: suffix,
         filled: true,
         hintText: hintText,
         errorStyle: const TextStyle(fontSize: 12),
         border: const OutlineInputBorder(borderSide: BorderSide.none),
+        focusedBorder: const OutlineInputBorder(),
       ),
     );
   }

@@ -21,14 +21,17 @@ class _AttachFieldState extends State<AttachField> {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['yaml'],
+      allowMultiple: true,
     );
 
     if (result == null) return;
 
-    final firstFile = result.files.first;
-    final fileName = firstFile.name;
+    // final firstFile = result.files.first;
+    // final fileName = firstFile.name;
 
-    widget.controller.text = fileName;
+    final filesName = result.files.map((e) => e.name).join(', ');
+
+    widget.controller.text = filesName;
   }
 
   @override
