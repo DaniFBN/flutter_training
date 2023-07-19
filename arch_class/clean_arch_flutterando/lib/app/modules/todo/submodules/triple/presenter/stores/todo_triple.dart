@@ -14,6 +14,7 @@ class TodoTriple extends Store<TodoTripleState> {
     await Future.delayed(const Duration(seconds: 2));
 
     final param = GetAllByUserIDParam(userID: userID);
+
     final result = await _getAllByUserIDUsecase(param);
 
     result.fold(

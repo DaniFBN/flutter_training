@@ -13,7 +13,7 @@ class CreateTodoUsecaseImpl implements CreateTodoUsecase {
   @override
   Future<Either<TodoFailure, TodoEntity>> call(CreateTodoParam param) async {
     if (param.name.isEmpty) {
-      return Left(ValidationTodoFailure('O nome é obrigatório'));
+      return Left(ValidationTodoFailure('O título é obrigatório'));
     }
     if (param.name.length <= 3) {
       return Left(

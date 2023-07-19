@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../domain/failures/failures.dart';
 import '../../../../domain/params/params.dart';
 import '../../../../domain/usecases/usecases.dart';
 import 'events/todo_bloc_event.dart';
@@ -18,6 +19,14 @@ class TodoBloc extends Bloc<TodoBlocEvent, TodoBlocState> {
     emitter(const LoadingTodoBlocState());
 
     await Future.delayed(const Duration(seconds: 2));
+
+    // try {
+    //   final param = GetAllByUserIDParam(userID: event.userID);
+    //   final result = await _getAllByUserIDUsecase(param);
+    //   emitter(DataTodoBlocState(result));
+    // } on TodoFailure catch (e) {
+    //   emitter(ErrorTodoBlocState(e));
+    // }
 
     final param = GetAllByUserIDParam(userID: event.userID);
     final result = await _getAllByUserIDUsecase(param);

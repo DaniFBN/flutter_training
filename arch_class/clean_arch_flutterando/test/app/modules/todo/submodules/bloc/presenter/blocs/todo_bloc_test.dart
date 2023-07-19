@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:clean_arch_flutterando/app/modules/todo/domain/entities/entities.dart';
 import 'package:clean_arch_flutterando/app/modules/todo/domain/failures/failures.dart';
@@ -6,6 +8,8 @@ import 'package:clean_arch_flutterando/app/modules/todo/domain/usecases/usecases
 import 'package:clean_arch_flutterando/app/modules/todo/submodules/bloc/presenter/blocs/events/todo_bloc_event.dart';
 import 'package:clean_arch_flutterando/app/modules/todo/submodules/bloc/presenter/blocs/states/todo_bloc_state.dart';
 import 'package:clean_arch_flutterando/app/modules/todo/submodules/bloc/presenter/blocs/todo_bloc.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
@@ -59,12 +63,10 @@ void main() {
 
       expect(
         sut.stream,
-        emitsInOrder(
-          [
-            isA<LoadingTodoBlocState>(),
-            isA<DataTodoBlocState>(),
-          ],
-        ),
+        emitsInOrder([
+          isA<LoadingTodoBlocState>(),
+          isA<DataTodoBlocState>(),
+        ]),
       );
 
       sut.add(const GetAllTodoBlocEvent(userID));
@@ -81,6 +83,7 @@ void main() {
 
       return bloc;
     },
+    wait: const Duration(seconds: 2),
     act: (bloc) => bloc.add(const GetAllTodoBlocEvent('2')),
     expect: () => [
       isA<LoadingTodoBlocState>(),
@@ -105,3 +108,21 @@ void main() {
   //   ],
   // );
 }
+
+
+Widget
+Bloc
+Service
+
+Bloc
+Service
+
+Widget
+MockBloc
+
+External -> Datasource -> Consumo de API, Bluetooth
+Infra -> Repository -> Tratamento de erro/Mapper
+Domain -> Usecase -> Regra de Negócio/Entities(Model)
+Presenter ->  Bloc 
+              Controller/Facade
+              Page

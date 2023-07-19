@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 
 @immutable
-class Entity<T> {
+class Entity<T> { 
   const Entity({required this.id});
   final T id;
 

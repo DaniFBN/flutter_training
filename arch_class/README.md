@@ -51,5 +51,20 @@ Arquitetura
   O metodo/fn não deve mais de 40 linhas
 
 
+Clean Arch - Flutterando
+  Presenter - Flutter - Page(Page) e Gerencia de Estado(Store, Bloc, Cubit)
+  Domain - Dart - Regra de negócio(Usecase) e Entity
+  Infra - Dart - Parse(Mapper) e Tratamento de exceções(Repository)
+  External - Dart/Flutter - API, Bluetooth, LocalStorage(Datasource)
+
+Fluxo de Desenvolvimento
+  Domain
+  Infra
+  External
+  Presenter
+
+Fluxo de Acesso
+  Presenter > Domain > Infra > External
+
   
 
