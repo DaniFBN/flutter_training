@@ -1,15 +1,15 @@
-enum Sexo { masculino, feminino }
 
-class PersonEntity {
-  final int id;
+
+import '../entities/person_entity.dart';
+
+class CreatePersonParam {
   final String name;
   final String cpf;
   final DateTime birthAt;
   final Sexo sexo;
   final String? telephone;
 
-  const PersonEntity({
-    required this.id,
+  const CreatePersonParam({
     required this.name,
     required this.cpf,
     required this.birthAt,
