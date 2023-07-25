@@ -16,6 +16,8 @@ void main() {
   // Sut = System Under Test
   final sut = CreatePersonUsecase(repo);
 
+  tearDown(() => reset(repo));
+
   group(
     'CreatePersonUsecase | Success |',
     () {
@@ -38,10 +40,12 @@ void main() {
 
           // Assert
           expect(result, isA<CreatePersonResponse>());
+          verify(() => repo.create(param)).called(1);
         },
       );
     },
   );
+
   group('CreatePersonUsecase | Failure |', () {
     test(
       'Deve lançar uma ValidationFailure quando o nome não conter um sobrenome',
@@ -60,6 +64,8 @@ void main() {
           () => sut(param),
           throwsA(isA<ValidationFailure>()),
         );
+        verifyNever(() => repo.create(param));
+        verifyZeroInteractions(repo);
       },
     );
 
@@ -80,6 +86,8 @@ void main() {
           () => sut(param),
           throwsA(isA<ValidationFailure>()),
         );
+        verifyNever(() => repo.create(param));
+        verifyZeroInteractions(repo);
       },
     );
 
@@ -100,6 +108,8 @@ void main() {
           () => sut(param),
           throwsA(isA<ValidationFailure>()),
         );
+        verifyNever(() => repo.create(param));
+        verifyZeroInteractions(repo);
       },
     );
 
@@ -120,6 +130,8 @@ void main() {
           () => sut(param),
           throwsA(isA<ValidationFailure>()),
         );
+        verifyNever(() => repo.create(param));
+        verifyZeroInteractions(repo);
       },
     );
 
@@ -140,6 +152,8 @@ void main() {
           () => sut(param),
           throwsA(isA<ValidationFailure>()),
         );
+        verifyNever(() => repo.create(param));
+        verifyZeroInteractions(repo);
       },
     );
   });

@@ -1,4 +1,4 @@
-abstract base class AppFailure implements Exception {
+abstract class AppFailure implements Exception {
   final String message;
   final StackTrace stackTrace;
 
