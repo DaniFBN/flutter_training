@@ -1,5 +1,5 @@
 import 'package:person_manager2/app/core/exceptions/mapper_exception.dart';
-import 'package:person_manager2/app/domain/params/create_person_param.dart';
+import 'package:person_manager2/app/modules/person/domain/params/create_person_param.dart';
 
 import '../../domain/entities/person_entity.dart';
 

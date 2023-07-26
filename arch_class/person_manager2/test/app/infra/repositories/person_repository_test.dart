@@ -2,11 +2,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:person_manager2/app/core/exceptions/app_exception.dart';
 import 'package:person_manager2/app/core/exceptions/mapper_exception.dart';
-import 'package:person_manager2/app/domain/entities/person_entity.dart';
-import 'package:person_manager2/app/domain/params/create_person_param.dart';
-import 'package:person_manager2/app/infra/datasources/person_datasource.dart';
-import 'package:person_manager2/app/infra/mappers/person_mapper.dart';
-import 'package:person_manager2/app/infra/repositories/person_repository.dart';
+import 'package:person_manager2/app/modules/person/domain/entities/person_entity.dart';
+import 'package:person_manager2/app/modules/person/domain/params/create_person_param.dart';
+import 'package:person_manager2/app/modules/person/infra/datasources/person_datasource.dart';
+import 'package:person_manager2/app/modules/person/infra/mappers/person_mapper.dart';
+import 'package:person_manager2/app/modules/person/infra/repositories/person_repository.dart';
 
 import '../../core/exceptions/mocks/mocks.dart';
 import '../mocks/mocks.dart';

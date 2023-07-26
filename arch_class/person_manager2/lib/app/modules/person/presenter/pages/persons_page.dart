@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:person_manager2/app/presenter/stores/persons_store.dart';
-import 'package:person_manager2/app/presenter/stores/states/persons_state.dart';
+import 'package:person_manager2/app/modules/person/presenter/stores/persons_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/stores/states/persons_state.dart';
 
 class PersonsPage extends StatefulWidget {
   const PersonsPage({
@@ -24,6 +24,8 @@ class _PersonsPageState extends State<PersonsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Pessoas')),
       body: Padding(
@@ -44,8 +46,34 @@ class _PersonsPageState extends State<PersonsPage> {
                   separatorBuilder: (_, __) => const SizedBox(height: 4),
                   itemBuilder: (_, index) {
                     final person = state.persons.elementAt(index);
+                    final email = person.email;
 
-                    return ListTile(title: Text(person.name));
+                    return Card(
+                      child: ListTile(
+                        title: Text(
+                          person.name,
+                          style: theme.textTheme.titleLarge,
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(person.cpf),
+                                Text(
+                                  person.birth.toString(),
+                                  style: theme.textTheme.bodySmall,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            if (email != null) Text(email),
+                          ],
+                        ),
+                        isThreeLine: true,
+                      ),
+                    );
                   },
                 );
             }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:person_manager2/app/domain/params/create_person_param.dart';
-import 'package:person_manager2/app/presenter/pages/widgets/date_field.dart';
-import 'package:person_manager2/app/presenter/stores/create_person_store.dart';
-import 'package:person_manager2/app/presenter/stores/persons_store.dart';
-import 'package:person_manager2/app/presenter/stores/states/create_person_state.dart';
+import 'package:person_manager2/app/modules/person/domain/params/create_person_param.dart';
+import 'package:person_manager2/app/modules/person/presenter/pages/widgets/date_field.dart';
+import 'package:person_manager2/app/modules/person/presenter/stores/create_person_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/stores/persons_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/stores/states/create_person_state.dart';
 
 import 'widgets/custom_field.dart';
 import 'widgets/custom_text_field.dart';
@@ -11,11 +11,11 @@ import 'widgets/custom_text_field.dart';
 class CreatePersonPage extends StatefulWidget {
   const CreatePersonPage({
     Key? key,
-    required this.store,
+    required this.createStore,
     required this.personsStore,
   }) : super(key: key);
 
-  final CreatePersonStore store;
+  final CreatePersonStore createStore;
   final PersonsStore personsStore;
 
   @override
@@ -34,11 +34,11 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
   void initState() {
     super.initState();
 
-    widget.store.addListener(storeListener);
+    widget.createStore.addListener(storeListener);
   }
 
   void storeListener() {
-    final state = widget.store.value;
+    final state = widget.createStore.value;
     if (state is ErrorCreatePersonState) {
       final snackBar = SnackBar(content: Text(state.exception.message));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -52,7 +52,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
 
   @override
   void dispose() {
-    widget.store.removeListener(storeListener);
+    widget.createStore.removeListener(storeListener);
 
     super.dispose();
   }
@@ -122,7 +122,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
               ),
               const SizedBox(height: 16),
               ValueListenableBuilder(
-                valueListenable: widget.store,
+                valueListenable: widget.createStore,
                 child: ElevatedButton(
                   onPressed: () async {
                     final isValid = formKey.currentState!.validate();
@@ -137,7 +137,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                           : emailController.text,
                     );
 
-                    await widget.store.create(param);
+                    await widget.createStore.create(param);
                   },
                   child: const Text('Create'),
                 ),

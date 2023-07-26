@@ -1,7 +1,7 @@
-import 'package:person_manager2/app/infra/datasources/person_datasource.dart';
+import 'package:person_manager2/app/modules/person/infra/datasources/person_datasource.dart';
 
-import '../core/services/local_storage/helpers/params.dart';
-import '../core/services/local_storage/i_local_storage_service.dart';
+import '../../../core/services/local_storage/helpers/params.dart';
+import '../../../core/services/local_storage/i_local_storage_service.dart';
 
 class PersonDatasource implements IPersonDatasource {
   final ILocalStorageService _localStorageService;

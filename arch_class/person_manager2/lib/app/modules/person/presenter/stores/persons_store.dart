@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:person_manager2/app/domain/usecases/get_persons_usecase.dart';
-import 'package:person_manager2/app/presenter/stores/states/persons_state.dart';
+import 'package:person_manager2/app/modules/person/domain/usecases/get_persons_usecase.dart';
+import 'package:person_manager2/app/modules/person/presenter/stores/states/persons_state.dart';
 
-import '../../core/exceptions/app_exception.dart';
+import '../../../../core/exceptions/app_exception.dart';
 
 class PersonsStore extends ValueNotifier<PersonsState> {
   PersonsStore(this._getPersonsUsecase) : super(PersonsState.initState());

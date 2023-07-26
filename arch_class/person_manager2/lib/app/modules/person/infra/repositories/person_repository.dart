@@ -1,7 +1,7 @@
 import 'package:person_manager2/app/core/exceptions/app_exception.dart';
-import 'package:person_manager2/app/domain/entities/person_entity.dart';
-import 'package:person_manager2/app/domain/params/create_person_param.dart';
-import 'package:person_manager2/app/domain/repositories/person_repository.dart';
+import 'package:person_manager2/app/modules/person/domain/entities/person_entity.dart';
+import 'package:person_manager2/app/modules/person/domain/params/create_person_param.dart';
+import 'package:person_manager2/app/modules/person/domain/repositories/person_repository.dart';
 
 import '../datasources/person_datasource.dart';
 import '../mappers/person_mapper.dart';

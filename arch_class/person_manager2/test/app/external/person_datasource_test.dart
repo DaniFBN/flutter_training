@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:person_manager2/app/core/exceptions/app_exception.dart';
 import 'package:person_manager2/app/core/services/local_storage/i_local_storage_service.dart';
-import 'package:person_manager2/app/external/person_datasource.dart';
+import 'package:person_manager2/app/modules/person/external/person_datasource.dart';
 
 import '../core/exceptions/mocks/mocks.dart';
 import '../core/services/mocks/mocks.dart';

@@ -1,6 +1,6 @@
-import 'package:person_manager2/app/domain/entities/person_entity.dart';
+import 'package:person_manager2/app/modules/person/domain/entities/person_entity.dart';
 
-import '../../core/exceptions/validation_exception.dart';
+import '../../../../core/exceptions/validation_exception.dart';
 import '../params/create_person_param.dart';
 import '../repositories/person_repository.dart';
 
