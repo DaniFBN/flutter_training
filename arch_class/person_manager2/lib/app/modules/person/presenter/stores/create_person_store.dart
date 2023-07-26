@@ -13,18 +13,34 @@ class CreatePersonStore extends CustomNotifier<CreatePersonState> {
       : super(const InitialCreatePersonState());
 
   Future<void> create(CreatePersonParam param) async {
-    execute(
-      () async {
-        value = const LoadingCreatePersonState();
+    value = const LoadingCreatePersonState();
 
-        await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
-        final person = await _createPersonUsecase(param);
+    final result = await _createPersonUsecase(param);
 
-        value = SuccessCreatePersonState(person);
-      },
-      (exception) => value = ErrorCreatePersonState(exception),
+    result.fold(
+      (success) => value = SuccessCreatePersonState(success),
+      (failure) => value = ErrorCreatePersonState(failure),
     );
+
+    // CustomNotifier
+    //
+    // execute(
+    //   () async {
+    //     value = const LoadingCreatePersonState();
+
+    //     await Future.delayed(const Duration(seconds: 2));
+
+    //     final person = await _createPersonUsecase(param);
+
+    //     value = SuccessCreatePersonState(person);
+    //   },
+    //   (exception) => value = ErrorCreatePersonState(exception),
+    // );
+
+    // Try Catch
+    //
     // try {
     //   value = const LoadingCreatePersonState();
 

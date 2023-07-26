@@ -360,6 +360,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  result_dart:
+    dependency: "direct main"
+    description:
+      name: result_dart
+      sha256: f28a171d55e2e1c1753b41d4d8edcaff886f103e73c575d14764913907e57928
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   shared_preferences:
     dependency: "direct main"
     description:

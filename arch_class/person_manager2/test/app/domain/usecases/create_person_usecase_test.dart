@@ -6,6 +6,8 @@ import 'package:person_manager2/app/modules/person/domain/entities/person_entity
 import 'package:person_manager2/app/modules/person/domain/params/create_person_param.dart';
 import 'package:person_manager2/app/modules/person/domain/repositories/person_repository.dart';
 import 'package:person_manager2/app/modules/person/domain/usecases/create_person_usecase.dart';
+import 'package:result_dart/functions.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../core/exceptions/mocks/mocks.dart';
 import '../mocks/mocks.dart';
@@ -35,14 +37,15 @@ void main() {
           () async {
             // Arrange
             when(() => repo.create(successParam))
-                .thenAnswer((_) async => PersonEntityMock());
+                .thenAnswer((_) async => PersonEntityMock().toSuccess());
 
             // Act
             final result = await sut(successParam);
 
+            final person = result.fold(id, id) as PersonEntity;
             // Assert
-            expect(result, isA<PersonEntity>());
-            expect(result.name, equals('')); // Exemplo didático
+            expect(person, isA<PersonEntity>());
+            expect(person.name, equals('')); // Exemplo didático
             verify(() => repo.create(successParam)).called(1);
           },
         );
@@ -52,10 +55,14 @@ void main() {
           'Deve relançar uma AppException quando o repository lançar uma AppException',
           () async {
             // Arrange
-            when(() => repo.create(successParam)).thenThrow(AppExceptionMock());
+            when(() => repo.create(successParam))
+                .thenAnswer((_) async => AppExceptionMock().toFailure());
 
+            // Act
+            final result = await sut(successParam);
+            final exception = result.fold(id, id);
             // Assert
-            expect(() => sut(successParam), throwsA(isA<AppException>()));
+            expect(exception, isA<AppException>());
             verify(() => repo.create(successParam)).called(1);
           },
         );
@@ -69,18 +76,13 @@ void main() {
               birth: DateTime.now().subtract(const Duration(days: 30000)),
             );
 
-            // try {
-            //   await sut(param);
-            // } on ValidationException catch (e) {
-            //   expect(
-            //     e.message,
-            //     equals('O nome não deve ter caracteres especiais'),
-            //   );
-            // }
+            final result = await sut(param);
+            final exception = result.fold(id, id) as ValidationException;
 
+            expect(exception, isA<ValidationException>());
             expect(
-              () => sut(param),
-              throwsA(isA<ValidationException>()),
+              exception.message,
+              equals('O nome não deve ter caracteres especiais'),
             );
             verifyZeroInteractions(repo);
           },
@@ -88,58 +90,58 @@ void main() {
 
         test(
           'Deve lançar uma ValidationException quando o tamanho do nome for menor do que 3',
-          () {
+          () async {
             final param = CreatePersonParam(
               name: 'Da',
               cpf: '',
               birth: DateTime.now(),
             );
 
-            expect(
-              () => sut(param),
-              throwsA(isA<ValidationException>()),
-            );
+            final result = await sut(param);
+            final exception = result.fold(id, id) as ValidationException;
+
+            expect(exception, isA<ValidationException>());
             verifyZeroInteractions(repo);
           },
         );
 
         test(
           'Deve lançar uma ValidationException quando o tamanho do cpf for diferente de 11',
-          () {
+          () async {
             final param = CreatePersonParam(
               name: 'Daniel ',
               cpf: '1212',
               birth: DateTime.now(),
             );
 
-            expect(
-              () => sut(param),
-              throwsA(isA<ValidationException>()),
-            );
+            final result = await sut(param);
+            final exception = result.fold(id, id) as ValidationException;
+
+            expect(exception, isA<ValidationException>());
             verifyZeroInteractions(repo);
           },
         );
 
         test(
           'Deve lançar uma ValidationException quando a idade baseada na data de nascimento for menor que 18 anos',
-          () {
+          () async {
             final param = CreatePersonParam(
               name: 'Daniel ',
               cpf: '12312312312',
               birth: DateTime.now().subtract(const Duration(days: 4000)),
             );
 
-            expect(
-              () => sut(param),
-              throwsA(isA<ValidationException>()),
-            );
+            final result = await sut(param);
+            final exception = result.fold(id, id) as ValidationException;
+
+            expect(exception, isA<ValidationException>());
             verifyZeroInteractions(repo);
           },
         );
 
         test(
           'Deve lançar uma ValidationException quando receber um email e ele não conter um @',
-          () {
+          () async {
             final param = CreatePersonParam(
               name: 'Daniel',
               cpf: '12312312312',
@@ -147,10 +149,10 @@ void main() {
               email: '',
             );
 
-            expect(
-              () => sut(param),
-              throwsA(isA<ValidationException>()),
-            );
+            final result = await sut(param);
+            final exception = result.fold(id, id) as ValidationException;
+
+            expect(exception, isA<ValidationException>());
             verifyZeroInteractions(repo);
           },
         );

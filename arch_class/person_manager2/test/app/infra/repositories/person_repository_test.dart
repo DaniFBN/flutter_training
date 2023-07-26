@@ -7,6 +7,7 @@ import 'package:person_manager2/app/modules/person/domain/params/create_person_p
 import 'package:person_manager2/app/modules/person/infra/datasources/person_datasource.dart';
 import 'package:person_manager2/app/modules/person/infra/mappers/person_mapper.dart';
 import 'package:person_manager2/app/modules/person/infra/repositories/person_repository.dart';
+import 'package:result_dart/functions.dart';
 
 import '../../core/exceptions/mocks/mocks.dart';
 import '../mocks/mocks.dart';
@@ -43,8 +44,9 @@ void main() {
                   .thenAnswer((_) async => responseMock);
 
               final result = await sut.create(param);
+              final person = result.fold(id, id);
 
-              expect(result, isA<PersonEntity>());
+              expect(person, isA<PersonEntity>());
               verify(() => datasource.create(paramMap)).called(1);
             },
           );
@@ -60,7 +62,10 @@ void main() {
               when(() => datasource.create(paramMap))
                   .thenThrow(AppExceptionMock());
 
-              expect(() => sut.create(param), throwsA(isA<AppException>()));
+              final result = await sut.create(param);
+              final exception = result.fold(id, id);
+
+              expect(exception, isA<AppException>());
               verify(() => datasource.create(paramMap)).called(1);
             },
           );
@@ -71,10 +76,10 @@ void main() {
               when(() => datasource.create(paramMap))
                   .thenAnswer((_) async => <String, dynamic>{});
 
-              await expectLater(
-                () async => await sut.create(param),
-                throwsA(isA<MapperException>()),
-              );
+              final result = await sut.create(param);
+              final exception = result.fold(id, id);
+
+              expect(exception, isA<MapperException>());
               verify(() => datasource.create(paramMap)).called(1);
             },
           );

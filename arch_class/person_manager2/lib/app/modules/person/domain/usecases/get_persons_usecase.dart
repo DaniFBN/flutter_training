@@ -1,8 +1,10 @@
+import 'package:person_manager2/app/core/exceptions/app_exception.dart';
 import 'package:person_manager2/app/modules/person/domain/entities/person_entity.dart';
 import 'package:person_manager2/app/modules/person/domain/repositories/person_repository.dart';
+import 'package:result_dart/result_dart.dart';
 
 abstract interface class IGetPersonsUsecase {
-  Future<List<PersonEntity>> call();
+  AsyncResult<List<PersonEntity>, AppException> call();
 }
 
 class GetPersonsUsecase implements IGetPersonsUsecase {
@@ -11,7 +13,7 @@ class GetPersonsUsecase implements IGetPersonsUsecase {
   const GetPersonsUsecase(this._repository);
 
   @override
-  Future<List<PersonEntity>> call() {
+  AsyncResult<List<PersonEntity>, AppException> call() {
     return _repository.getPersons();
   }
 }

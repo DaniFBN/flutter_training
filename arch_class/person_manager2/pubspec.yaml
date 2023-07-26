@@ -16,6 +16,7 @@ dependencies:
   shared_preferences: 2.2.0
   uuid: 3.0.7
   flutter_modular: 5.0.3
+  result_dart: ^1.1.0
 
 dev_dependencies:
   flutter_test:
