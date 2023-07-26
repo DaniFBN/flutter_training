@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:person_manager2/app/core/exceptions/app_exception.dart';
 import 'package:person_manager2/app/domain/usecases/create_person_usecase.dart';
-import 'package:person_manager2/app/presenter/stores/create_person_state.dart';
+import 'package:person_manager2/app/presenter/stores/states/create_person_state.dart';
 
 import '../../domain/params/create_person_param.dart';
 

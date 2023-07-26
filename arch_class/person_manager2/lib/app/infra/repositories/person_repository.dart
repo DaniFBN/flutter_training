@@ -24,4 +24,17 @@ final class PersonRepository implements IPersonRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<PersonEntity>> getPersons() async {
+    try {
+      final result = await _datasource.getPersons();
+
+      final entities = PersonMapper.fromListMap(result).toList();
+
+      return entities;
+    } on AppException {
+      rethrow;
+    }
+  }
 }

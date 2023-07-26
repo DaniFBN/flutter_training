@@ -16,4 +16,10 @@ class PersonDatasource implements IPersonDatasource {
     final result = await _localStorageService.write(param);
     return result;
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> getPersons() async {
+    final result = await _localStorageService.read(_table);
+    return result;
+  }
 }

@@ -33,4 +33,8 @@ abstract final class PersonMapper {
       rethrow;
     }
   }
+
+  static Iterable<PersonEntity> fromListMap(List<Map<String, dynamic>> data) {
+    return data.map(fromMap);
+  }
 }

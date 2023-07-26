@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:person_manager2/app/domain/params/create_person_param.dart';
 import 'package:person_manager2/app/presenter/pages/widgets/date_field.dart';
-import 'package:person_manager2/app/presenter/stores/create_person_state.dart';
 import 'package:person_manager2/app/presenter/stores/create_person_store.dart';
+import 'package:person_manager2/app/presenter/stores/persons_store.dart';
+import 'package:person_manager2/app/presenter/stores/states/create_person_state.dart';
 
 import 'widgets/custom_field.dart';
 import 'widgets/custom_text_field.dart';
@@ -11,9 +12,11 @@ class CreatePersonPage extends StatefulWidget {
   const CreatePersonPage({
     Key? key,
     required this.store,
+    required this.personsStore,
   }) : super(key: key);
 
   final CreatePersonStore store;
+  final PersonsStore personsStore;
 
   @override
   State<CreatePersonPage> createState() => _CreatePersonPageState();
@@ -21,11 +24,11 @@ class CreatePersonPage extends StatefulWidget {
 
 class _CreatePersonPageState extends State<CreatePersonPage> {
   final formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController(text: 'Daniel @');
-  final cpfController = TextEditingController(text: '1231231231');
+  final nameController = TextEditingController(text: 'Daniel A');
+  final cpfController = TextEditingController(text: '12312312312');
   final birthController =
-      TextEditingController(text: '2023-07-12 00:00:00.000');
-  final emailController = TextEditingController(text: 'devfteam.dev');
+      TextEditingController(text: '1995-07-12 00:00:00.000');
+  final emailController = TextEditingController(text: 'dev@fteam.dev');
 
   @override
   void initState() {
@@ -42,6 +45,8 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
     } else if (state is SuccessCreatePersonState) {
       const snackBar = SnackBar(content: Text('Cadastrado com sucesso'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      widget.personsStore.getPersons();
+      Navigator.of(context).pop();
     }
   }
 
