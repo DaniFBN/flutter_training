@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:person_manager/core/failures/app_failure.dart';
-import 'package:person_manager/core/services/local_storage/helpers/params.dart';
-import 'package:person_manager/core/services/local_storage/helpers/responses.dart';
-import 'package:person_manager/core/services/local_storage/local_storage_service.dart';
-import 'package:person_manager/domain/responses/create_person_response.dart';
-import 'package:person_manager/external/person_datasource.dart';
+import 'package:person_manager/app/core/failures/app_failure.dart';
+import 'package:person_manager/app/core/services/local_storage/helpers/params.dart';
+import 'package:person_manager/app/core/services/local_storage/helpers/responses.dart';
+import 'package:person_manager/app/core/services/local_storage/local_storage_service.dart';
+import 'package:person_manager/app/modules/person/domain/responses/create_person_response.dart';
+import 'package:person_manager/app/modules/person/external/person_datasource.dart';
 
 import '../core/failures/mocks.dart';
 

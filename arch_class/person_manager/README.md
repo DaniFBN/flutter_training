@@ -1,16 +1,19 @@
-# person_manager
+Observer
 
-A new Flutter project.
+- Quem notifica
+  - ValueNotifier - value(setter)
+  - BLoC - emit()
+  - Triple - setLoading, setError, update
 
-## Getting Started
+- Quem ouve
+- ValueNotifier - Nativo
+  - Widget - ValueListenableBuilder, AnimatedBuilder
+  - Lógica - notifier.addListener
+- BLoC - Pattern
+  - Widget - BlocConsumer, BlocBuilder, StreamBuilder
+  - Lógica - bloc.stream.listen
+- Triple - Pattern
+  - Widget - ScopedBuilder, TripleBuilder, ValueListenableBuilder(triple.select<State|Loading|Error>), AnimatedBuilder(triple.select<State|Loading|Error>)
+  - Lógica - triple.observer, triple.select<State|Loading|Error>.addListener
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

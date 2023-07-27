@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:person_manager/core/failures/validation_failure.dart';
-import 'package:person_manager/domain/entities/person_entity.dart';
-import 'package:person_manager/domain/params/create_person_param.dart';
-import 'package:person_manager/domain/repositories/person_repository.dart';
-import 'package:person_manager/domain/responses/create_person_response.dart';
-import 'package:person_manager/domain/usecases/create_person_usecase.dart';
+import 'package:person_manager/app/core/failures/validation_failure.dart';
+import 'package:person_manager/app/modules/person/domain/entities/person_entity.dart';
+import 'package:person_manager/app/modules/person/domain/params/create_person_param.dart';
+import 'package:person_manager/app/modules/person/domain/repositories/person_repository.dart';
+import 'package:person_manager/app/modules/person/domain/responses/create_person_response.dart';
+import 'package:person_manager/app/modules/person/domain/usecases/create_person_usecase.dart';
 
 class RepoMock extends Mock implements IPersonRepository {}
 

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:person_manager/core/services/local_storage/helpers/params.dart';
-import 'package:person_manager/core/services/local_storage/helpers/responses.dart';
-import 'package:person_manager/core/services/local_storage/local_storage_service.dart';
+import 'package:person_manager/app/core/services/local_storage/helpers/params.dart';
+import 'package:person_manager/app/core/services/local_storage/helpers/responses.dart';
+import 'package:person_manager/app/core/services/local_storage/local_storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesLocalStorageService implements ILocalStorageService {

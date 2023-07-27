@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:person_manager/core/failures/app_failure.dart';
-import 'package:person_manager/domain/entities/person_entity.dart';
-import 'package:person_manager/domain/params/create_person_param.dart';
-import 'package:person_manager/domain/responses/create_person_response.dart';
-import 'package:person_manager/infra/datasources/person_datasource.dart';
-import 'package:person_manager/infra/mappers/person_mapper.dart';
-import 'package:person_manager/infra/repositories/person_repository.dart';
+import 'package:person_manager/app/core/failures/app_failure.dart';
+import 'package:person_manager/app/modules/person/domain/entities/person_entity.dart';
+import 'package:person_manager/app/modules/person/domain/params/create_person_param.dart';
+import 'package:person_manager/app/modules/person/domain/responses/create_person_response.dart';
+import 'package:person_manager/app/modules/person/infra/datasources/person_datasource.dart';
+import 'package:person_manager/app/modules/person/infra/mappers/person_mapper.dart';
+import 'package:person_manager/app/modules/person/infra/repositories/person_repository.dart';
 
 import '../../core/failures/mocks.dart';
 

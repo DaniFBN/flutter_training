@@ -1,6 +1,6 @@
-import 'package:person_manager/domain/params/create_person_param.dart';
+import 'package:person_manager/app/modules/person/domain/params/create_person_param.dart';
 
-import '../../core/failures/validation_failure.dart';
+import '../../../../core/failures/validation_failure.dart';
 import '../repositories/person_repository.dart';
 import '../responses/create_person_response.dart';
 
@@ -33,13 +33,11 @@ class CreatePersonUsecase implements ICreatePersonUsecase {
       throw ValidationFailure('Deve ser maior de 18 anos');
     }
 
-    if (param.telephone?.length != 11) {
+    final telephone = param.telephone;
+    if (telephone != null && telephone.length != 11) {
       throw ValidationFailure('Telefone inválido');
     }
 
     return _repository.create(param);
   }
 }
-
-
-
