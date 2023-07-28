@@ -42,8 +42,8 @@ class CreatePersonUsecase implements ICreatePersonUsecase {
     }
 
     final email = param.email;
-    if (email != null && !email.contains('@')) {
-      return ValidationException('O email é inválido').toFailure();
+    if (email != null && email.hasError) {
+      return ValidationException(email.error!).toFailure();
     }
 
     // if (messages.isNotEmpty) {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:person_manager2/app/modules/person/presenter/controllers/create_person_controller.dart';
-import 'package:person_manager2/app/modules/person/presenter/pages/widgets/date_field.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/states/create_person_state.dart';
+import 'package:flutter_triple/flutter_triple.dart';
+import 'package:person_manager2/app/core/value_objects/email_vo.dart';
+import 'package:person_manager2/app/modules/person/presenter/triple/controllers/create_person_controller.dart';
+import 'package:person_manager2/app/modules/person/presenter/triple/pages/widgets/date_field.dart';
 
 import 'widgets/custom_field.dart';
 import 'widgets/custom_text_field.dart';
@@ -60,20 +61,24 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                   hintText: 'Digite seu email',
                   controller: controller.emailController,
                   required: false,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) return null;
+
+                    return EmailVO(value).error;
+                  },
                 ),
               ),
               const SizedBox(height: 16),
-              ValueListenableBuilder(
-                valueListenable: controller.createStore,
-                child: ElevatedButton(
-                  onPressed: controller.create,
-                  child: const Text('Create'),
-                ),
-                builder: (_, state, button) {
-                  if (state is LoadingCreatePersonState) {
+              TripleBuilder(
+                store: controller.createStore,
+                builder: (_, state) {
+                  if (state.isLoading) {
                     return const CircularProgressIndicator();
                   }
-                  return button!;
+                  return ElevatedButton(
+                    onPressed: controller.create,
+                    child: const Text('Create'),
+                  );
                 },
               ),
             ],
@@ -83,3 +88,20 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
     );
   }
 }
+
+// Teste - Usecase
+//   throw - return(Either)
+
+// VO
+//   hasError
+
+// Page
+//   findTextField
+//   insertText
+//   findButton
+//   clickButton
+//   findErrorText
+
+// Page - VO
+//   TesteVO
+  

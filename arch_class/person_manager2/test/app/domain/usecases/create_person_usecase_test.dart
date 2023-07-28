@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:person_manager2/app/core/exceptions/app_exception.dart';
 import 'package:person_manager2/app/core/exceptions/validation_exception.dart';
+import 'package:person_manager2/app/core/value_objects/email_vo.dart';
 import 'package:person_manager2/app/modules/person/domain/entities/person_entity.dart';
 import 'package:person_manager2/app/modules/person/domain/params/create_person_param.dart';
 import 'package:person_manager2/app/modules/person/domain/repositories/person_repository.dart';
@@ -146,7 +147,7 @@ void main() {
               name: 'Daniel',
               cpf: '12312312312',
               birth: DateTime.now().subtract(const Duration(days: 40000)),
-              email: '',
+              email: EmailVO(''),
             );
 
             final result = await sut(param);

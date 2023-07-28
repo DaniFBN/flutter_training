@@ -16,6 +16,8 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        textTheme: const TextTheme(), // Preto
+        primaryTextTheme: const TextTheme(), // Branco
       ),
       scaffoldMessengerKey: snackBarService.key,
       routerDelegate: Modular.routerDelegate,

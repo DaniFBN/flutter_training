@@ -3,13 +3,13 @@ import 'package:person_manager2/app/modules/person/domain/usecases/create_person
 import 'package:person_manager2/app/modules/person/domain/usecases/get_persons_usecase.dart';
 import 'package:person_manager2/app/modules/person/external/person_datasource.dart';
 import 'package:person_manager2/app/modules/person/infra/repositories/person_repository.dart';
-import 'package:person_manager2/app/modules/person/presenter/controllers/create_person_controller.dart';
-import 'package:person_manager2/app/modules/person/presenter/pages/create_person_page.dart';
-import 'package:person_manager2/app/modules/person/presenter/pages/persons_page.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/create_person_store.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/persons_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/value_notifier/controllers/create_person_controller.dart';
+import 'package:person_manager2/app/modules/person/presenter/value_notifier/pages/create_person_page.dart';
+import 'package:person_manager2/app/modules/person/presenter/value_notifier/pages/persons_page.dart';
+import 'package:person_manager2/app/modules/person/presenter/value_notifier/stores/create_person_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/value_notifier/stores/persons_store.dart';
 
-class PersonModule extends Module {
+class PersonVnModule extends Module {
   @override
   final List<Bind<Object>> binds = [
     Bind.lazySingleton((i) => PersonDatasource(i())),
@@ -24,7 +24,6 @@ class PersonModule extends Module {
     Bind.lazySingleton((i) => CreatePersonStore(i())),
 
     // Controllers
-
     Bind.lazySingleton(
       (i) => CreatePersonController(
         createStore: i(),

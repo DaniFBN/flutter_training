@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/persons_store.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/states/persons_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/events/persons_event.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/persons_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/states/persons_state.dart';
 
 class PersonsPage extends StatefulWidget {
   const PersonsPage({
@@ -19,7 +21,7 @@ class _PersonsPageState extends State<PersonsPage> {
   void initState() {
     super.initState();
 
-    widget.store.getPersons();
+    widget.store.add(const GetPersonsEvent());
   }
 
   @override
@@ -30,9 +32,9 @@ class _PersonsPageState extends State<PersonsPage> {
       appBar: AppBar(title: const Text('Pessoas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ValueListenableBuilder(
-          valueListenable: widget.store,
-          builder: (_, state, __) {
+        child: BlocBuilder(
+          bloc: widget.store,
+          builder: (_, PersonsState state) {
             late Widget body;
 
             switch (state) {
@@ -50,6 +52,7 @@ class _PersonsPageState extends State<PersonsPage> {
 
                     return Card(
                       child: ListTile(
+                        isThreeLine: true,
                         title: Text(
                           person.name,
                           style: theme.textTheme.titleLarge,
@@ -68,10 +71,9 @@ class _PersonsPageState extends State<PersonsPage> {
                               ],
                             ),
                             const SizedBox(height: 4),
-                            if (email != null) Text(email),
+                            if (email != null) Text(email.value),
                           ],
                         ),
-                        isThreeLine: true,
                       ),
                     );
                   },

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:person_manager2/app/modules/person/domain/usecases/create_person_usecase.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/states/create_person_state.dart';
+import 'package:person_manager2/app/modules/person/presenter/value_notifier/stores/states/create_person_state.dart';
 
-import '../../../../core/reactivity/custom_notifier.dart';
-import '../../domain/params/create_person_param.dart';
+import '../../../../../core/reactivity/custom_notifier.dart';
+import '../../../domain/params/create_person_param.dart';
 
 class CreatePersonStore extends CustomNotifier<CreatePersonState> {
   final ICreatePersonUsecase _createPersonUsecase;

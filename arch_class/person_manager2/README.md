@@ -1,16 +1,72 @@
-# person_manager2
+Observer Pattern
 
-A new Flutter project.
+Alguem avisa
 
-## Getting Started
+  ValueNotifier - value(setter)
 
-This project is a starting point for a Flutter application.
+  ChangeNotifier - notifyListeners()
 
-A few resources to get you started if this is your first Flutter project:
+  Bloc - emit()
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  Cubit - emit()
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  Triple - update(state), setLoading(), setError()
+
+Alguem ouve
+
+  ValueNotifier
+
+    Widget - ValueListenableBuilder, AnimatedBuilder
+
+    Lógica - notifier.addListener
+
+  ChangeNotifier
+
+    Widget - AnimatedBuilder
+
+    Lógica - addListener
+
+  Bloc
+
+    Widget - BlocBuilder, BlocConsumer
+
+    Lógica - bloc.stream.listen
+
+  Cubit
+
+    Widget - BlocBuilder, BlocConsumer
+
+    Lógica - cubit.stream.listen
+
+  Triple
+
+    Widget - TripleBuilder(triple), ScopedBuilder(triple), ValueListenableBuilder(triple.select<State|Error|Loading>), AnimatedBuilder(triple.select<State|Error|Loading>)
+
+    Lógica - triple.observer, triple.select<State|Error|Loading>.addListener
+
+---
+
+Core
+
+  Modules
+
+    Presenter - Page, Reativiade, Controller
+
+    Domain - Usecase
+
+    Infra - Repository
+
+    External - Datasource, Services
+
+Modules
+
+  Presenter - Page, Reativiade, Controller
+
+  Domain - Usecase
+
+  Infra - Repository
+
+  External - Datasource, Services
+
+
+ 

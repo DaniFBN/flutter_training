@@ -10,6 +10,6 @@ class CoreModule extends Module {
       (i) => SharedPreferencesLocalStorageService(),
       export: true,
     ),
-    Bind.lazySingleton((i) => SnackBarService()),
+    Bind.lazySingleton((i) => SnackBarService(), export: true),
   ];
 }

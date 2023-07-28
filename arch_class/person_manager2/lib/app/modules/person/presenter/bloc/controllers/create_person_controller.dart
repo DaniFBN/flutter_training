@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:person_manager2/app/core/services/snack_bar/i_snack_bar_service.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/create_person_store.dart';
-import 'package:person_manager2/app/modules/person/presenter/stores/persons_store.dart';
+import 'package:person_manager2/app/core/value_objects/email_vo.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/create_person_store.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/events/create_person_event.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/events/persons_event.dart';
+import 'package:person_manager2/app/modules/person/presenter/bloc/stores/persons_store.dart';
 
-import '../../domain/params/create_person_param.dart';
+import '../../../domain/params/create_person_param.dart';
 import '../stores/states/create_person_state.dart';
 
 class CreatePersonController {
@@ -16,6 +21,7 @@ class CreatePersonController {
     text: '1995-07-12 00:00:00.000',
   );
 
+  late final StreamSubscription _createStoreSubscription;
   final CreatePersonStore createStore;
   final PersonsStore _personsStore;
   final ISnackBarService _snackBarService;
@@ -26,25 +32,29 @@ class CreatePersonController {
     required ISnackBarService snackBarService,
   })  : _personsStore = personsStore,
         _snackBarService = snackBarService {
-    createStore.addListener(_storeListener);
+    _createStoreSubscription = createStore.stream.listen(_storeListener);
   }
 
   void create() async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
+    EmailVO? email;
+    if (emailController.text.isNotEmpty) {
+      email = EmailVO(emailController.text);
+    }
+
     final param = CreatePersonParam(
       name: nameController.text,
       cpf: cpfController.text,
       birth: DateTime.parse(birthController.text),
-      email: emailController.text.isEmpty ? null : emailController.text,
+      email: email,
     );
 
-    await createStore.create(param);
+    createStore.add(SubmitCreatePersonEvent(param));
   }
 
-  void _storeListener() {
-    final state = createStore.value;
+  void _storeListener(CreatePersonState state) {
     if (state is ErrorCreatePersonState) {
       final snackBar = SnackBar(content: Text(state.exception.message));
       _snackBarService.showSnackBar(snackBar);
@@ -52,12 +62,12 @@ class CreatePersonController {
       const snackBar = SnackBar(content: Text('Cadastrado com sucesso'));
       _snackBarService.showSnackBar(snackBar);
 
-      _personsStore.getPersons();
+      _personsStore.add(const GetPersonsEvent());
       Modular.to.pop();
     }
   }
 
   void dispose() {
-    createStore.removeListener(_storeListener);
+    _createStoreSubscription.cancel();
   }
 }
