@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:person_manager/app/modules/person/presenter/pages/widgets/custom_field_widget.dart';
+
+import 'custom_field_widget.dart';
 
 class DropdownFieldWidget extends StatefulWidget {
   const DropdownFieldWidget({

@@ -1,13 +1,14 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:person_manager/app/modules/person/presenter/pages/create_person_page.dart';
-import 'package:person_manager/app/modules/person/presenter/pages/persons_page.dart';
+import 'package:person_manager/app/modules/person/presenter/triple/controllers/create_person_controller.dart';
+import 'package:person_manager/app/modules/person/presenter/triple/pages/create_person_page.dart';
+import 'package:person_manager/app/modules/person/presenter/triple/pages/persons_page.dart';
 
 import 'domain/usecases/create_person_usecase.dart';
 import 'domain/usecases/get_persons_usecase.dart';
 import 'external/person_datasource.dart';
 import 'infra/repositories/person_repository.dart';
-import 'presenter/stores/create_person_store.dart';
-import 'presenter/stores/persons_store.dart';
+import 'presenter/triple/stores/create_person_store.dart';
+import 'presenter/triple/stores/persons_store.dart';
 
 class PersonModule extends Module {
   @override
@@ -22,6 +23,11 @@ class PersonModule extends Module {
     // Stores
     Bind.lazySingleton((i) => PersonsStore(i())),
     Bind.lazySingleton((i) => CreatePersonStore(i())),
+
+    // Controllers
+    Bind.lazySingleton(
+      (i) => CreatePersonController(i(), i(), i()),
+    ),
   ];
 
   @override
@@ -30,8 +36,7 @@ class PersonModule extends Module {
     ChildRoute(
       '/create',
       child: (_, __) => CreatePersonPage(
-        store: Modular.get(),
-        personsStore: Modular.get(),
+        controller: Modular.get(),
       ),
     ),
   ];

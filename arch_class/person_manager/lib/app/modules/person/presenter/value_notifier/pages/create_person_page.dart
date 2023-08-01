@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:person_manager/app/modules/person/domain/params/create_person_param.dart';
-import 'package:person_manager/app/modules/person/presenter/pages/widgets/custom_field_widget.dart';
-import 'package:person_manager/app/modules/person/presenter/stores/create_person_store.dart';
-import 'package:person_manager/app/modules/person/presenter/stores/persons_store.dart';
-import 'package:person_manager/app/modules/person/presenter/stores/states/create_person_state.dart';
+import 'package:person_manager/app/modules/person/presenter/value_notifier/stores/states/create_person_state.dart';
 
-import '../../../../core/formatters/cpf_formatter.dart';
-import '../../domain/entities/person_entity.dart';
+import '../../../../../core/formatters/cpf_formatter.dart';
+import '../../../domain/entities/person_entity.dart';
+import '../controllers/create_person_controller.dart';
+import 'widgets/custom_field_widget.dart';
 import 'widgets/custom_text_field_widget.dart';
 import 'widgets/date_field_widget.dart';
 import 'widgets/dropdown_field_widget.dart';
@@ -15,61 +13,17 @@ import 'widgets/dropdown_field_widget.dart';
 class CreatePersonPage extends StatefulWidget {
   const CreatePersonPage({
     Key? key,
-    required this.store,
-    required this.personsStore,
+    required this.controller,
   }) : super(key: key);
 
-  final CreatePersonStore store;
-  final PersonsStore personsStore;
+  final CreatePersonController controller;
 
   @override
   State<CreatePersonPage> createState() => _CreatePersonPageState();
 }
 
 class _CreatePersonPageState extends State<CreatePersonPage> {
-  final formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final cpfController = TextEditingController();
-  final birthController = TextEditingController();
-  Sexo selectedSexo = Sexo.feminino;
-  final telephoneController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    widget.store.addListener(storeListener);
-  }
-
-  void storeListener() {
-    final state = widget.store.value;
-
-    switch (state) {
-      case ErrorCreatePersonState():
-        final snackBar = SnackBar(
-          backgroundColor: Colors.red,
-          content: Text(state.failure.message),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      case SuccessCreatePersonState():
-        const snackBar = SnackBar(
-          backgroundColor: Colors.green,
-          content: Text('Pessoa criada com sucesso'),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        widget.personsStore.getPersons();
-        Navigator.of(context).pop();
-      default:
-        return;
-    }
-  }
-
-  @override
-  void dispose() {
-    widget.store.removeListener(storeListener);
-
-    super.dispose();
-  }
+  CreatePersonController get controller => widget.controller;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +32,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: formKey,
+          key: controller.formKey,
           child: Column(
             children: [
               CustomFieldWidget(
@@ -87,7 +41,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 field: CustomTextFieldWidget(
                   autofill: const [AutofillHints.name],
                   hintText: 'Digite seu nome',
-                  controller: nameController,
+                  controller: controller.nameController,
                   isRequired: true,
                 ),
               ),
@@ -97,7 +51,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 isRequired: true,
                 field: CustomTextFieldWidget(
                   hintText: 'Digite seu cpf',
-                  controller: cpfController,
+                  controller: controller.cpfController,
                   isRequired: true,
                   keyboardType: TextInputType.number,
                   formatters: [
@@ -107,14 +61,14 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 ),
               ),
               const SizedBox(height: 16),
-              DateFieldWidget(controller: birthController),
+              DateFieldWidget(controller: controller.birthController),
               const SizedBox(height: 16),
               DropdownFieldWidget(
-                value: selectedSexo.name,
+                value: controller.selectedSexo.name,
                 values: Sexo.values.map((e) => e.name).toList(),
                 onChanged: (String value) {
                   final newValue = Sexo.values.byName(value);
-                  selectedSexo = newValue;
+                  controller.selectedSexo = newValue;
                 },
               ),
               const SizedBox(height: 16),
@@ -122,31 +76,16 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 label: 'Telefone',
                 field: CustomTextFieldWidget(
                   hintText: 'Digite seu telefone',
-                  controller: telephoneController,
+                  controller: controller.telephoneController,
                   keyboardType: TextInputType.phone,
                   formatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
               ),
               const SizedBox(height: 16),
               ValueListenableBuilder(
-                valueListenable: widget.store,
+                valueListenable: controller.store,
                 child: ElevatedButton(
-                  onPressed: () async {
-                    final isValid = formKey.currentState!.validate();
-                    if (!isValid) return;
-
-                    final telephone = telephoneController.text;
-
-                    final param = CreatePersonParam(
-                      name: nameController.text,
-                      cpf: cpfController.text,
-                      birthAt: DateTime.parse(birthController.text),
-                      sexo: selectedSexo,
-                      telephone: telephone.isEmpty ? null : telephone,
-                    );
-
-                    await widget.store.create(param);
-                  },
+                  onPressed: controller.create,
                   child: const Text('Cadastrar'),
                 ),
                 builder: (_, state, child) {

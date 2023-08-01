@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:person_manager/app/modules/person/presenter/stores/persons_store.dart';
-import 'package:person_manager/app/modules/person/presenter/stores/states/persons_state.dart';
+import 'package:person_manager/app/modules/person/presenter/bloc/stores/events/persons_event.dart';
+import 'package:person_manager/app/modules/person/presenter/bloc/stores/persons_store.dart';
+import 'package:person_manager/app/modules/person/presenter/bloc/stores/states/persons_state.dart';
 
 class PersonsPage extends StatefulWidget {
   const PersonsPage({
@@ -20,7 +22,7 @@ class _PersonsPageState extends State<PersonsPage> {
   void initState() {
     super.initState();
 
-    widget.store.getPersons();
+    widget.store.add(const GetPersonsEvent());
   }
 
   @override
@@ -31,9 +33,9 @@ class _PersonsPageState extends State<PersonsPage> {
       appBar: AppBar(title: const Text('Pessoas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ValueListenableBuilder(
-          valueListenable: widget.store,
-          builder: (_, state, __) {
+        child: BlocBuilder(
+          bloc: widget.store,
+          builder: (_, PersonsState state) {
             Widget body;
 
             switch (state) {

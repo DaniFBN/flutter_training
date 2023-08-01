@@ -1,11 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:person_manager/app/core/failures/app_failure.dart';
 import 'package:person_manager/app/core/failures/validation_failure.dart';
 import 'package:person_manager/app/modules/person/domain/entities/person_entity.dart';
 import 'package:person_manager/app/modules/person/domain/params/create_person_param.dart';
 import 'package:person_manager/app/modules/person/domain/repositories/person_repository.dart';
 import 'package:person_manager/app/modules/person/domain/responses/create_person_response.dart';
 import 'package:person_manager/app/modules/person/domain/usecases/create_person_usecase.dart';
+import 'package:result_dart/functions.dart';
+import 'package:result_dart/result_dart.dart';
 
 class RepoMock extends Mock implements IPersonRepository {}
 
@@ -32,14 +35,16 @@ void main() {
             sexo: Sexo.feminino,
             telephone: '12121212121',
           );
-          when(() => repo.create(param))
-              .thenAnswer((_) async => const CreatePersonResponse(1));
+          when(() => repo.create(param)).thenAnswer(
+              (_) async => const CreatePersonResponse(1).toSuccess());
 
           // Act
           final result = await sut(param);
+          final response = result.fold(id, id) as CreatePersonResponse;
 
           // Assert
-          expect(result, isA<CreatePersonResponse>());
+          expect(response, isA<CreatePersonResponse>());
+          expect(response.id, equals(1));
           verify(() => repo.create(param)).called(1);
         },
       );
@@ -59,11 +64,14 @@ void main() {
           telephone: null,
         );
 
+        // Act
+        final result = await sut(param);
+        final response = result.fold(id, id) as AppFailure;
+
         // Assert
-        expect(
-          () => sut(param),
-          throwsA(isA<ValidationFailure>()),
-        );
+        expect(result, isA<Failure>());
+        expect(response, isA<ValidationFailure>());
+        expect(response.message, equals('Deve ter nome e sobrenome'));
         verifyNever(() => repo.create(param));
         verifyZeroInteractions(repo);
       },

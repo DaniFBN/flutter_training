@@ -1,10 +1,12 @@
+import 'package:person_manager/app/core/failures/app_failure.dart';
 import 'package:person_manager/app/modules/person/domain/entities/person_entity.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../repositories/person_repository.dart';
 
 // Command Pattern
 abstract interface class IGetPersonsUsecase {
-  Future<List<PersonEntity>> call();
+  AsyncResult<List<PersonEntity>, AppFailure> call();
 }
 
 class GetPersonsUsecase implements IGetPersonsUsecase {
@@ -13,7 +15,7 @@ class GetPersonsUsecase implements IGetPersonsUsecase {
   const GetPersonsUsecase(this._repository);
 
   @override
-  Future<List<PersonEntity>> call() async {
+  AsyncResult<List<PersonEntity>, AppFailure> call() async {
     return _repository.getPersons();
   }
 }
