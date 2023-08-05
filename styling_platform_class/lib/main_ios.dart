@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:styling_platform_class/app/home_page.dart';
 import 'package:styling_platform_class/environment_store.dart';
+
+import 'app/pages/home/home_page.dart';
 
 void main() {
   environmentStore = EnvironmentStore(Environment.iOS);

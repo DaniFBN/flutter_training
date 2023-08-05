@@ -1,6 +1,6 @@
 import 'dart_class.dart';
 
-void dartClass2(){
+void dartClass2() {
   final getterSetter = GetterSetter(name: 'Daniel', age: 23);
   print(getterSetter.name);
   // print(getterSetter._name);

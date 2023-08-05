@@ -2,13 +2,15 @@
 import 'dart:io';
 
 import 'package:dart_playground/src/dart_async.dart';
+import 'package:dart_playground/src/dart_equality.dart';
 import 'package:dart_playground/src/dart_error_handling.dart';
+import 'package:dart_playground/src/dart_extension.dart';
 import 'package:dart_playground/src/dart_null_safety.dart';
 import 'package:dart_playground/src/dart_repeating.dart';
 import 'package:dart_playground/src/dart_stream.dart';
 
 void main(List<String> arguments) async {
-  dartNullSafety();
+  // dartNullSafety();
   // dartInterpolation();
   // dartOperators();
   // dartRepeating();
@@ -17,7 +19,8 @@ void main(List<String> arguments) async {
   // dartConditional();
   // dartErrorHandling();
   // await dartAsync();
-  // dartEquality();
-
+  // await viaCepApi();
+  dartEquality();
   // dartStream();
+  // weightedAverage();
 }

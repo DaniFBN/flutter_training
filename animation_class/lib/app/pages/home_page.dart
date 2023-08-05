@@ -16,16 +16,16 @@ class HomePage extends StatelessWidget {
       title: 'Animation Class',
       body: DefaultMenu(options: [
         DefaultNavigationButton(
+          page: AnimatedOpacityPage(),
+          title: 'AnimatedOpacity',
+        ),
+        DefaultNavigationButton(
           page: AnimatedContainerPage(),
           title: 'AnimatedContainer',
         ),
         DefaultNavigationButton(
           page: AnimatedAlignPage(),
           title: 'AnimatedAlign',
-        ),
-        DefaultNavigationButton(
-          page: AnimatedOpacityPage(),
-          title: 'AnimatedOpacity',
         ),
         DefaultNavigationButton(
           page: AnimatedPositionedPage(),

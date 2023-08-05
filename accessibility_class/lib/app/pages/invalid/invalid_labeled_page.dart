@@ -85,8 +85,10 @@ class InvalidLabeledPage extends StatelessWidget {
                     fixedSize: Size(_size, _size),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child:
-                      const Icon(Icons.error, semanticLabel: 'Icone de erro'),
+                  child: const Icon(
+                    Icons.error,
+                    semanticLabel: 'Icone de erro',
+                  ),
                 ),
               ),
             ),

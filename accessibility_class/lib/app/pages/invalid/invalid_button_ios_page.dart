@@ -84,7 +84,7 @@ class InvalidButtonIosPage extends StatelessWidget {
               onPressed: () {},
               style: TextButton.styleFrom(
                 fixedSize: Size(_size, _size),
-                tapTargetSize: MaterialTapTargetSize.padded,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: const Icon(Icons.error),
             ),

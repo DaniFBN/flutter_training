@@ -3,6 +3,7 @@ class GetProductsByNameAndIdUsecase {
     const bool whatever = true;
 
     if (whatever == true) {}
+    if (whatever) {}
 
     print('');
     print('');

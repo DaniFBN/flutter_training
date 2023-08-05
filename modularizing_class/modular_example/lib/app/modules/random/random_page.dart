@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:modular_example/app/core/color/color_store.dart';
 
 class RandomPage extends StatefulWidget {
@@ -28,6 +27,6 @@ class _RandomPageState extends State<RandomPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: widget.color);
+    return Scaffold(appBar: AppBar(), backgroundColor: widget.color);
   }
 }

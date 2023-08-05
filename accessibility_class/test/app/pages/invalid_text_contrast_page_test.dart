@@ -43,7 +43,7 @@ void main() {
         ),
       );
 
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
+      await expectLater(tester, doesNotMeetGuideline(textContrastGuideline));
       handle.dispose();
     },
   );

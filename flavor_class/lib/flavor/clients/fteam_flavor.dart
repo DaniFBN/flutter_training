@@ -21,3 +21,19 @@ class FTeamFlavor implements IClientFlavor {
         colorScheme: ColorScheme.light(primary: Colors.blue.shade900),
       );
 }
+
+
+
+// AppModule
+//   HomeModule = /
+//     HomePage = / -> /
+//   RHModule = /rh
+//     RhPage = /rh -> /rh/rh
+//   FiscalModule = /fiscal
+//     FiscalPage = /fiscal -> /fiscal/fiscal
+
+// class AppRoutes{
+//   static const fiscalModulePath = '/fiscal';
+//   static const fiscalPagePath = '/fiscal';
+//   static const fiscalPathFullPath = fiscalModulePath + fiscalPagePath;
+// }

@@ -58,15 +58,10 @@ class InvalidButtonAndroidPage extends StatelessWidget {
                 child: const Icon(Icons.error, semanticLabel: 'Ícone de erro'),
               ),
             ),
-          // const TextField(
-          //   autofillHints: [
-          //     AutofillHints.email,
-          //   ],
-          // ),
           if (showInkWell)
             SizedBox(
-              height: 100,
-              width: 100,
+              height: _size,
+              width: _size,
               child: Semantics(
                 textDirection: TextDirection.ltr,
                 container: true,

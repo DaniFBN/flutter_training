@@ -3,10 +3,13 @@ void dartEquality() {
   const equality1 = Equality(23);
   const equality2 = Equality(23);
 
+  print(equality1.hashCode);
+  print(equality2.hashCode);
+
   print(equality1 == equality2);
 
   final equality3 = EqualityWithoutConst(23, 42);
-  final equality4 = EqualityWithoutConst(23, 42);
+  final equality4 = EqualityWithoutConst(23, 30);
 
   print(equality3.hashCode);
   print(equality4.hashCode);
@@ -42,13 +45,6 @@ class EqualityWithoutConst {
     this.value2,
   );
 
-  EqualityWithoutConst operator +(covariant EqualityWithoutConst other) {
-    return EqualityWithoutConst(value + other.value, value2);
-  }
-
-  @override
-  String toString() => 'EqualityWithoutConst(value: $value, value2: $value2)';
-
   @override
   bool operator ==(covariant EqualityWithoutConst other) {
     if (identical(this, other)) return true;
@@ -58,11 +54,19 @@ class EqualityWithoutConst {
 
   @override
   int get hashCode => value.hashCode ^ value2.hashCode;
+
+  EqualityWithoutConst operator +(covariant EqualityWithoutConst other) {
+    return EqualityWithoutConst(value + other.value, value2);
+  }
+
+  @override
+  String toString() => 'EqualityWithoutConst(value: $value, value2: $value2)';
 }
 
 class UserEntity extends Entity {
   const UserEntity({required super.id});
 }
+
 class ProductEntity extends Entity {
   const ProductEntity({required super.id});
 }

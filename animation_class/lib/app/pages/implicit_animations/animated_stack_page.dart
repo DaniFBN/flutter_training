@@ -72,7 +72,7 @@ class _AnimatedPositionedPageState extends State<AnimatedPositionedPage> {
     return AnimatedPositioned(
       top: _containerTopValue ?? (constraints.maxHeight / 2) - 50,
       left: _containerLeftValue ?? (constraints.maxWidth / 2) - 50,
-      duration: const Duration(microseconds: 1),
+      duration: const Duration(seconds: 5),
       child: InkWell(
         child: Container(
           color: Theme.of(context).primaryColor,

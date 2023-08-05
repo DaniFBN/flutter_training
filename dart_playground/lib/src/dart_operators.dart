@@ -12,7 +12,7 @@ void dartOperators() {
 
   print(1 == 1);
 
-  print(1 != 1);
+  print(1 != 1); 
   print(1 > 1);
   print(1 >= 1);
   print(1 < 1);
@@ -44,8 +44,8 @@ void dartOperators() {
 
   print(null ?? 23);
   final user = UserModel(name: 'Daniel');
-  print(user.age);
-  print(user.age ?? 72);
+  print(user.age); // > null
+  print(user.age ?? 72); // > 72
 
   value ??= 23;
 

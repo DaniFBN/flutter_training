@@ -52,9 +52,10 @@ dart_code_metrics:
 
 linter:
   rules:
-    - sort_constructors_first
-    - sort_unnamed_constructors_first
-    - use_super_parameters
-    - only_throw_errors
-    - directives_ordering
-    - prefer_relative_imports
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+    use_super_parameters: true
+    only_throw_errors: true
+    directives_ordering: true
+    prefer_relative_imports: true
+    avoid_print: true

@@ -77,7 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void isolateEternalPort() {
+    setState(() {
+      loading = true;
+    });
+
     isolate.execute(BigInt.from(int.parse(controller.text)));
+
+    setState(() {
+      loading = false;
+    });
   }
 
   @override

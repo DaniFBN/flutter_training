@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -63,6 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Theme.of(context);
+    MediaQuery.of(context);
+
+    ScaffoldMessenger.of(context); // SnackBar
+    Navigator.of(context); // Navegação
+
+    Scaffold.of(context); // Scaffold
+    Form.of(context); // Form
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //

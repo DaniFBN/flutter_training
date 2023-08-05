@@ -40,11 +40,9 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
 
     final textScaleFactor = MediaQuery.textScaleFactorOf(context);
 
-    
-
     return DefaultScaffold(
       title: widget.runtimeType.toString(),
-      body: Column(
+      body: ListView(
         children: [
           _Item(
             value: true,

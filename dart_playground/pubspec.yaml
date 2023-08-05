@@ -7,9 +7,12 @@ environment:
   sdk: ">=3.0.4 <4.0.0"
 
 dependencies: 
-  http: ^1.0.0
-  uno: ^1.1.8
+  dio: 5.2.1+1
+  http: 1.1.0
+  uno: 1.1.1
 
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.21.0
+
+

@@ -6,7 +6,7 @@ void dartGenerics() {
   final class4 = GenericNumClass<double, bool>(7.7, true);
 }
 
-class GenericClass<T> {
+class GenericClass<T> { 
   final T value;
 
   const GenericClass(this.value);

@@ -38,15 +38,23 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
       duration: const Duration(seconds: 2),
     );
 
-    opacityAnimation = Tween<double>(begin: 1, end: 0.3).animate(controller);
+    final curvedAnimation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.easeIn,
+    );
+
+    opacityAnimation = Tween<double>(
+      begin: 1,
+      end: 0.3,
+    ).animate(curvedAnimation);
     containerRadiusAnimation = Tween<double>(
       begin: 10,
       end: 100,
-    ).animate(controller);
+    ).animate(curvedAnimation);
     alignmentAnimation = AlignmentTween(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-    ).animate(controller);
+    ).animate(curvedAnimation);
 
     rotateController = AnimationController(
       vsync: this,
@@ -60,7 +68,6 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
     rotateController.repeat();
 
     controller.addStatusListener(infinityRotation);
-    controller.forward();
   }
 
   void infinityRotation(AnimationStatus status) {
@@ -117,6 +124,16 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
                     angle: rotateAnimation.value,
                     child: const Icon(Icons.refresh),
                   ),
+                  // child: AnimatedBuilder(
+                  //   animation: Listenable.merge([rotateController]),
+                  //   builder: (context, _) {
+                  //     return
+                  //     Transform.rotate(
+                  //       angle: rotateAnimation.value,
+                  //       child: const Icon(Icons.refresh),
+                  //     );
+                  //   },
+                  // ),
                 ),
               ),
             ),
@@ -128,5 +145,18 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
 }
 
 // Cada propriedade que deve mudar = Tween/Animation
+//   Opacity - 1/0.3
+//   Alignment - topCenter/bottomCenter
+//   Radius - 10/50
+
 // Cada gatilho/lógica/lifecycle = AnimationController
+//   1 Controller
+
+
 // Widget normais, envoltos em um AnimatedBuilder
+//   AnimatedOpacity
+//     AnimatedAlign
+
+//   AnimatedBuilder
+//     Opacity
+//       Align

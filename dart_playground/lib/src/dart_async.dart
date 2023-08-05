@@ -18,11 +18,12 @@ Future<void> dartAsync() async {
   await request(4);
 
   final init = DateTime.now();
-  await Future.wait([
+  final requests = await Future.wait([
     request(10),
     request(11),
     request(12),
   ]);
+  print(requests);
   final end = DateTime.now();
   print(end.difference(init).inMilliseconds);
 

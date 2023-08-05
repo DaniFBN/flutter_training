@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
 Future<void> dartStream() async {
@@ -22,6 +21,7 @@ Future<void> dartStream() async {
   await Future.delayed(Duration(seconds: 1));
 
   subscription3.cancel();
+  streamController.add(91);
   streamController.close();
 
   // StreamYield
@@ -58,4 +58,3 @@ class LoadingState extends State {}
 class SuccessState extends State {}
 
 class ErrorState extends State {}
-

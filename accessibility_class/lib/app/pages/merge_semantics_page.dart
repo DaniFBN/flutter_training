@@ -30,21 +30,39 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
     );
   }
 
+  String status = 'open';
+
   @override
   Widget build(BuildContext context) {
     return DefaultScaffold(
       title: widget.runtimeType.toString(),
       body: Column(
         children: [
-          const Column(
-            children: [
-              Visibility(
-                visible: false,
-                child: Text('Teste 1'),
+          Semantics(
+            child: Dismissible(
+              key: ValueKey('33-$status'),
+              direction: DismissDirection.horizontal,
+              onDismissed: (direction) {
+                print(direction);
+                setState(() {
+                  if (status == 'closed') {
+                    status = 'open';
+                  } else {
+                    status = 'closed';
+                  }
+                });
+              },
+              child: Column(
+                children: [
+                  const Visibility(
+                    visible: false,
+                    child: Text('Teste 1'),
+                  ),
+                  const Divider(),
+                  Text('Teste 2 $status'),
+                ],
               ),
-              Divider(),
-              Text('Teste 2'),
-            ],
+            ),
           ),
           const Divider(),
           const MergeSemantics(
@@ -58,16 +76,19 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
           const Divider(),
           Card(
             semanticContainer: true,
-            child: Semantics(
-              button: true,
+            child: GestureDetector(
               onTap: () {},
               onLongPress: () {},
-              label: 'Teste de Semantics',
-              child: const Column(
-                children: [
-                  Text('Teste 1'),
-                  Text('Teste 2'),
-                ],
+              onPanUpdate: (_) {},
+              child: const SizedBox(
+                height: 200,
+                width: 200,
+                child: Column(
+                  children: [
+                    Text('Teste 1'),
+                    Text('Teste 2'),
+                  ],
+                ),
               ),
             ),
           ),

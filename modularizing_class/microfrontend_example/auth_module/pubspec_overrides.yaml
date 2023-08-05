@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: app_dependencies,core_module,design_system
+dependency_overrides:
+  app_dependencies:
+    path: ../app_dependencies
+  core_module:
+    path: ../core_module
+  design_system:
+    path: ../design_system

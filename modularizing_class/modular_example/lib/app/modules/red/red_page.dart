@@ -27,6 +27,6 @@ class _RedPageState extends State<RedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(backgroundColor: color);
+    return Scaffold(appBar: AppBar(), backgroundColor: color);
   }
 }

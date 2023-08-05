@@ -21,13 +21,13 @@ class _AnimatedOpacityPageState extends State<AnimatedOpacityPage> {
           });
         },
         child: AnimatedOpacity(
-          duration: const Duration(seconds: 2),
+          duration: const Duration(seconds: 5),
           opacity: isOpacity ? 0.5 : 1.0,
           child: Container(
             height: 100,
             width: 100,
-            decoration: BoxDecoration(
-              color: Colors.red.shade300,
+            decoration: const BoxDecoration(
+              color: Colors.red,
             ),
           ),
         ),

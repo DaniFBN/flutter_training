@@ -1,9 +1,41 @@
 name: MicroFrontendExample
 
 packages:
-  - app/*
-  - app_dependencies/*
-  - design_system/*
-  - auth_module/*
-  - core_module/*
-  - home_module/*
+  - app
+  - app_dependencies
+  - design_system
+  - auth_module
+  - core_module
+  - home_module
+
+git
+  Atenas1 - Application
+git
+  Atenas2 - Application
+git
+  Atenas3 - Application
+git
+  Atenas4 - Application
+git
+  DesignSystem
+    Theme
+    Widgets
+git
+  Core
+    Interfaces
+    Exception
+    Services - Abstração de packages
+      IHttpService
+        DioHttpService
+git
+  GlobalDependencies
+    FlutterModular
+git
+  Atenas1CoreModules
+    User - packages
+git
+  Módulos Temporários
+    Auth - packages
+    RH - packages
+    Financeiro - packages
+  

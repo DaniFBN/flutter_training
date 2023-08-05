@@ -43,6 +43,9 @@ void dartClass() {
     case Cavalo():
       print('horse');
   }
+
+  final a = MyInterface('Daniel');
+  a.printName();
 }
 
 sealed class Animal {}
@@ -66,13 +69,28 @@ final class Class1 extends Class2
   void whatever2() {
     whatever();
   }
+
+  @override
+  void assisteTV() {
+    // TODO: implement assisteTV
+  }
+
+  @override
+  void jogarVideoGame() {
+    // TODO: implement jogarVideoGame
+  }
 }
 
 class Class21 with Mixin1 {}
 
-base class Class2 {}
+base class Class2 {
+  void cozinhar() {}
+  void jogarVideoGame() {}
+}
 
-abstract interface class Class3 {}
+abstract interface class Class3 {
+  void assisteTV() {}
+}
 
 abstract interface class Class4 {}
 
@@ -248,7 +266,6 @@ class SuperClassExtendsExtends {
   const SuperClassExtendsExtends({required this.content});
 }
 
-
 // -----------------------------------------------------------------------------
 // Erro de Mixin
 // -----------------------------------------------------------------------------
@@ -285,3 +302,27 @@ class SuperClassExtendsExtends {
 //     super.dispose();
 //   }
 // }
+
+interface class MyInterface {
+  final String name;
+
+  MyInterface(this.name);
+
+  void printName() {
+    print(name);
+  }
+}
+
+class MyImplementation implements MyInterface {
+  @override
+  final String name;
+
+  MyImplementation({
+    required this.name,
+  });
+
+  @override
+  void printName() {
+    print(name);
+  }
+}

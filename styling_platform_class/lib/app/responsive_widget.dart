@@ -15,16 +15,14 @@ class ResponsiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (_, constraints) {
-        if (constraints.maxWidth > 600) {
-          return web;
-        } else if (environmentStore.isAndroid) {
-          return android;
-        } else {
-          return ios;
-        }
-      },
-    );
+    final size = MediaQuery.sizeOf(context);
+
+    if (size.width > 600) {
+      return web;
+    } else if (environmentStore.isAndroid) {
+      return android;
+    } else {
+      return ios;
+    }
   }
 }

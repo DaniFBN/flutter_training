@@ -8,27 +8,29 @@ class IgnoreSemanticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultScaffold(
       title: runtimeType.toString(),
-      body: Row(
+      body: Column(
         children: [
-          const Text('Teste Funcional', semanticsLabel: 'Whatever'),
           Image.network(
             'https://avatars.githubusercontent.com/u/54218517?v=4',
             width: 20,
             height: 20,
           ),
-          const Column(
+          Column(
             children: [
-              Text('Teste Funcional', semanticsLabel: 'Whatever'),
+              const Text('Teste Funcional', semanticsLabel: 'Whatever'),
               ExcludeSemantics(
                 excluding: false,
-                child: Column(
-                  children: [
-                    Text('Exclude False 1'),
-                    Text('Exclude False 2'),
-                  ],
+                child: Semantics(
+                  label: 'Coluna',
+                  child: const Column(
+                    children: [
+                      Text('Exclude False 1'),
+                      Text('Exclude False 2'),
+                    ],
+                  ),
                 ),
               ),
-              ExcludeSemantics(
+              const ExcludeSemantics(
                 child: Column(
                   children: [
                     Text('Exclude True 1'),
@@ -36,7 +38,7 @@ class IgnoreSemanticsPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Card(
+              const Card(
                 semanticContainer: true,
                 child: Column(
                   children: [
@@ -44,8 +46,8 @@ class IgnoreSemanticsPage extends StatelessWidget {
                     BlockSemantics(
                       child: Column(
                         children: [
-                          Text('Semantics Exclude 1'),
-                          Text('Semantics Exclude 2'),
+                          Text('Semantics Block 1'),
+                          Text('Semantics Block 2'),
                         ],
                       ),
                     ),
@@ -74,3 +76,17 @@ class IgnoreSemanticsPage extends StatelessWidget {
 // Message -> Ignorado pelo Block
 // Block -> Ele mata o que vem antes no Nó dele
 // Message -> Normal
+
+
+
+// Column  
+//   Text
+//   Text
+//   Text
+//   Text
+//   Text
+//   Text
+//   MergeSemantics
+//     Text
+//     BlockSemantics
+//     Text

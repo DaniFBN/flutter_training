@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class MobileScaffold extends StatelessWidget {
   final Widget body;
+
   const MobileScaffold({
     Key? key,
     required this.body,
@@ -24,7 +24,6 @@ class MobileScaffold extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.add), label: '1'),
           BottomNavigationBarItem(icon: Icon(Icons.add), label: '2'),
           BottomNavigationBarItem(icon: Icon(Icons.add), label: '3'),
-          // BottomNavigationBarItem(icon: Icon(Icons.add), label: '4'),
         ],
       ),
     );
@@ -52,9 +51,11 @@ class _WebScaffoldState extends State<WebScaffold> {
 
     return LayoutBuilder(
       builder: (_, constraints) {
-        if (constraints.maxWidth > 1200) {
+        if (constraints.maxWidth > 800) {
           return Scaffold(
             appBar: AppBar(
+              elevation: 0,
+              title: const Text('Stylizing Platform Class'),
               leading: IconButton(
                 icon: const Icon(Icons.menu),
                 onPressed: () {
@@ -63,12 +64,11 @@ class _WebScaffoldState extends State<WebScaffold> {
                   });
                 },
               ),
-              elevation: 0,
-              title: const Text('Stylizing Platform Class'),
             ),
             body: Row(
               children: [
-                Container(
+                AnimatedContainer(
+                  duration: const Duration(seconds: 1),
                   width: showLabel ? size.height * 0.3 : size.height * 0.1,
                   height: constraints.maxHeight,
                   color: Colors.blue,

@@ -11,9 +11,14 @@ void dartInterpolation() {
   print(name + ' tem ' + age.toString() + ' anos');
   print('Ele nasceu em ${2023 - age.floor()}');
 
+
   print('Ele nasceu em ${2023 - age.round()}');
 
   final user = UserModel('Daniel', 23);
+  print(age);
+  print(age.toString());
+  print('$age');
+  print('${age.toString()}');
   print('${user.name} tem ${user.age} anos');
 }
 

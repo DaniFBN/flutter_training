@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_function_declarations_over_variables
 
-import 'dart:html';
+import 'dart_notifier.dart';
 
 typedef JumentoMap = Map<String, Jumento>;
+typedef DefaultMap = Map<String, dynamic>;
 typedef AsyncVoidCallback = Future<void> Function();
-typedef AsyncJumentoMap = Future<Map<String, Jumento>>;
+typedef AsyncJumentoMap = Future<JumentoMap>;
 
 class Jumento {}
 

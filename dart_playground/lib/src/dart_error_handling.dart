@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 void dartErrorHandling() {
   try {
-    throw 43;
+    throw true;
+    // throw DomainException(message: '', stackTrace: StackTrace.current);
     // throw Exception('Whatever');
 
     // Else

@@ -38,15 +38,19 @@ void dartRepeating() {
   // data.whereType(NaturalPerson);
   // data.where((e) => e is NaturalPerson);
 
-  // data.where((element) => false);
-  // data.map((element) => false);
-  // data.firstWhere((element) => false);
-  // data.reduce((e1, e2) => e1 + e2);
+  data.where((element) => false);
+  data.map((element) => false);
+  data.firstWhere((element) => false);
+  data.reduce((e1, e2) => e1 + e2);
 
   final map = {'name': 'Daniel', 'age': 23};
   for (final key in map.keys) {
     final data = map[key];
     print('$key - $data');
+  }
+
+  for (final value in map.values) {
+    print('$value');
   }
 
   for (final entry in map.entries) {
@@ -55,9 +59,5 @@ void dartRepeating() {
 
   for (final MapEntry(:key, :value) in map.entries) {
     print('$key - $value');
-  }
-
-  for (final value in map.values) {
-    print('$value');
   }
 }

@@ -39,3 +39,5 @@ class FibonacciIsolate {
     externalPort.send(newValue);
   }
 }
+
+// ReceivePort(sendPort) -> Isolate(sendPort) -> sendPort(result)

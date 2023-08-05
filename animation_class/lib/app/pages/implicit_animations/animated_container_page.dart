@@ -12,7 +12,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   bool useFirstColor = true;
   bool greater = true;
 
-  double get containerSize => greater ? 300 : 50;
+  double get containerSize => greater ? 300 : 100;
   Color get containerColor {
     if (useFirstColor) return Colors.red.shade300;
     return Colors.green.shade300;
@@ -30,10 +30,14 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
           });
         },
         child: AnimatedContainer(
-          duration: const Duration(seconds: 5),
+          duration: const Duration(seconds: 4),
           height: containerSize,
           width: containerSize,
           color: containerColor,
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Image.asset('assets/images/user_image.jpeg'),
+          ),
         ),
       ),
     );

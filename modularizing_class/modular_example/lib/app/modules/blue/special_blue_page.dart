@@ -27,6 +27,6 @@ class _SpecialBluePageState extends State<SpecialBluePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: color);
+    return Scaffold(appBar: AppBar(), backgroundColor: color);
   }
 }
