@@ -54,3 +54,14 @@ Obs.: Ele tem que estar em Base64 e em caso de multiplos `defines`, separe por v
 Ex.: `<firstBase64>,<secondBase64>`  
 
 Obs.: Pode ser preciso rodar o `pod install` dentro da pasta `ios` caso ele não ache algo dentro de `Target Support Files`
+
+
+## Android
+Adiciona as flavors
+  android/app/build.gradle
+    
+Quer alterar a imagem
+  android/app/src/<flavor_name>/res
+
+Como setar a flavor no run
+  flutter run --flavor daniel

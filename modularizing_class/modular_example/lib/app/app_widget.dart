@@ -17,8 +17,7 @@ class _AppWidgetState extends State<AppWidget> {
     // Modular.setNavigatorKey(navigatorKey);
 
     return MaterialApp.router(
-      routeInformationParser: Modular.routeInformationParser,
-      routerDelegate: Modular.routerDelegate,
+      routerConfig: Modular.routerConfig,
       title: 'Flutter Slidy',
       theme: ThemeData(primarySwatch: Colors.blue),
     );

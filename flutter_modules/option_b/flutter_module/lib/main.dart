@@ -111,3 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+PreBuilt -> Android(AAR), iOS(XCFramework)
+
+// Config -> Pior parte
+// Manifest -> Uma rota pro Flutter
+// Pré Cache -> FlutterEngine

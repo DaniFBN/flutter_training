@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  flutter_modular: ^5.0.3
+  flutter_modular: ^6.0.4
   colored_print: ^1.0.0
 
 dev_dependencies:

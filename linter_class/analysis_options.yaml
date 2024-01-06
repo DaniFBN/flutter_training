@@ -58,4 +58,3 @@ linter:
     only_throw_errors: true
     directives_ordering: true
     prefer_relative_imports: true
-    avoid_print: true

@@ -35,16 +35,16 @@ class InvalidTextContrastPage extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
           // if (showWhite)
-          // Container(
-          //   color: Colors.black,
-          //   child: const Padding(
-          //     padding: EdgeInsets.all(0.0),
-          //     child: Text(
-          //       'Bad Color Text',
-          //       style: TextStyle(color: Colors.white),
+          //   Container(
+          //     color: Colors.black,
+          //     child: const Padding(
+          //       padding: EdgeInsets.all(20.0),
+          //       child: Text(
+          //         'Bad Color Text',
+          //         style: TextStyle(color: Colors.white),
+          //       ),
           //     ),
           //   ),
-          // ),
           if (showRed)
             const Text(
               'Bad Color Text',

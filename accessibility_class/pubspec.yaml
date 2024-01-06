@@ -16,6 +16,7 @@ dependencies:
 
   default_design:
     path: ../default_design
+  html_wrapper: ^0.0.3
 
 dev_dependencies:
   flutter_test:

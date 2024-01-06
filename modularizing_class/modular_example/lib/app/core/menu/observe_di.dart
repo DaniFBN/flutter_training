@@ -28,10 +28,6 @@ class ObserveDI {
     final lastInstance = Modular.get<InstanceDI>().hashCode;
     _compareAndPrint('Instance', ObserveDI.lastInstance ?? 0, lastInstance);
     ObserveDI.lastInstance = lastInstance;
-
-    final lastAsync = (await Modular.getAsync<AsyncDI>()).hashCode;
-    _compareAndPrint('Async', ObserveDI.lastAsync ?? 0, lastAsync);
-    ObserveDI.lastAsync = lastAsync;
   }
 
   static void _compareAndPrint(String type, int oldValue, int newValue) {

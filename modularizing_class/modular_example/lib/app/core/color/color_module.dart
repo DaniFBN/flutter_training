@@ -4,16 +4,21 @@ import 'package:modular_example/app/core/color/color_store.dart';
 
 class ColorModule extends Module {
   @override
-  final List<Bind> binds = [
-    Bind.singleton<ColorStore>(
+  void exportedBinds(Injector i) {
+    i.addSingleton(
       (i) => ColorStore(),
-      onDispose: (store) => store.dispose(),
-      export: true,
-    ),
-  ];
+      config: BindConfig<ColorStore>(onDispose: (store) => store.dispose()),
+    );
+  }
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute('/whatever', child: (_, __) => const ColorPage())
-  ];
+  void routes(RouteManager r) {
+    r.child('/whatever', child: (_) => const ColorPage());
+  }
 }
+
+// Module
+//   binds -> Method
+//   exportedBinds -> Method
+//   imports -> Getter
+//   routes -> Method

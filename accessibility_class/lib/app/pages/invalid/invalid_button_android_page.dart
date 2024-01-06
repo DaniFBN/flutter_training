@@ -87,7 +87,7 @@ class InvalidButtonAndroidPage extends StatelessWidget {
               width: _size,
               child: IconButton(
                 onPressed: () {},
-                iconSize: 10,
+                iconSize: 20,
                 icon: const Icon(
                   Icons.error,
                   semanticLabel: 'Icone',

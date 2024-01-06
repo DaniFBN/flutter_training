@@ -35,7 +35,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
 
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 5),
     );
 
     final curvedAnimation = CurvedAnimation(
@@ -43,10 +43,9 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
       curve: Curves.easeIn,
     );
 
-    opacityAnimation = Tween<double>(
-      begin: 1,
-      end: 0.3,
-    ).animate(curvedAnimation);
+    final opacityTween = Tween<double>(begin: 1, end: 0.3);
+    opacityAnimation = opacityTween.animate(curvedAnimation);
+
     containerRadiusAnimation = Tween<double>(
       begin: 10,
       end: 100,
@@ -58,7 +57,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
 
     rotateController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 5000),
     );
 
     rotateAnimation = Tween<double>(
@@ -68,6 +67,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
     rotateController.repeat();
 
     controller.addStatusListener(infinityRotation);
+    controller.forward();
   }
 
   void infinityRotation(AnimationStatus status) {
@@ -105,6 +105,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
         animation: Listenable.merge([controller, rotateController]),
         builder: (context, child) {
           // print('REBUILD ANIMATION');
+
           return GestureDetector(
             onTap: animationTap,
             child: Opacity(
@@ -124,16 +125,6 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
                     angle: rotateAnimation.value,
                     child: const Icon(Icons.refresh),
                   ),
-                  // child: AnimatedBuilder(
-                  //   animation: Listenable.merge([rotateController]),
-                  //   builder: (context, _) {
-                  //     return
-                  //     Transform.rotate(
-                  //       angle: rotateAnimation.value,
-                  //       child: const Icon(Icons.refresh),
-                  //     );
-                  //   },
-                  // ),
                 ),
               ),
             ),
@@ -160,3 +151,7 @@ class _AnimatedAlignExplicitPageState extends State<AnimatedAlignExplicitPage>
 //   AnimatedBuilder
 //     Opacity
 //       Align
+
+
+
+

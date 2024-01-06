@@ -1,0 +1,35 @@
+name: app
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  auth_module:
+    path: ../auth_module
+  firebase_core:
+    git:
+      url: https://github.com/firebase/flutterfire.git
+      path: packages/firebase_core/firebase_core
+
+# dependency_overrides:
+#   firebase_core:
+#     path: ../firebase_core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

@@ -1,5 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:modular_example/app/core/color/color_module.dart';
 import 'package:modular_example/app/core/core_module.dart';
+import 'package:modular_example/app/core/di/di_module.dart';
 import 'package:modular_example/app/modules/blue/blue_module.dart';
 import 'package:modular_example/app/modules/not_found_page.dart';
 import 'package:modular_example/app/modules/random/random_module.dart';
@@ -12,37 +14,38 @@ import 'modules/red/red_module.dart';
 class AppModule extends Module {
   @override
   final List<Module> imports = [
-    CoreModule(),
+    DiModule(),
+    ColorModule(),
   ];
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, __) => MenuModule()),
-    ModuleRoute(
+  void routes(RouteManager r) {
+    r.module(Modular.initialRoute, module: MenuModule());
+    r.module(
       AppRoutes.blueModulePath,
       module: BlueModule(),
       duration: const Duration(seconds: 1),
       transition: TransitionType.scale,
-    ),
-    ModuleRoute(
+    );
+    r.module(
       AppRoutes.redModulePath,
       module: RedModule(),
       duration: const Duration(seconds: 1),
       transition: TransitionType.leftToRightWithFade,
-    ),
-    ModuleRoute(
+    );
+    r.module(
       AppRoutes.greenModulePath,
       module: GreenModule(),
       duration: const Duration(seconds: 1),
       transition: TransitionType.rotate,
-    ),
-    ModuleRoute(
+    );
+    r.module(
       AppRoutes.randomModulePath,
       module: RandomModule(),
       duration: const Duration(seconds: 1),
       transition: TransitionType.fadeIn,
-    ),
-    RedirectRoute('/redirect', to: '/red/'),
-    WildcardRoute(child: (_, __) => const NotFoundPage()),
-  ];
+    );
+    r.redirect('/redirect', to: '/red/');
+    r.wildcard(child: (_) => const NotFoundPage());
+  }
 }

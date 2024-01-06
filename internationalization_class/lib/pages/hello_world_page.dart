@@ -1,7 +1,7 @@
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
+import 'package:internationalization_class/l10n/gen/localization_extension.dart';
 
-import '../app_widget.dart';
 import '../intl_store.dart';
 import '../l10n/gen/app_localizations.dart';
 
@@ -20,9 +20,7 @@ class HelloWorldPage extends StatelessWidget {
         child: Column(
           children: [
             Text(AppLocalizations.of(context).helloWorld),
-            Text(
-              Localization().intl('hello', context),
-            ),
+            Text(context.l10n.helloWorld),
           ],
         ),
       ),

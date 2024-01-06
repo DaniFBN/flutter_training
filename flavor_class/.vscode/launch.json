@@ -8,7 +8,7 @@
       "name": "DAN",
       "request": "launch",
       "type": "dart",
-      "args": ["--dart-define=env=dev", "--dart-define=client=daniel", "--flavor", "daniel"]
+      "args": ["--dart-define-from-file=.dart_define.json", "--flavor", "daniel"]
     },
     {
       "name": "FTeam",

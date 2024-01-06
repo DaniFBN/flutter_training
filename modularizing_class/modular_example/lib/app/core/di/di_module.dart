@@ -5,13 +5,12 @@ final _instance = InstanceDI();
 
 class DiModule extends Module {
   @override
-  final List<Bind> binds = [
-    Bind.factory((i) => FactoryDI(), export: true),
-    Bind.singleton((i) => SingletonDI(), export: true),
-    Bind.lazySingleton((i) => LazySingletonDI(), export: true),
-    Bind.instance<InstanceDI>(_instance, export: true),
-    AsyncBind((i) async => AsyncDI(), export: true),
-  ];
+  void exportedBinds(Injector i) {
+    i.add(FactoryDI.new);
+    i.addSingleton(SingletonDI.new);
+    i.addLazySingleton(LazySingletonDI.new);
+    i.addInstance(_instance);
+  }
 }
 
 // Momento de criação
@@ -25,5 +24,3 @@ class DiModule extends Module {
 //   Singleton = Sempre a mesma instancia
 //   LazySingleton = Sempre a mesma instancia
 //   Factory = Sempre uma nova instancia
-
-

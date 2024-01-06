@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:default_design/default_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:html_wrapper/html_wrapper.dart' as html;
 
 class MergeSemanticsPage extends StatefulWidget {
   const MergeSemanticsPage({super.key});
@@ -21,12 +23,13 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
     await SemanticsService.announce(
       'Devo ser interrompido Devo ser interrompido Devo ser interrompido Devo ser interrompido ',
       TextDirection.ltr,
-      // assertiveness: Assertiveness.assertive,
+      assertiveness: Assertiveness.assertive,
     );
 
     await SemanticsService.announce(
       'Você chegou na Merge Semantics Page',
       TextDirection.ltr,
+      assertiveness: Assertiveness.polite,
     );
   }
 
@@ -55,7 +58,7 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
               child: Column(
                 children: [
                   const Visibility(
-                    visible: false,
+                    visible: true,
                     child: Text('Teste 1'),
                   ),
                   const Divider(),
@@ -65,11 +68,31 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
             ),
           ),
           const Divider(),
-          const MergeSemantics(
+          const Column(
+            children: [
+              MpText(
+                content: 'Teste 1',
+                style: TextStyle(fontSize: 30, color: Colors.black),
+              ),
+              SelectableText('Teste 2'),
+            ],
+          ),
+          const Divider(),
+          MergeSemantics(
             child: Column(
               children: [
-                Text('Teste 1'),
-                Text('Teste 2'),
+                const Text('Teste 1'),
+                const Text('Teste 2'),
+                const Icon(
+                  Icons.error,
+                  semanticLabel: 'Erro',
+                ),
+                Image.network(
+                  'https://avatars.githubusercontent.com/u/54218517?v=4',
+                  width: 20,
+                  height: 20,
+                  semanticLabel: 'Github',
+                ),
               ],
             ),
           ),
@@ -110,6 +133,33 @@ class _MergeSemanticsPageState extends State<MergeSemanticsPage> {
           const Divider(),
         ],
       ),
+    );
+  }
+}
+
+class MpText extends StatelessWidget {
+  final String content;
+  final TextStyle? style;
+
+  const MpText({
+    Key? key,
+    required this.content,
+    this.style,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textScaleFactor = MediaQuery.textScaleFactorOf(context);
+    final textDirection = Directionality.of(context);
+
+    return html.Text(
+      content,
+      tag: html.Tag.h6,
+      style: style ?? theme.textTheme.bodyMedium,
+      textDirection: textDirection,
+      textScaleFactor: textScaleFactor,
+      
     );
   }
 }

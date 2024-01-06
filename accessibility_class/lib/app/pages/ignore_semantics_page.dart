@@ -22,6 +22,7 @@ class IgnoreSemanticsPage extends StatelessWidget {
                 excluding: false,
                 child: Semantics(
                   label: 'Coluna',
+                  // excludeSemantics: true,
                   child: const Column(
                     children: [
                       Text('Exclude False 1'),
@@ -39,11 +40,11 @@ class IgnoreSemanticsPage extends StatelessWidget {
                 ),
               ),
               const Card(
-                semanticContainer: true,
                 child: Column(
                   children: [
                     Text('Exclude false 1'),
                     BlockSemantics(
+                      blocking: true,
                       child: Column(
                         children: [
                           Text('Semantics Block 1'),
@@ -62,6 +63,7 @@ class IgnoreSemanticsPage extends StatelessWidget {
     );
   }
 }
+
 
 // Message -> Normal
 // Nó(Card, ListTile, MergeSemantics, Semantics[container:true]) -> Tudo dentro vai ser lido junto
@@ -90,3 +92,4 @@ class IgnoreSemanticsPage extends StatelessWidget {
 //     Text
 //     BlockSemantics
 //     Text
+

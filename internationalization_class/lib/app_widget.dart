@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:internationalization_class/l10n/gen/app_localizations.dart';
 
 import 'home_page.dart';
@@ -10,6 +9,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ValueListenableBuilder(
       valueListenable: IntlStore.instance,
       builder: (_, locale, child) {
@@ -30,17 +30,8 @@ class AppWidget extends StatelessWidget {
           //   Locale('es'), // Spanish
           //   Locale('pt'), // Portuguese
           // ],
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('es'),
-            Locale('pt', 'BR'),
-          ],
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           locale: locale,
           home: const HomePage(),
         );
@@ -52,17 +43,3 @@ class AppWidget extends StatelessWidget {
 final en = {'hello': 'Hello World!'};
 final es = {'hello': '¡Hola Mundo!'};
 final ptBr = {'hello': 'Olá Mundo'};
-
-class Localization {
-  String intl(String key, BuildContext context) {
-    final locale = Localizations.localeOf(context).toString();
-
-    if (locale == 'pt_BR') {
-      return ptBr[key]!;
-    }
-    if (locale == 'es') {
-      return es[key]!;
-    }
-    return en[key]!;
-  }
-}

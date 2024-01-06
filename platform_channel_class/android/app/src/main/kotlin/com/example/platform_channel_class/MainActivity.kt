@@ -48,6 +48,7 @@ class MainActivity: FlutterActivity() {
         }
     }
 
+
     MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel2).setMethodCallHandler { 
       call, result -> 
         if(call.method == "getList"){
@@ -55,6 +56,7 @@ class MainActivity: FlutterActivity() {
           result.success(list)
         }
     }
+    
 
     EventChannel(flutterEngine.dartExecutor.binaryMessenger, eventChannel).setStreamHandler(RandomNumberStreamHandler())
   }

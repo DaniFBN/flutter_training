@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../domain/failures/failures.dart';
 import '../../../../domain/params/params.dart';
 import '../../../../domain/usecases/usecases.dart';
 import 'events/todo_bloc_event.dart';
@@ -10,6 +9,7 @@ class TodoBloc extends Bloc<TodoBlocEvent, TodoBlocState> {
   TodoBloc(this._getAllByUserIDUsecase) : super(const DataTodoBlocState({})) {
     on<GetAllTodoBlocEvent>(_getTodos);
   }
+
   final GetAllByUserIDUsecase _getAllByUserIDUsecase;
 
   Future<void> _getTodos(
@@ -31,7 +31,7 @@ class TodoBloc extends Bloc<TodoBlocEvent, TodoBlocState> {
     final param = GetAllByUserIDParam(userID: event.userID);
     final result = await _getAllByUserIDUsecase(param);
 
-    result.fold(
+    result.fold( // Either/Result
       (l) => emitter(ErrorTodoBlocState(l)),
       (r) => emitter(DataTodoBlocState(r)),
     );

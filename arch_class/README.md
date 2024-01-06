@@ -66,5 +66,21 @@ Fluxo de Desenvolvimento
 Fluxo de Acesso
   Presenter > Domain > Infra > External
 
-  
 
+Domain - Regra negócio
+  Entity -> Tipagem
+  Repository -> Interface
+  Usecase -> Validação
+  Param?
+  Response?
+  DTO?
+  Failure?
+Data
+  Repository -> Impl da Interface
+  Datasource -> Interface
+  Datasource -> Impl da Interface
+  Mapper?
+Presenter
+  Page
+    Widgets/Components
+  Reatividade -> Cubit

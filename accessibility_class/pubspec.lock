@@ -82,6 +82,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  html_wrapper:
+    dependency: "direct main"
+    description:
+      name: html_wrapper
+      sha256: "5f96e528d9b65fd2153d736d91cf204d085888fb9c8505fc7d6ef6801c97b295"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   js:
     dependency: transitive
     description:

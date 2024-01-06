@@ -9,6 +9,7 @@ class PlatformChannelHandler {
 
   final methodChannel = const MethodChannel('method_channel_class');
   final methodChannel2 = const MethodChannel('method_channel_class2');
+
   final eventChannel = const EventChannel('event_channel_class');
 
   Future<int> getBatteryLevel() async {

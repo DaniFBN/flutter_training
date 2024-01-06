@@ -6,7 +6,7 @@ abstract class IDivisionUsecase {
   /// A called method to Division the [firstValue] by the [secondValue].
   ///
   /// Example:
-  /// ```dart
+  /// ```
   /// call(10, 2); // 5
   /// call(10, 0); // throw [InvalidDivisionException]
   /// ```

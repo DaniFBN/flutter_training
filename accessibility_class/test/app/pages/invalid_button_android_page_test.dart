@@ -113,17 +113,23 @@ void main() {
   testWidgets(
     "FloatingActionButton - Should be an error because the page has a Tappable Item with less than 48x48, it's 47x47",
     (tester) async {
+      // Habilitar o semantics
       final SemanticsHandle handle = tester.ensureSemantics();
+
+      // Widget
       await tester.pumpWidget(
         const MaterialApp(
           home: InvalidButtonAndroidPage(showFab: true),
         ),
       );
 
+      // Expect - meetsGuideline(true) - doesNotMeetGuideline(false)
       await expectLater(
         tester,
         doesNotMeetGuideline(androidTapTargetGuideline),
       );
+
+      // Dispose
       handle.dispose();
     },
   );

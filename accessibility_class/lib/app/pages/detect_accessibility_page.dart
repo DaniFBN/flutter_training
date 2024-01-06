@@ -13,6 +13,7 @@ class DetectAccessibilityPage extends StatefulWidget {
 
 class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
   late final PlatformDispatcher dispatcher;
+
   @override
   void initState() {
     super.initState();
@@ -39,6 +40,7 @@ class _DetectAccessibilityPageState extends State<DetectAccessibilityPage> {
     final reduceMotionIsOn = features.reduceMotion;
 
     final textScaleFactor = MediaQuery.textScaleFactorOf(context);
+
 
     return DefaultScaffold(
       title: widget.runtimeType.toString(),
