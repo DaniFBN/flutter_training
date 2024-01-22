@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Flutter Run -&gt; 'nubank_example'" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="filePath" value="$PROJECT_DIR$/widget_class/layout_examples/nubank_example/lib/main.dart" />
+    <method v="2" />
+  </configuration>
+</component>

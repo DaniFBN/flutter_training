@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/widget_class/build_context_example/melos_build_context_example.iml" filepath="$PROJECT_DIR$/widget_class/build_context_example/melos_build_context_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget_class/layout_examples/ifood_example/melos_ifood_example.iml" filepath="$PROJECT_DIR$/widget_class/layout_examples/ifood_example/melos_ifood_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget_class/layout_examples/nubank_example/melos_nubank_example.iml" filepath="$PROJECT_DIR$/widget_class/layout_examples/nubank_example/melos_nubank_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_fluttertraining.iml" filepath="$PROJECT_DIR$/melos_fluttertraining.iml" />
+    </modules>
+  </component>
+</project>
