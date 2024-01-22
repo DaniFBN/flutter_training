@@ -2,4 +2,5 @@ name: FlutterTraining
 repository: https://github.com/DaniFBN/flutter_training
 
 packages:
+  - default_design
   - widget_class/**

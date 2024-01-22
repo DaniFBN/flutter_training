@@ -1,5 +1,6 @@
-import 'package:build_context_example/app/pages/default_page.dart';
 import 'package:flutter/material.dart';
+
+import 'default_page.dart';
 
 class BuilderPage extends StatelessWidget {
   const BuilderPage({super.key});

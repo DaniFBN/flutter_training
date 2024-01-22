@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/widget_class/build_context_example/melos_build_context_example.iml" filepath="$PROJECT_DIR$/widget_class/build_context_example/melos_build_context_example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/widget_class/layout_examples/ifood_example/melos_ifood_example.iml" filepath="$PROJECT_DIR$/widget_class/layout_examples/ifood_example/melos_ifood_example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/widget_class/layout_examples/nubank_example/melos_nubank_example.iml" filepath="$PROJECT_DIR$/widget_class/layout_examples/nubank_example/melos_nubank_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/default_design/melos_default_design.iml" filepath="$PROJECT_DIR$/default_design/melos_default_design.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget_class/inherited_widget_example/melos_inherited_widget_example.iml" filepath="$PROJECT_DIR$/widget_class/inherited_widget_example/melos_inherited_widget_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget_class/thematizing_example/melos_thematizing_example.iml" filepath="$PROJECT_DIR$/widget_class/thematizing_example/melos_thematizing_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget_class/widget_example/melos_widget_example.iml" filepath="$PROJECT_DIR$/widget_class/widget_example/melos_widget_example.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_fluttertraining.iml" filepath="$PROJECT_DIR$/melos_fluttertraining.iml" />
     </modules>
   </component>
