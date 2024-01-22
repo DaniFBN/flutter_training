@@ -6,7 +6,33 @@ Inspired by [Arthur Giani](https://github.com/arthurgiani/flutter*training)
 
 ## Resume
 
+- [Onboarding](#onboarding)
 - [Widget](#widget)
+
+---
+
+## Onboarding
+
+- Flutter Trees
+- Skia & Impeller
+- Isolate & EventLoop
+
+### Bibliography:
+
+- Skia & Impeller
+  - [Skia](https://skia.org/docs/)
+  - [Impeller Rendering Engine](https://docs.flutter.dev/perf/impeller)
+  - [Impeller](https://www.youtube.com/watch?v=gKrYWC_SDxQ&ab_channel=Flutter)
+  - [Impeller Repository](https://github.com/flutter/flutter/wiki/Impeller)
+- Isolate & EventLoop
+  - [Isolate and EventLoop](https://www.youtube.com/watch?v=vl_AaCgudcY&list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2&index=17&ab_channel=Flutter)
+  - [Async vs Isolate](https://www.youtube.com/watch?v=5AxWC49ZMzs&ab_channel=Flutter)
+  - [Isolates, Threads, The Event Loop, Microtasks, Synchronous & Asynchronous workflows](https://www.youtube.com/watch?v=ArbJhSsEwTk&ab_channel=Flutterly)
+- Flutter Trees
+  - [ThreeTrees](https://www.youtube.com/watch?v=996ZgFRENMs&ab_channel=Flutter)
+  - [ThreeTrees Documentation](https://docs.flutter.dev/resources/architectural*overview#rendering*and*layout)
+- Comparisons
+  - [Flutter vs React Native](https://www.youtube.com/watch?v=X8ipUgXH6jw&ab_channel=Fireship)
 
 ---
 
